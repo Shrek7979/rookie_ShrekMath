@@ -5,6 +5,8 @@ import os, sys, json
 KILLER_PAST = '/home/claude/killer_shrekmath/src/past'
 sys.path.insert(0, KILLER_PAST)
 import render_past as rp, parse_answers as pa
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'g1'))
+import render_g1 as g1
 ROOT = os.path.dirname(os.path.abspath(__file__))
 rp.IMG = os.path.join(ROOT, 'img'); os.makedirs(rp.IMG, exist_ok=True)
 STAR_C = {1: 1, 2: 1, 3: 1, 4: 1, 5: 2, 6: 2, 7: 2, 8: 2, 9: 3, 10: 3, 16: 1, 17: 1, 18: 2, 19: 2}
@@ -27,7 +29,7 @@ def main(pdfs, known):
         stars, subj = PLAN[key]
         span = 8 if key == 'c' else 4
         for y, mo, pg in rp.exams(pdf):
-            got = rp.crop_items(pdf, pg, pg + span - 1, set(stars))
+            got = g1.crop_items(pdf, pg, pg + span - 1, set(stars))
             ex = f'{y}-{mo[:-1].zfill(2)}'
             for n in sorted(stars):
                 if n not in got: print('  missing', ex, key, n); continue

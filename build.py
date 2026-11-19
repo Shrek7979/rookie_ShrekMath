@@ -50,6 +50,13 @@ def main():
         x['key'] = 'h'; x['src'] = G1; x['unit'] = unit(re.sub(r'[\ue000-\uf8ff]', '', x.get('topic', '')))
         x['topic'] = re.sub(r'[\ue000-\uf8ff]', '', x['topic']).strip()
     items = g1 + items
+    sims = {}
+    import importlib.util, glob
+    for f in sorted(glob.glob(os.path.join(ROOT, 'src', 'sim', 'batch*.py'))):
+        spec = importlib.util.spec_from_file_location('b', f); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+        sims.update(m.S)
+    for x in items:
+        if x['id'] in sims: x['sim'] = sims[x['id']]
     for x in items:
         im = Image.open(os.path.join(x.pop('src'), 'img', x['id'] + '.webp')).convert('RGB')
         g = im.convert('L').point(lambda v: 255 if v < 200 else 0); bb = g.getbbox()   # 글자 있는 영역
@@ -70,6 +77,7 @@ def main():
     sw = open(os.path.join(APP, 'sw.js'), encoding='utf-8').read().replace('__VERSION__', time.strftime('%Y%m%d%H%M%S'))
     open(os.path.join(SITE, 'sw.js'), 'w', encoding='utf-8').write(sw)
     shutil.copy(os.path.join(APP, 'privacy.html'), os.path.join(SITE, 'privacy.html'))
+    shutil.copytree(os.path.join(ROOT, 'src', 'katex'), os.path.join(SITE, 'katex'))
     fp = os.path.join(APP, 'sha256.txt')
     if os.path.exists(fp):
         fps = [l.strip() for l in open(fp, encoding='utf-8') if l.strip() and not l.startswith('#')]
@@ -77,7 +85,7 @@ def main():
             os.makedirs(os.path.join(SITE, '.well-known'))
             json.dump([{'relation': ['delegate_permission/common.handle_all_urls'], 'target': {'namespace': 'android_app', 'package_name': PACKAGE, 'sha256_cert_fingerprints': fps}}],
                       open(os.path.join(SITE, '.well-known', 'assetlinks.json'), 'w'), indent=1)
-    print(f'{len(items)}문항 → site/')
+    print(f'{len(items)}문항 (유사문항 {sum(1 for x in items if "sim" in x)}) → site/')
 
 
 if __name__ == '__main__':

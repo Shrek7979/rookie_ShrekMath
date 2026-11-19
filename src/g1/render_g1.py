@@ -61,6 +61,45 @@ def answers(pdf):
     return out, intent
 
 
+def cut_gap(im, gap=140):
+    """위에서부터 내려가다 흰 띠가 gap 픽셀 넘게 이어지면 거기서 자르고, 아래 여백을 없앤다.
+    단 사이 세로줄에 속지 않게 양옆 14px 는 보지 않는다."""
+    g = im.convert('L'); w, h = g.size; px = g.load(); run = 0; last = 0
+    for y in range(h):
+        if any(px[x, y] < 200 for x in range(14, w - 14, 2)): run = 0; last = y
+        else:
+            run += 1
+            if run >= gap: break
+    return im.crop((0, 0, w, min(h, last + 24)))
+
+
+def crop_items(pdf, first, last, wanted):
+    """render_past.crop_items 와 같지만 단 경계를 실제 문항 번호 위치로 정한다 (A4·A3 문제지 모두)"""
+    found = {}
+    for pg in range(first, last + 1):
+        pw, ph, ws = rp.words(pdf, pg)
+        nums = [(w, int(w[4][:-1])) for w in ws if re.fullmatch(r'\d{1,2}\.', w[4])]
+        left = [n for n in nums if n[0][0] < pw * 0.25]
+        right = [n for n in nums if pw * 0.4 < n[0][0] < pw * 0.62]
+        rx = min((n[0][0] for n in right), default=pw / 2 + 8)
+        lx = min((n[0][0] for n in left), default=50)
+        body_bottom = max([w[3] for w in ws if w[3] < ph - ph * 0.09] or [ph - 120])
+        for lst, x0, x1 in ((left, lx - 6, rx - 10), (right, rx - 4, pw - lx + 8)):
+            lst.sort(key=lambda n: n[0][1])
+            for i, (w, n) in enumerate(lst):
+                if n not in wanted or n in found: continue
+                y0 = w[1] - 5
+                y1 = (lst[i + 1][0][1] - 12) if i + 1 < len(lst) else ph * 0.88
+                y1 = min(y1, ph * 0.9)   # 쪽 번호 상자 빼기
+                ys = [t[3] for t in ws if x0 <= t[0] < x1 and y0 <= t[1] < y1]
+                # 그림(벡터)은 글자가 아니라서 글자 높이로 자르면 잘린다 → 아래 빈칸은 trim/cut_gap 이 정리
+                xs = [t[2] for t in ws if x0 <= t[0] < x1 and y0 <= t[1] < y1]
+                x1c = min(x1, (max(xs) + 14) if xs else x1)
+                img = rp.render(pdf, pg); sc = rp.DPI / 72
+                found[n] = cut_gap((img.crop((int(x0 * sc), int(y0 * sc), int(max(x1c, x0 + 200) * sc), int(y1 * sc)))))
+    return found
+
+
 def main(d):
     out = []
     for f in sorted(os.listdir(d)):
@@ -69,7 +108,7 @@ def main(d):
         y, mo = m.group(1), int(m.group(2)); pdf = os.path.join(d, f)
         ans, intent = answers(pdf.replace('_문제', '_정답'))
         n_pages = int(re.search(r'Pages:\s+(\d+)', subprocess.run(['pdfinfo', pdf], capture_output=True, text=True).stdout).group(1))
-        got = rp.crop_items(pdf, 1, n_pages, set(STAR))
+        got = crop_items(pdf, 1, n_pages, set(STAR))
         ex = f'g1-{y}-{mo:02d}'
         for n in sorted(STAR):
             if n not in got: print('  missing', ex, n); continue

@@ -9,6 +9,9 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="favicon-32.png">
 <link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="katex/katex.inline.css" media="print" onload="this.media='all'">
+<script defer src="katex/katex.min.js"></script>
+<script defer src="katex/auto-render.min.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=JetBrains+Mono:wght@600;700&display=swap">
 <style>
 /* 루키들의 수학몰 — 킬러들의 수학몰(어두운 영화관)의 짝: 밝은 동네 가게. 카드 진열 구조는 같고 색·말투만 따뜻하게. */
@@ -152,6 +155,17 @@ a{color:inherit}
 .hint{font-size:.85rem;color:var(--mute);background:var(--panel2);border-radius:10px;padding:10px 12px}
 .reveal{color:var(--mute);font-size:.88rem;text-decoration:underline;justify-self:start}
 
+.sim{border-top:2px dashed var(--line);padding-top:14px;display:grid;gap:12px}
+.sim .st{display:flex;align-items:center;gap:8px;font-weight:900;color:var(--green-d)}
+.sim .st .badge{background:var(--green);color:#fff;border-radius:999px;padding:1px 10px;font-size:.78rem}
+.sim .q{background:var(--panel2);border-radius:12px;padding:12px 14px;line-height:1.85;word-break:keep-all}
+.sim .q .mt{border-collapse:collapse;margin:8px 0;font-size:.85rem}.sim .q .mt td,.sim .q .mt th{border:1px solid var(--line);padding:3px 7px;text-align:center}
+.sim .choices button{font-size:1rem;padding:0 4px;line-height:1.3}
+.sim .choices{grid-template-columns:1fr}
+.sim .choices button{text-align:left;padding:8px 12px;min-height:44px;display:flex;gap:8px;align-items:center}
+.sol{background:var(--orange-soft);border-radius:12px;padding:12px 14px;font-size:.93rem;line-height:1.85}
+.sol b{color:var(--orange)}
+.simbtn{background:var(--green-soft);border:1.5px solid var(--green);color:var(--green-d)}
 /* 토스트·레벨업 */
 #toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,20px);opacity:0;transition:.25s;background:var(--fg);color:var(--bg);padding:10px 18px;border-radius:999px;font-weight:700;z-index:50;pointer-events:none;max-width:90vw;text-align:center}
 #toast.show{opacity:1;transform:translate(-50%,0)}
@@ -252,7 +266,7 @@ function drawLv(){const i=level(S.xp),[a,name,em]=LEVELS[i],nx=LEVELS[i+1];$('#l
   $('#lvBar').style.width=nx?Math.round(100*(S.xp-a)/(nx[0]-a))+'%':'100%';$('#lv').title=`경험치 ${S.xp}`+(nx?` · 다음 레벨까지 ${nx[0]-S.xp}`:'')}
 
 /* 기록 */
-function stats(){const r=Object.values(S.rec);const tried=r.filter(v=>v.n>0).length,ok=r.filter(v=>v.ok).length,first=r.filter(v=>v.first===true).length;
+function stats(){const r=Object.entries(S.rec).filter(([k])=>!k.endsWith('#s')).map(e=>e[1]);const tried=r.filter(v=>v.n>0).length,ok=r.filter(v=>v.ok).length,first=r.filter(v=>v.first===true).length;
   const t=today();const m=S.mission&&S.mission.day===t?S.mission:null;
   $('#sToday').textContent=m?`${m.ids.filter(id=>S.rec[id]&&S.rec[id].ok).length}/3`:'0/3';
   $('#sStreak').textContent=streak()+'일';$('#sOk').textContent=ok;$('#sRate').textContent=tried?Math.round(100*first/tried)+'%':'–'}
@@ -271,7 +285,7 @@ function filters(){const F=$('#filters');F.innerHTML='';let f=F;const add=(lab,i
   const exs=[...new Set(LIST.map(x=>x.year+x.month))].sort().reverse();f=el('div','frow');F.append(f);f.append(el('span','lab','시험'));const sl=el('select',S.f.ex?'on':'');sl.setAttribute('aria-label','시험 고르기');
   sl.append(new Option('전체 시험',''));for(const e of exs)sl.append(new Option(`${e.slice(2,4)}학년도 ${e.slice(4)==='11월'?'수능':e.slice(4)+' 모평'}`,e));sl.value=S.f.ex;sl.onchange=()=>{S.f.ex=sl.value;save();home()};f.append(sl)}
 function card(x){const r=S.rec[x.id];const c=el('button','card');
-  c.innerHTML=`<div class="thumb"><img loading="lazy" alt="" style="width:${Math.round(x.w*.36)}px" src="${IMGBASE}img/${x.id}.webp"></div><div class="meta"><div class="t">${esc(exShort(x))} ${x.num}번</div><div class="d"><span class="tag" style="background:${PC[x.part]}">${esc(x.part)}</span><span class="stars">${stars(x.stars)}</span><span>${x.key==='h'?esc(x.unit):x.choice?'객관식':'단답형'}</span></div></div>`+(r&&r.n?`<span class="mark ${r.ok?'ok':'no'}">${r.ok?'✓':'✗'}</span>`:'');
+  c.innerHTML=`<div class="thumb"><img loading="lazy" alt="" style="width:${Math.round(x.w*.36)}px" src="${IMGBASE}img/${x.id}.webp"></div><div class="meta"><div class="t">${esc(exShort(x))} ${x.num}번</div><div class="d"><span class="tag" style="background:${PC[x.part]}">${esc(x.part)}</span><span class="stars">${stars(x.stars)}</span><span>${x.key==='h'?esc(x.unit):x.choice?'객관식':'단답형'}</span>${x.sim?'<span title="쌍둥이 문제 있음">🌱</span>':''}</div></div>`+(r&&r.n?`<span class="mark ${r.ok?'ok':'no'}">${r.ok?'✓':'✗'}</span>`:'');
   c.onclick=()=>{location.hash='q/'+x.id};return c}
 function home(){$('#home').hidden=false;$('#view').hidden=true;stopTimer();tabs();filters();drawLv();stats();
   const sh=$('#shelves');sh.innerHTML='';const xs=LIST.filter(x=>inTab(x)&&pass(x));
@@ -314,6 +328,7 @@ function drawAns(fb){const a=$('#ans');a.innerHTML='';const r=S.rec[X.id]||{};co
   else{const nx=nextId();const b=el('button','btn go',nx?'다음 문제 →':'목록으로');b.onclick=()=>{location.hash=nx?'q/'+nx+(inMission?'/m':''):''};row.append(b);
     const again=el('button','btn','다시 풀기');again.onclick=()=>{sel=null;T0=Date.now();drawAns()};row.append(again)}
   a.append(row);
+  if(fb&&(fb.ok||fb.show)&&X.sim){const sb=el('button','btn simbtn','🌱 쌍둥이 문제로 한 번 더');sb.onclick=()=>{sb.remove();simPanel(a)};a.append(sb)}
   if(fb&&!fb.ok&&!fb.show&&(r.n||0)>=2){const rv=el('button','reveal','정답 보기');rv.onclick=()=>drawAns(Object.assign({},fb,{show:true}));a.append(rv)}
   if(!fb)a.append(el('div','hint',X.choice?'💡 계산은 종이에. 고른 다음 [채점하기]를 눌러요.':'💡 단답형은 0 이상 999 이하의 정수예요.'));
   if(!X.choice&&!fb){const i=$('#numIn');i&&i.focus({preventScroll:true})}}
@@ -333,6 +348,25 @@ $('#vImg').onclick=()=>$('#paper').classList.toggle('zoom');
 $('#lvupX').onclick=()=>$('#lvup').hidden=true;
 $('#backBtn').onclick=()=>{location.hash=''};
 $('#logo').onclick=e=>{e.preventDefault();location.hash='';home()};
+
+
+/* 쌍둥이(유사) 문제 */
+const CIRC='①②③④⑤';
+function tex(e){if(window.renderMathInElement)renderMathInElement(e,{delimiters:[{left:'$',right:'$',display:false}],throwOnError:false});else setTimeout(()=>tex(e),300)}
+function simPanel(a){const m=X.sim;const box=el('div','sim');let pick=null,tries=0;
+  box.append(el('div','st','<span class="badge">쌍둥이</span> 숫자만 바꾼 같은 유형'));const q=el('div','q',m.q);box.append(q);
+  const body=el('div');box.append(body);a.append(box);
+  function draw(res){body.innerHTML='';
+    if(m.ch){const c=el('div','choices');m.ch.forEach((t,i)=>{const b=el('button','',`<span>${CIRC[i]}</span><span>${t}</span>`);if(pick===i+1)b.classList.add('sel');
+        if(res){if(i+1===m.a&&(res.ok||res.show))b.classList.add('right');else if(!res.ok&&pick===i+1)b.classList.add('wrong')}
+        b.onclick=()=>{if(res&&(res.ok||res.show))return;pick=i+1;draw()};c.append(b)});body.append(c)}
+    else{const w=el('div','numin');const inp=el('input');inp.inputMode='numeric';inp.placeholder='정수 답';inp.value=pick==null?'':pick;inp.oninput=()=>{const v=inp.value.replace(/[^0-9-]/g,'').slice(0,4);inp.value=v;pick=v===''||v==='-'?null:+v};w.append(inp);body.append(w)}
+    if(res){const f=el('div','fb '+(res.ok?'ok':'no'),res.ok?'<span class="big">🌟</span><div>쌍둥이도 정답! +5 XP<small>같은 유형을 두 번 맞혔어요</small></div>':res.show?`<span class="big">📘</span><div>정답은 ${m.ch?CIRC[m.a-1]:m.a}<small>풀이를 읽고 원래 문제를 다시 떠올려 봐요</small></div>`:'<span class="big">🤔</span><div>한 번 더!<small>원래 문제 풀이를 떠올려 보세요</small></div>');body.append(f)}
+    if(res&&(res.ok||res.show)){body.append(el('div','sol','<b>풀이</b> '+m.sol))}
+    else{const r=el('div','row');const g=el('button','btn go','쌍둥이 채점');g.onclick=()=>{if(pick==null){toast('답을 골라 주세요');return}tries++;const ok=pick===m.a;
+        if(ok){const k=X.id+'#s';if(!S.rec[k]){S.rec[k]={ok:true};S.xp+=5;save();drawLv()}}draw({ok,show:!ok&&tries>=2})};r.append(g);body.append(r)}
+    tex(box)}
+  draw();tex(q);box.scrollIntoView({behavior:'smooth',block:'nearest'})}
 
 /* 테마 */
 function applyTheme(){if(S.theme)document.documentElement.dataset.theme=S.theme;else delete document.documentElement.dataset.theme}

@@ -1,0 +1,4352 @@
+[
+ {
+  "id": "2022-11-c1",
+  "year": "2022",
+  "month": "11월",
+  "part": "공통",
+  "num": 1,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2022-11-c2",
+  "year": "2022",
+  "month": "11월",
+  "part": "공통",
+  "num": 2,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2022-11-c3",
+  "year": "2022",
+  "month": "11월",
+  "part": "공통",
+  "num": 3,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2022-11-c4",
+  "year": "2022",
+  "month": "11월",
+  "part": "공통",
+  "num": 4,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2022-11-c5",
+  "year": "2022",
+  "month": "11월",
+  "part": "공통",
+  "num": 5,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2022-11-c6",
+  "year": "2022",
+  "month": "11월",
+  "part": "공통",
+  "num": 6,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2022-11-c7",
+  "year": "2022",
+  "month": "11월",
+  "part": "공통",
+  "num": 7,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2022-11-c8",
+  "year": "2022",
+  "month": "11월",
+  "part": "공통",
+  "num": 8,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2022-11-c9",
+  "year": "2022",
+  "month": "11월",
+  "part": "공통",
+  "num": 9,
+  "stars": 3,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2022-11-c10",
+  "year": "2022",
+  "month": "11월",
+  "part": "공통",
+  "num": 10,
+  "stars": 3,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2022-11-c16",
+  "year": "2022",
+  "month": "11월",
+  "part": "공통",
+  "num": 16,
+  "stars": 1,
+  "choice": false,
+  "answer": 3
+ },
+ {
+  "id": "2022-11-c17",
+  "year": "2022",
+  "month": "11월",
+  "part": "공통",
+  "num": 17,
+  "stars": 1,
+  "choice": false,
+  "answer": 4
+ },
+ {
+  "id": "2022-11-c18",
+  "year": "2022",
+  "month": "11월",
+  "part": "공통",
+  "num": 18,
+  "stars": 2,
+  "choice": false,
+  "answer": 12
+ },
+ {
+  "id": "2022-11-c19",
+  "year": "2022",
+  "month": "11월",
+  "part": "공통",
+  "num": 19,
+  "stars": 2,
+  "choice": false,
+  "answer": 6
+ },
+ {
+  "id": "2022-11-k23",
+  "year": "2022",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2022-11-k24",
+  "year": "2022",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2022-11-k25",
+  "year": "2022",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2022-11-k26",
+  "year": "2022",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2022-11-k27",
+  "year": "2022",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2022-11-m23",
+  "year": "2022",
+  "month": "11월",
+  "part": "미적분",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2022-11-m24",
+  "year": "2022",
+  "month": "11월",
+  "part": "미적분",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2022-11-m25",
+  "year": "2022",
+  "month": "11월",
+  "part": "미적분",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2022-11-m26",
+  "year": "2022",
+  "month": "11월",
+  "part": "미적분",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2022-11-m27",
+  "year": "2022",
+  "month": "11월",
+  "part": "미적분",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2022-11-g23",
+  "year": "2022",
+  "month": "11월",
+  "part": "기하",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2022-11-g24",
+  "year": "2022",
+  "month": "11월",
+  "part": "기하",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2022-11-g25",
+  "year": "2022",
+  "month": "11월",
+  "part": "기하",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2022-11-g26",
+  "year": "2022",
+  "month": "11월",
+  "part": "기하",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2022-11-g27",
+  "year": "2022",
+  "month": "11월",
+  "part": "기하",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2022-06-c1",
+  "year": "2022",
+  "month": "6월",
+  "part": "공통",
+  "num": 1,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2022-06-c2",
+  "year": "2022",
+  "month": "6월",
+  "part": "공통",
+  "num": 2,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2022-06-c3",
+  "year": "2022",
+  "month": "6월",
+  "part": "공통",
+  "num": 3,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2022-06-c4",
+  "year": "2022",
+  "month": "6월",
+  "part": "공통",
+  "num": 4,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2022-06-c5",
+  "year": "2022",
+  "month": "6월",
+  "part": "공통",
+  "num": 5,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2022-06-c6",
+  "year": "2022",
+  "month": "6월",
+  "part": "공통",
+  "num": 6,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2022-06-c7",
+  "year": "2022",
+  "month": "6월",
+  "part": "공통",
+  "num": 7,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2022-06-c8",
+  "year": "2022",
+  "month": "6월",
+  "part": "공통",
+  "num": 8,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2022-06-c9",
+  "year": "2022",
+  "month": "6월",
+  "part": "공통",
+  "num": 9,
+  "stars": 3,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2022-06-c10",
+  "year": "2022",
+  "month": "6월",
+  "part": "공통",
+  "num": 10,
+  "stars": 3,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2022-06-c16",
+  "year": "2022",
+  "month": "6월",
+  "part": "공통",
+  "num": 16,
+  "stars": 1,
+  "choice": false,
+  "answer": 2
+ },
+ {
+  "id": "2022-06-c17",
+  "year": "2022",
+  "month": "6월",
+  "part": "공통",
+  "num": 17,
+  "stars": 1,
+  "choice": false,
+  "answer": 11
+ },
+ {
+  "id": "2022-06-c18",
+  "year": "2022",
+  "month": "6월",
+  "part": "공통",
+  "num": 18,
+  "stars": 2,
+  "choice": false,
+  "answer": 4
+ },
+ {
+  "id": "2022-06-c19",
+  "year": "2022",
+  "month": "6월",
+  "part": "공통",
+  "num": 19,
+  "stars": 2,
+  "choice": false,
+  "answer": 6
+ },
+ {
+  "id": "2022-06-k23",
+  "year": "2022",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2022-06-k24",
+  "year": "2022",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2022-06-k25",
+  "year": "2022",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2022-06-k26",
+  "year": "2022",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2022-06-k27",
+  "year": "2022",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2022-06-m23",
+  "year": "2022",
+  "month": "6월",
+  "part": "미적분",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2022-06-m24",
+  "year": "2022",
+  "month": "6월",
+  "part": "미적분",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2022-06-m25",
+  "year": "2022",
+  "month": "6월",
+  "part": "미적분",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2022-06-m26",
+  "year": "2022",
+  "month": "6월",
+  "part": "미적분",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2022-06-m27",
+  "year": "2022",
+  "month": "6월",
+  "part": "미적분",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2022-06-g23",
+  "year": "2022",
+  "month": "6월",
+  "part": "기하",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2022-06-g24",
+  "year": "2022",
+  "month": "6월",
+  "part": "기하",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2022-06-g25",
+  "year": "2022",
+  "month": "6월",
+  "part": "기하",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2022-06-g26",
+  "year": "2022",
+  "month": "6월",
+  "part": "기하",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2022-06-g27",
+  "year": "2022",
+  "month": "6월",
+  "part": "기하",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2022-09-c1",
+  "year": "2022",
+  "month": "9월",
+  "part": "공통",
+  "num": 1,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2022-09-c2",
+  "year": "2022",
+  "month": "9월",
+  "part": "공통",
+  "num": 2,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2022-09-c3",
+  "year": "2022",
+  "month": "9월",
+  "part": "공통",
+  "num": 3,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2022-09-c4",
+  "year": "2022",
+  "month": "9월",
+  "part": "공통",
+  "num": 4,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2022-09-c5",
+  "year": "2022",
+  "month": "9월",
+  "part": "공통",
+  "num": 5,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2022-09-c6",
+  "year": "2022",
+  "month": "9월",
+  "part": "공통",
+  "num": 6,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2022-09-c7",
+  "year": "2022",
+  "month": "9월",
+  "part": "공통",
+  "num": 7,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2022-09-c8",
+  "year": "2022",
+  "month": "9월",
+  "part": "공통",
+  "num": 8,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2022-09-c9",
+  "year": "2022",
+  "month": "9월",
+  "part": "공통",
+  "num": 9,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2022-09-c10",
+  "year": "2022",
+  "month": "9월",
+  "part": "공통",
+  "num": 10,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2022-09-c16",
+  "year": "2022",
+  "month": "9월",
+  "part": "공통",
+  "num": 16,
+  "stars": 1,
+  "choice": false,
+  "answer": 2
+ },
+ {
+  "id": "2022-09-c17",
+  "year": "2022",
+  "month": "9월",
+  "part": "공통",
+  "num": 17,
+  "stars": 1,
+  "choice": false,
+  "answer": 8
+ },
+ {
+  "id": "2022-09-c18",
+  "year": "2022",
+  "month": "9월",
+  "part": "공통",
+  "num": 18,
+  "stars": 2,
+  "choice": false,
+  "answer": 9
+ },
+ {
+  "id": "2022-09-c19",
+  "year": "2022",
+  "month": "9월",
+  "part": "공통",
+  "num": 19,
+  "stars": 2,
+  "choice": false,
+  "answer": 11
+ },
+ {
+  "id": "2022-09-k23",
+  "year": "2022",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2022-09-k24",
+  "year": "2022",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2022-09-k25",
+  "year": "2022",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2022-09-k26",
+  "year": "2022",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2022-09-k27",
+  "year": "2022",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2022-09-m23",
+  "year": "2022",
+  "month": "9월",
+  "part": "미적분",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2022-09-m24",
+  "year": "2022",
+  "month": "9월",
+  "part": "미적분",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2022-09-m25",
+  "year": "2022",
+  "month": "9월",
+  "part": "미적분",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2022-09-m26",
+  "year": "2022",
+  "month": "9월",
+  "part": "미적분",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2022-09-m27",
+  "year": "2022",
+  "month": "9월",
+  "part": "미적분",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2022-09-g23",
+  "year": "2022",
+  "month": "9월",
+  "part": "기하",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2022-09-g24",
+  "year": "2022",
+  "month": "9월",
+  "part": "기하",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2022-09-g25",
+  "year": "2022",
+  "month": "9월",
+  "part": "기하",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2022-09-g26",
+  "year": "2022",
+  "month": "9월",
+  "part": "기하",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2022-09-g27",
+  "year": "2022",
+  "month": "9월",
+  "part": "기하",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2023-11-c1",
+  "year": "2023",
+  "month": "11월",
+  "part": "공통",
+  "num": 1,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2023-11-c2",
+  "year": "2023",
+  "month": "11월",
+  "part": "공통",
+  "num": 2,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2023-11-c3",
+  "year": "2023",
+  "month": "11월",
+  "part": "공통",
+  "num": 3,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2023-11-c4",
+  "year": "2023",
+  "month": "11월",
+  "part": "공통",
+  "num": 4,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2023-11-c5",
+  "year": "2023",
+  "month": "11월",
+  "part": "공통",
+  "num": 5,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2023-11-c6",
+  "year": "2023",
+  "month": "11월",
+  "part": "공통",
+  "num": 6,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2023-11-c7",
+  "year": "2023",
+  "month": "11월",
+  "part": "공통",
+  "num": 7,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2023-11-c8",
+  "year": "2023",
+  "month": "11월",
+  "part": "공통",
+  "num": 8,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2023-11-c9",
+  "year": "2023",
+  "month": "11월",
+  "part": "공통",
+  "num": 9,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2023-11-c10",
+  "year": "2023",
+  "month": "11월",
+  "part": "공통",
+  "num": 10,
+  "stars": 3,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2023-11-c16",
+  "year": "2023",
+  "month": "11월",
+  "part": "공통",
+  "num": 16,
+  "stars": 1,
+  "choice": false,
+  "answer": 10
+ },
+ {
+  "id": "2023-11-c17",
+  "year": "2023",
+  "month": "11월",
+  "part": "공통",
+  "num": 17,
+  "stars": 1,
+  "choice": false,
+  "answer": 15
+ },
+ {
+  "id": "2023-11-c18",
+  "year": "2023",
+  "month": "11월",
+  "part": "공통",
+  "num": 18,
+  "stars": 2,
+  "choice": false,
+  "answer": 22
+ },
+ {
+  "id": "2023-11-c19",
+  "year": "2023",
+  "month": "11월",
+  "part": "공통",
+  "num": 19,
+  "stars": 2,
+  "choice": false,
+  "answer": 7
+ },
+ {
+  "id": "2023-11-k23",
+  "year": "2023",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2023-11-k24",
+  "year": "2023",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2023-11-k25",
+  "year": "2023",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2023-11-k26",
+  "year": "2023",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2023-11-k27",
+  "year": "2023",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2023-11-m23",
+  "year": "2023",
+  "month": "11월",
+  "part": "미적분",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2023-11-m24",
+  "year": "2023",
+  "month": "11월",
+  "part": "미적분",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2023-11-m25",
+  "year": "2023",
+  "month": "11월",
+  "part": "미적분",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2023-11-m26",
+  "year": "2023",
+  "month": "11월",
+  "part": "미적분",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2023-11-m27",
+  "year": "2023",
+  "month": "11월",
+  "part": "미적분",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2023-11-g23",
+  "year": "2023",
+  "month": "11월",
+  "part": "기하",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2023-11-g24",
+  "year": "2023",
+  "month": "11월",
+  "part": "기하",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2023-11-g25",
+  "year": "2023",
+  "month": "11월",
+  "part": "기하",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2023-11-g26",
+  "year": "2023",
+  "month": "11월",
+  "part": "기하",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2023-11-g27",
+  "year": "2023",
+  "month": "11월",
+  "part": "기하",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2023-06-c1",
+  "year": "2023",
+  "month": "6월",
+  "part": "공통",
+  "num": 1,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2023-06-c2",
+  "year": "2023",
+  "month": "6월",
+  "part": "공통",
+  "num": 2,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2023-06-c3",
+  "year": "2023",
+  "month": "6월",
+  "part": "공통",
+  "num": 3,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2023-06-c4",
+  "year": "2023",
+  "month": "6월",
+  "part": "공통",
+  "num": 4,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2023-06-c5",
+  "year": "2023",
+  "month": "6월",
+  "part": "공통",
+  "num": 5,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2023-06-c6",
+  "year": "2023",
+  "month": "6월",
+  "part": "공통",
+  "num": 6,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2023-06-c7",
+  "year": "2023",
+  "month": "6월",
+  "part": "공통",
+  "num": 7,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2023-06-c8",
+  "year": "2023",
+  "month": "6월",
+  "part": "공통",
+  "num": 8,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2023-06-c9",
+  "year": "2023",
+  "month": "6월",
+  "part": "공통",
+  "num": 9,
+  "stars": 3,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2023-06-c10",
+  "year": "2023",
+  "month": "6월",
+  "part": "공통",
+  "num": 10,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2023-06-c16",
+  "year": "2023",
+  "month": "6월",
+  "part": "공통",
+  "num": 16,
+  "stars": 1,
+  "choice": false,
+  "answer": 6
+ },
+ {
+  "id": "2023-06-c17",
+  "year": "2023",
+  "month": "6월",
+  "part": "공통",
+  "num": 17,
+  "stars": 1,
+  "choice": false,
+  "answer": 15
+ },
+ {
+  "id": "2023-06-c18",
+  "year": "2023",
+  "month": "6월",
+  "part": "공통",
+  "num": 18,
+  "stars": 2,
+  "choice": false,
+  "answer": 3
+ },
+ {
+  "id": "2023-06-c19",
+  "year": "2023",
+  "month": "6월",
+  "part": "공통",
+  "num": 19,
+  "stars": 2,
+  "choice": false,
+  "answer": 2
+ },
+ {
+  "id": "2023-06-k23",
+  "year": "2023",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2023-06-k24",
+  "year": "2023",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2023-06-k25",
+  "year": "2023",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2023-06-k26",
+  "year": "2023",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2023-06-k27",
+  "year": "2023",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2023-06-m23",
+  "year": "2023",
+  "month": "6월",
+  "part": "미적분",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2023-06-m24",
+  "year": "2023",
+  "month": "6월",
+  "part": "미적분",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2023-06-m25",
+  "year": "2023",
+  "month": "6월",
+  "part": "미적분",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2023-06-m26",
+  "year": "2023",
+  "month": "6월",
+  "part": "미적분",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2023-06-m27",
+  "year": "2023",
+  "month": "6월",
+  "part": "미적분",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2023-06-g23",
+  "year": "2023",
+  "month": "6월",
+  "part": "기하",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2023-06-g24",
+  "year": "2023",
+  "month": "6월",
+  "part": "기하",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2023-06-g25",
+  "year": "2023",
+  "month": "6월",
+  "part": "기하",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2023-06-g26",
+  "year": "2023",
+  "month": "6월",
+  "part": "기하",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2023-06-g27",
+  "year": "2023",
+  "month": "6월",
+  "part": "기하",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2023-09-c1",
+  "year": "2023",
+  "month": "9월",
+  "part": "공통",
+  "num": 1,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2023-09-c2",
+  "year": "2023",
+  "month": "9월",
+  "part": "공통",
+  "num": 2,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2023-09-c3",
+  "year": "2023",
+  "month": "9월",
+  "part": "공통",
+  "num": 3,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2023-09-c4",
+  "year": "2023",
+  "month": "9월",
+  "part": "공통",
+  "num": 4,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2023-09-c5",
+  "year": "2023",
+  "month": "9월",
+  "part": "공통",
+  "num": 5,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2023-09-c6",
+  "year": "2023",
+  "month": "9월",
+  "part": "공통",
+  "num": 6,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2023-09-c7",
+  "year": "2023",
+  "month": "9월",
+  "part": "공통",
+  "num": 7,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2023-09-c8",
+  "year": "2023",
+  "month": "9월",
+  "part": "공통",
+  "num": 8,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2023-09-c9",
+  "year": "2023",
+  "month": "9월",
+  "part": "공통",
+  "num": 9,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2023-09-c10",
+  "year": "2023",
+  "month": "9월",
+  "part": "공통",
+  "num": 10,
+  "stars": 3,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2023-09-c16",
+  "year": "2023",
+  "month": "9월",
+  "part": "공통",
+  "num": 16,
+  "stars": 1,
+  "choice": false,
+  "answer": 7
+ },
+ {
+  "id": "2023-09-c17",
+  "year": "2023",
+  "month": "9월",
+  "part": "공통",
+  "num": 17,
+  "stars": 1,
+  "choice": false,
+  "answer": 16
+ },
+ {
+  "id": "2023-09-c18",
+  "year": "2023",
+  "month": "9월",
+  "part": "공통",
+  "num": 18,
+  "stars": 2,
+  "choice": false,
+  "answer": 13
+ },
+ {
+  "id": "2023-09-c19",
+  "year": "2023",
+  "month": "9월",
+  "part": "공통",
+  "num": 19,
+  "stars": 2,
+  "choice": false,
+  "answer": 4
+ },
+ {
+  "id": "2023-09-k23",
+  "year": "2023",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2023-09-k24",
+  "year": "2023",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2023-09-k25",
+  "year": "2023",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2023-09-k26",
+  "year": "2023",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2023-09-k27",
+  "year": "2023",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2023-09-m23",
+  "year": "2023",
+  "month": "9월",
+  "part": "미적분",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2023-09-m24",
+  "year": "2023",
+  "month": "9월",
+  "part": "미적분",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2023-09-m25",
+  "year": "2023",
+  "month": "9월",
+  "part": "미적분",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2023-09-m26",
+  "year": "2023",
+  "month": "9월",
+  "part": "미적분",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2023-09-m27",
+  "year": "2023",
+  "month": "9월",
+  "part": "미적분",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2023-09-g23",
+  "year": "2023",
+  "month": "9월",
+  "part": "기하",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2023-09-g24",
+  "year": "2023",
+  "month": "9월",
+  "part": "기하",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2023-09-g25",
+  "year": "2023",
+  "month": "9월",
+  "part": "기하",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2023-09-g26",
+  "year": "2023",
+  "month": "9월",
+  "part": "기하",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2023-09-g27",
+  "year": "2023",
+  "month": "9월",
+  "part": "기하",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2024-11-c1",
+  "year": "2024",
+  "month": "11월",
+  "part": "공통",
+  "num": 1,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2024-11-c2",
+  "year": "2024",
+  "month": "11월",
+  "part": "공통",
+  "num": 2,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2024-11-c3",
+  "year": "2024",
+  "month": "11월",
+  "part": "공통",
+  "num": 3,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2024-11-c4",
+  "year": "2024",
+  "month": "11월",
+  "part": "공통",
+  "num": 4,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2024-11-c5",
+  "year": "2024",
+  "month": "11월",
+  "part": "공통",
+  "num": 5,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2024-11-c6",
+  "year": "2024",
+  "month": "11월",
+  "part": "공통",
+  "num": 6,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2024-11-c7",
+  "year": "2024",
+  "month": "11월",
+  "part": "공통",
+  "num": 7,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2024-11-c8",
+  "year": "2024",
+  "month": "11월",
+  "part": "공통",
+  "num": 8,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2024-11-c9",
+  "year": "2024",
+  "month": "11월",
+  "part": "공통",
+  "num": 9,
+  "stars": 3,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2024-11-c10",
+  "year": "2024",
+  "month": "11월",
+  "part": "공통",
+  "num": 10,
+  "stars": 3,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2024-11-c16",
+  "year": "2024",
+  "month": "11월",
+  "part": "공통",
+  "num": 16,
+  "stars": 1,
+  "choice": false,
+  "answer": 2
+ },
+ {
+  "id": "2024-11-c17",
+  "year": "2024",
+  "month": "11월",
+  "part": "공통",
+  "num": 17,
+  "stars": 1,
+  "choice": false,
+  "answer": 8
+ },
+ {
+  "id": "2024-11-c18",
+  "year": "2024",
+  "month": "11월",
+  "part": "공통",
+  "num": 18,
+  "stars": 2,
+  "choice": false,
+  "answer": 9
+ },
+ {
+  "id": "2024-11-c19",
+  "year": "2024",
+  "month": "11월",
+  "part": "공통",
+  "num": 19,
+  "stars": 2,
+  "choice": false,
+  "answer": 32
+ },
+ {
+  "id": "2024-11-k23",
+  "year": "2024",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2024-11-k24",
+  "year": "2024",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2024-11-k25",
+  "year": "2024",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2024-11-k26",
+  "year": "2024",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2024-11-k27",
+  "year": "2024",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2024-11-m23",
+  "year": "2024",
+  "month": "11월",
+  "part": "미적분",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2024-11-m24",
+  "year": "2024",
+  "month": "11월",
+  "part": "미적분",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2024-11-m25",
+  "year": "2024",
+  "month": "11월",
+  "part": "미적분",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2024-11-m26",
+  "year": "2024",
+  "month": "11월",
+  "part": "미적분",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2024-11-m27",
+  "year": "2024",
+  "month": "11월",
+  "part": "미적분",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2024-11-g23",
+  "year": "2024",
+  "month": "11월",
+  "part": "기하",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2024-11-g24",
+  "year": "2024",
+  "month": "11월",
+  "part": "기하",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2024-11-g25",
+  "year": "2024",
+  "month": "11월",
+  "part": "기하",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2024-11-g26",
+  "year": "2024",
+  "month": "11월",
+  "part": "기하",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2024-11-g27",
+  "year": "2024",
+  "month": "11월",
+  "part": "기하",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2024-06-c1",
+  "year": "2024",
+  "month": "6월",
+  "part": "공통",
+  "num": 1,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2024-06-c2",
+  "year": "2024",
+  "month": "6월",
+  "part": "공통",
+  "num": 2,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2024-06-c3",
+  "year": "2024",
+  "month": "6월",
+  "part": "공통",
+  "num": 3,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2024-06-c4",
+  "year": "2024",
+  "month": "6월",
+  "part": "공통",
+  "num": 4,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2024-06-c5",
+  "year": "2024",
+  "month": "6월",
+  "part": "공통",
+  "num": 5,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2024-06-c6",
+  "year": "2024",
+  "month": "6월",
+  "part": "공통",
+  "num": 6,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2024-06-c7",
+  "year": "2024",
+  "month": "6월",
+  "part": "공통",
+  "num": 7,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2024-06-c8",
+  "year": "2024",
+  "month": "6월",
+  "part": "공통",
+  "num": 8,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2024-06-c9",
+  "year": "2024",
+  "month": "6월",
+  "part": "공통",
+  "num": 9,
+  "stars": 3,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2024-06-c10",
+  "year": "2024",
+  "month": "6월",
+  "part": "공통",
+  "num": 10,
+  "stars": 3,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2024-06-c16",
+  "year": "2024",
+  "month": "6월",
+  "part": "공통",
+  "num": 16,
+  "stars": 1,
+  "choice": false,
+  "answer": 3
+ },
+ {
+  "id": "2024-06-c17",
+  "year": "2024",
+  "month": "6월",
+  "part": "공통",
+  "num": 17,
+  "stars": 1,
+  "choice": false,
+  "answer": 33
+ },
+ {
+  "id": "2024-06-c18",
+  "year": "2024",
+  "month": "6월",
+  "part": "공통",
+  "num": 18,
+  "stars": 2,
+  "choice": false,
+  "answer": 6
+ },
+ {
+  "id": "2024-06-c19",
+  "year": "2024",
+  "month": "6월",
+  "part": "공통",
+  "num": 19,
+  "stars": 2,
+  "choice": false,
+  "answer": 8
+ },
+ {
+  "id": "2024-06-k23",
+  "year": "2024",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2024-06-k24",
+  "year": "2024",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2024-06-k25",
+  "year": "2024",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2024-06-k26",
+  "year": "2024",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2024-06-k27",
+  "year": "2024",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2024-06-m23",
+  "year": "2024",
+  "month": "6월",
+  "part": "미적분",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2024-06-m24",
+  "year": "2024",
+  "month": "6월",
+  "part": "미적분",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2024-06-m25",
+  "year": "2024",
+  "month": "6월",
+  "part": "미적분",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2024-06-m26",
+  "year": "2024",
+  "month": "6월",
+  "part": "미적분",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2024-06-m27",
+  "year": "2024",
+  "month": "6월",
+  "part": "미적분",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2024-06-g23",
+  "year": "2024",
+  "month": "6월",
+  "part": "기하",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2024-06-g24",
+  "year": "2024",
+  "month": "6월",
+  "part": "기하",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2024-06-g25",
+  "year": "2024",
+  "month": "6월",
+  "part": "기하",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2024-06-g26",
+  "year": "2024",
+  "month": "6월",
+  "part": "기하",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2024-06-g27",
+  "year": "2024",
+  "month": "6월",
+  "part": "기하",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2024-09-c1",
+  "year": "2024",
+  "month": "9월",
+  "part": "공통",
+  "num": 1,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2024-09-c2",
+  "year": "2024",
+  "month": "9월",
+  "part": "공통",
+  "num": 2,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2024-09-c3",
+  "year": "2024",
+  "month": "9월",
+  "part": "공통",
+  "num": 3,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2024-09-c4",
+  "year": "2024",
+  "month": "9월",
+  "part": "공통",
+  "num": 4,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2024-09-c5",
+  "year": "2024",
+  "month": "9월",
+  "part": "공통",
+  "num": 5,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2024-09-c6",
+  "year": "2024",
+  "month": "9월",
+  "part": "공통",
+  "num": 6,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2024-09-c7",
+  "year": "2024",
+  "month": "9월",
+  "part": "공통",
+  "num": 7,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2024-09-c8",
+  "year": "2024",
+  "month": "9월",
+  "part": "공통",
+  "num": 8,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2024-09-c9",
+  "year": "2024",
+  "month": "9월",
+  "part": "공통",
+  "num": 9,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2024-09-c10",
+  "year": "2024",
+  "month": "9월",
+  "part": "공통",
+  "num": 10,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2024-09-c16",
+  "year": "2024",
+  "month": "9월",
+  "part": "공통",
+  "num": 16,
+  "stars": 1,
+  "choice": false,
+  "answer": 6
+ },
+ {
+  "id": "2024-09-c17",
+  "year": "2024",
+  "month": "9월",
+  "part": "공통",
+  "num": 17,
+  "stars": 1,
+  "choice": false,
+  "answer": 24
+ },
+ {
+  "id": "2024-09-c18",
+  "year": "2024",
+  "month": "9월",
+  "part": "공통",
+  "num": 18,
+  "stars": 2,
+  "choice": false,
+  "answer": 5
+ },
+ {
+  "id": "2024-09-c19",
+  "year": "2024",
+  "month": "9월",
+  "part": "공통",
+  "num": 19,
+  "stars": 2,
+  "choice": false,
+  "answer": 4
+ },
+ {
+  "id": "2024-09-k23",
+  "year": "2024",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2024-09-k24",
+  "year": "2024",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2024-09-k25",
+  "year": "2024",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2024-09-k26",
+  "year": "2024",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2024-09-k27",
+  "year": "2024",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2024-09-m23",
+  "year": "2024",
+  "month": "9월",
+  "part": "미적분",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2024-09-m24",
+  "year": "2024",
+  "month": "9월",
+  "part": "미적분",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2024-09-m25",
+  "year": "2024",
+  "month": "9월",
+  "part": "미적분",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2024-09-m26",
+  "year": "2024",
+  "month": "9월",
+  "part": "미적분",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2024-09-m27",
+  "year": "2024",
+  "month": "9월",
+  "part": "미적분",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2024-09-g23",
+  "year": "2024",
+  "month": "9월",
+  "part": "기하",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2024-09-g24",
+  "year": "2024",
+  "month": "9월",
+  "part": "기하",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2024-09-g25",
+  "year": "2024",
+  "month": "9월",
+  "part": "기하",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2024-09-g26",
+  "year": "2024",
+  "month": "9월",
+  "part": "기하",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2024-09-g27",
+  "year": "2024",
+  "month": "9월",
+  "part": "기하",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-11-c1",
+  "year": "2025",
+  "month": "11월",
+  "part": "공통",
+  "num": 1,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2025-11-c2",
+  "year": "2025",
+  "month": "11월",
+  "part": "공통",
+  "num": 2,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2025-11-c3",
+  "year": "2025",
+  "month": "11월",
+  "part": "공통",
+  "num": 3,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2025-11-c4",
+  "year": "2025",
+  "month": "11월",
+  "part": "공통",
+  "num": 4,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2025-11-c5",
+  "year": "2025",
+  "month": "11월",
+  "part": "공통",
+  "num": 5,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2025-11-c6",
+  "year": "2025",
+  "month": "11월",
+  "part": "공통",
+  "num": 6,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2025-11-c7",
+  "year": "2025",
+  "month": "11월",
+  "part": "공통",
+  "num": 7,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-11-c8",
+  "year": "2025",
+  "month": "11월",
+  "part": "공통",
+  "num": 8,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2025-11-c9",
+  "year": "2025",
+  "month": "11월",
+  "part": "공통",
+  "num": 9,
+  "stars": 3,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2025-11-c10",
+  "year": "2025",
+  "month": "11월",
+  "part": "공통",
+  "num": 10,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-11-c16",
+  "year": "2025",
+  "month": "11월",
+  "part": "공통",
+  "num": 16,
+  "stars": 1,
+  "choice": false,
+  "answer": 7
+ },
+ {
+  "id": "2025-11-c17",
+  "year": "2025",
+  "month": "11월",
+  "part": "공통",
+  "num": 17,
+  "stars": 1,
+  "choice": false,
+  "answer": 33
+ },
+ {
+  "id": "2025-11-c18",
+  "year": "2025",
+  "month": "11월",
+  "part": "공통",
+  "num": 18,
+  "stars": 2,
+  "choice": false,
+  "answer": 96
+ },
+ {
+  "id": "2025-11-c19",
+  "year": "2025",
+  "month": "11월",
+  "part": "공통",
+  "num": 19,
+  "stars": 2,
+  "choice": false,
+  "answer": 41
+ },
+ {
+  "id": "2025-11-k23",
+  "year": "2025",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2025-11-k24",
+  "year": "2025",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-11-k25",
+  "year": "2025",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2025-11-k26",
+  "year": "2025",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-11-k27",
+  "year": "2025",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-11-m23",
+  "year": "2025",
+  "month": "11월",
+  "part": "미적분",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-11-m24",
+  "year": "2025",
+  "month": "11월",
+  "part": "미적분",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2025-11-m25",
+  "year": "2025",
+  "month": "11월",
+  "part": "미적분",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2025-11-m26",
+  "year": "2025",
+  "month": "11월",
+  "part": "미적분",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2025-11-m27",
+  "year": "2025",
+  "month": "11월",
+  "part": "미적분",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2025-11-g23",
+  "year": "2025",
+  "month": "11월",
+  "part": "기하",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-11-g24",
+  "year": "2025",
+  "month": "11월",
+  "part": "기하",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2025-11-g25",
+  "year": "2025",
+  "month": "11월",
+  "part": "기하",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-11-g26",
+  "year": "2025",
+  "month": "11월",
+  "part": "기하",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2025-11-g27",
+  "year": "2025",
+  "month": "11월",
+  "part": "기하",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2025-06-c1",
+  "year": "2025",
+  "month": "6월",
+  "part": "공통",
+  "num": 1,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2025-06-c2",
+  "year": "2025",
+  "month": "6월",
+  "part": "공통",
+  "num": 2,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2025-06-c3",
+  "year": "2025",
+  "month": "6월",
+  "part": "공통",
+  "num": 3,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-06-c4",
+  "year": "2025",
+  "month": "6월",
+  "part": "공통",
+  "num": 4,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-06-c5",
+  "year": "2025",
+  "month": "6월",
+  "part": "공통",
+  "num": 5,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2025-06-c6",
+  "year": "2025",
+  "month": "6월",
+  "part": "공통",
+  "num": 6,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2025-06-c7",
+  "year": "2025",
+  "month": "6월",
+  "part": "공통",
+  "num": 7,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2025-06-c8",
+  "year": "2025",
+  "month": "6월",
+  "part": "공통",
+  "num": 8,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2025-06-c9",
+  "year": "2025",
+  "month": "6월",
+  "part": "공통",
+  "num": 9,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-06-c10",
+  "year": "2025",
+  "month": "6월",
+  "part": "공통",
+  "num": 10,
+  "stars": 3,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2025-06-c16",
+  "year": "2025",
+  "month": "6월",
+  "part": "공통",
+  "num": 16,
+  "stars": 1,
+  "choice": false,
+  "answer": 7
+ },
+ {
+  "id": "2025-06-c17",
+  "year": "2025",
+  "month": "6월",
+  "part": "공통",
+  "num": 17,
+  "stars": 1,
+  "choice": false,
+  "answer": 23
+ },
+ {
+  "id": "2025-06-c18",
+  "year": "2025",
+  "month": "6월",
+  "part": "공통",
+  "num": 18,
+  "stars": 2,
+  "choice": false,
+  "answer": 2
+ },
+ {
+  "id": "2025-06-c19",
+  "year": "2025",
+  "month": "6월",
+  "part": "공통",
+  "num": 19,
+  "stars": 2,
+  "choice": false,
+  "answer": 16
+ },
+ {
+  "id": "2025-06-k23",
+  "year": "2025",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-06-k24",
+  "year": "2025",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2025-06-k25",
+  "year": "2025",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2025-06-k26",
+  "year": "2025",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-06-k27",
+  "year": "2025",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2025-06-m23",
+  "year": "2025",
+  "month": "6월",
+  "part": "미적분",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2025-06-m24",
+  "year": "2025",
+  "month": "6월",
+  "part": "미적분",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-06-m25",
+  "year": "2025",
+  "month": "6월",
+  "part": "미적분",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-06-m26",
+  "year": "2025",
+  "month": "6월",
+  "part": "미적분",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2025-06-m27",
+  "year": "2025",
+  "month": "6월",
+  "part": "미적분",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2025-06-g23",
+  "year": "2025",
+  "month": "6월",
+  "part": "기하",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2025-06-g24",
+  "year": "2025",
+  "month": "6월",
+  "part": "기하",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2025-06-g25",
+  "year": "2025",
+  "month": "6월",
+  "part": "기하",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2025-06-g26",
+  "year": "2025",
+  "month": "6월",
+  "part": "기하",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-06-g27",
+  "year": "2025",
+  "month": "6월",
+  "part": "기하",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2025-09-c1",
+  "year": "2025",
+  "month": "9월",
+  "part": "공통",
+  "num": 1,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2025-09-c2",
+  "year": "2025",
+  "month": "9월",
+  "part": "공통",
+  "num": 2,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2025-09-c3",
+  "year": "2025",
+  "month": "9월",
+  "part": "공통",
+  "num": 3,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2025-09-c4",
+  "year": "2025",
+  "month": "9월",
+  "part": "공통",
+  "num": 4,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2025-09-c5",
+  "year": "2025",
+  "month": "9월",
+  "part": "공통",
+  "num": 5,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2025-09-c6",
+  "year": "2025",
+  "month": "9월",
+  "part": "공통",
+  "num": 6,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2025-09-c7",
+  "year": "2025",
+  "month": "9월",
+  "part": "공통",
+  "num": 7,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-09-c8",
+  "year": "2025",
+  "month": "9월",
+  "part": "공통",
+  "num": 8,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2025-09-c9",
+  "year": "2025",
+  "month": "9월",
+  "part": "공통",
+  "num": 9,
+  "stars": 3,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2025-09-c10",
+  "year": "2025",
+  "month": "9월",
+  "part": "공통",
+  "num": 10,
+  "stars": 3,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2025-09-c16",
+  "year": "2025",
+  "month": "9월",
+  "part": "공통",
+  "num": 16,
+  "stars": 1,
+  "choice": false,
+  "answer": 7
+ },
+ {
+  "id": "2025-09-c17",
+  "year": "2025",
+  "month": "9월",
+  "part": "공통",
+  "num": 17,
+  "stars": 1,
+  "choice": false,
+  "answer": 5
+ },
+ {
+  "id": "2025-09-c18",
+  "year": "2025",
+  "month": "9월",
+  "part": "공통",
+  "num": 18,
+  "stars": 2,
+  "choice": false,
+  "answer": 29
+ },
+ {
+  "id": "2025-09-c19",
+  "year": "2025",
+  "month": "9월",
+  "part": "공통",
+  "num": 19,
+  "stars": 2,
+  "choice": false,
+  "answer": 4
+ },
+ {
+  "id": "2025-09-k23",
+  "year": "2025",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2025-09-k24",
+  "year": "2025",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2025-09-k25",
+  "year": "2025",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2025-09-k26",
+  "year": "2025",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-09-k27",
+  "year": "2025",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2025-09-m23",
+  "year": "2025",
+  "month": "9월",
+  "part": "미적분",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2025-09-m24",
+  "year": "2025",
+  "month": "9월",
+  "part": "미적분",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2025-09-m25",
+  "year": "2025",
+  "month": "9월",
+  "part": "미적분",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2025-09-m26",
+  "year": "2025",
+  "month": "9월",
+  "part": "미적분",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-09-m27",
+  "year": "2025",
+  "month": "9월",
+  "part": "미적분",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2025-09-g23",
+  "year": "2025",
+  "month": "9월",
+  "part": "기하",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-09-g24",
+  "year": "2025",
+  "month": "9월",
+  "part": "기하",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2025-09-g25",
+  "year": "2025",
+  "month": "9월",
+  "part": "기하",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2025-09-g26",
+  "year": "2025",
+  "month": "9월",
+  "part": "기하",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2025-09-g27",
+  "year": "2025",
+  "month": "9월",
+  "part": "기하",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2026-11-c1",
+  "year": "2026",
+  "month": "11월",
+  "part": "공통",
+  "num": 1,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2026-11-c2",
+  "year": "2026",
+  "month": "11월",
+  "part": "공통",
+  "num": 2,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2026-11-c3",
+  "year": "2026",
+  "month": "11월",
+  "part": "공통",
+  "num": 3,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2026-11-c4",
+  "year": "2026",
+  "month": "11월",
+  "part": "공통",
+  "num": 4,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2026-11-c5",
+  "year": "2026",
+  "month": "11월",
+  "part": "공통",
+  "num": 5,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2026-11-c6",
+  "year": "2026",
+  "month": "11월",
+  "part": "공통",
+  "num": 6,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2026-11-c7",
+  "year": "2026",
+  "month": "11월",
+  "part": "공통",
+  "num": 7,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2026-11-c8",
+  "year": "2026",
+  "month": "11월",
+  "part": "공통",
+  "num": 8,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2026-11-c9",
+  "year": "2026",
+  "month": "11월",
+  "part": "공통",
+  "num": 9,
+  "stars": 3,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2026-11-c10",
+  "year": "2026",
+  "month": "11월",
+  "part": "공통",
+  "num": 10,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2026-11-c16",
+  "year": "2026",
+  "month": "11월",
+  "part": "공통",
+  "num": 16,
+  "stars": 1,
+  "choice": false,
+  "answer": 9
+ },
+ {
+  "id": "2026-11-c17",
+  "year": "2026",
+  "month": "11월",
+  "part": "공통",
+  "num": 17,
+  "stars": 1,
+  "choice": false,
+  "answer": 16
+ },
+ {
+  "id": "2026-11-c18",
+  "year": "2026",
+  "month": "11월",
+  "part": "공통",
+  "num": 18,
+  "stars": 2,
+  "choice": false,
+  "answer": 12
+ },
+ {
+  "id": "2026-11-c19",
+  "year": "2026",
+  "month": "11월",
+  "part": "공통",
+  "num": 19,
+  "stars": 2,
+  "choice": false,
+  "answer": 15
+ },
+ {
+  "id": "2026-11-k23",
+  "year": "2026",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2026-11-k24",
+  "year": "2026",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2026-11-k25",
+  "year": "2026",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2026-11-k26",
+  "year": "2026",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2026-11-k27",
+  "year": "2026",
+  "month": "11월",
+  "part": "확률과 통계",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2026-11-m23",
+  "year": "2026",
+  "month": "11월",
+  "part": "미적분",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2026-11-m24",
+  "year": "2026",
+  "month": "11월",
+  "part": "미적분",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2026-11-m25",
+  "year": "2026",
+  "month": "11월",
+  "part": "미적분",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2026-11-m26",
+  "year": "2026",
+  "month": "11월",
+  "part": "미적분",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2026-11-m27",
+  "year": "2026",
+  "month": "11월",
+  "part": "미적분",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2026-11-g23",
+  "year": "2026",
+  "month": "11월",
+  "part": "기하",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2026-11-g24",
+  "year": "2026",
+  "month": "11월",
+  "part": "기하",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2026-11-g25",
+  "year": "2026",
+  "month": "11월",
+  "part": "기하",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2026-11-g26",
+  "year": "2026",
+  "month": "11월",
+  "part": "기하",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2026-11-g27",
+  "year": "2026",
+  "month": "11월",
+  "part": "기하",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2026-06-c1",
+  "year": "2026",
+  "month": "6월",
+  "part": "공통",
+  "num": 1,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2026-06-c2",
+  "year": "2026",
+  "month": "6월",
+  "part": "공통",
+  "num": 2,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2026-06-c3",
+  "year": "2026",
+  "month": "6월",
+  "part": "공통",
+  "num": 3,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2026-06-c4",
+  "year": "2026",
+  "month": "6월",
+  "part": "공통",
+  "num": 4,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2026-06-c5",
+  "year": "2026",
+  "month": "6월",
+  "part": "공통",
+  "num": 5,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2026-06-c6",
+  "year": "2026",
+  "month": "6월",
+  "part": "공통",
+  "num": 6,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2026-06-c7",
+  "year": "2026",
+  "month": "6월",
+  "part": "공통",
+  "num": 7,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2026-06-c8",
+  "year": "2026",
+  "month": "6월",
+  "part": "공통",
+  "num": 8,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2026-06-c9",
+  "year": "2026",
+  "month": "6월",
+  "part": "공통",
+  "num": 9,
+  "stars": 3,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2026-06-c10",
+  "year": "2026",
+  "month": "6월",
+  "part": "공통",
+  "num": 10,
+  "stars": 3,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2026-06-c16",
+  "year": "2026",
+  "month": "6월",
+  "part": "공통",
+  "num": 16,
+  "stars": 1,
+  "choice": false,
+  "answer": 2
+ },
+ {
+  "id": "2026-06-c17",
+  "year": "2026",
+  "month": "6월",
+  "part": "공통",
+  "num": 17,
+  "stars": 1,
+  "choice": false,
+  "answer": 6
+ },
+ {
+  "id": "2026-06-c18",
+  "year": "2026",
+  "month": "6월",
+  "part": "공통",
+  "num": 18,
+  "stars": 2,
+  "choice": false,
+  "answer": 133
+ },
+ {
+  "id": "2026-06-c19",
+  "year": "2026",
+  "month": "6월",
+  "part": "공통",
+  "num": 19,
+  "stars": 2,
+  "choice": false,
+  "answer": 8
+ },
+ {
+  "id": "2026-06-k23",
+  "year": "2026",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2026-06-k24",
+  "year": "2026",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2026-06-k25",
+  "year": "2026",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2026-06-k26",
+  "year": "2026",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2026-06-k27",
+  "year": "2026",
+  "month": "6월",
+  "part": "확률과 통계",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2026-06-m23",
+  "year": "2026",
+  "month": "6월",
+  "part": "미적분",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2026-06-m24",
+  "year": "2026",
+  "month": "6월",
+  "part": "미적분",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2026-06-m25",
+  "year": "2026",
+  "month": "6월",
+  "part": "미적분",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2026-06-m26",
+  "year": "2026",
+  "month": "6월",
+  "part": "미적분",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2026-06-m27",
+  "year": "2026",
+  "month": "6월",
+  "part": "미적분",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2026-06-g23",
+  "year": "2026",
+  "month": "6월",
+  "part": "기하",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2026-06-g24",
+  "year": "2026",
+  "month": "6월",
+  "part": "기하",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2026-06-g25",
+  "year": "2026",
+  "month": "6월",
+  "part": "기하",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2026-06-g26",
+  "year": "2026",
+  "month": "6월",
+  "part": "기하",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2026-06-g27",
+  "year": "2026",
+  "month": "6월",
+  "part": "기하",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2026-09-c1",
+  "year": "2026",
+  "month": "9월",
+  "part": "공통",
+  "num": 1,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2026-09-c2",
+  "year": "2026",
+  "month": "9월",
+  "part": "공통",
+  "num": 2,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2026-09-c3",
+  "year": "2026",
+  "month": "9월",
+  "part": "공통",
+  "num": 3,
+  "stars": 1,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2026-09-c4",
+  "year": "2026",
+  "month": "9월",
+  "part": "공통",
+  "num": 4,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2026-09-c5",
+  "year": "2026",
+  "month": "9월",
+  "part": "공통",
+  "num": 5,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2026-09-c6",
+  "year": "2026",
+  "month": "9월",
+  "part": "공통",
+  "num": 6,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2026-09-c7",
+  "year": "2026",
+  "month": "9월",
+  "part": "공통",
+  "num": 7,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2026-09-c8",
+  "year": "2026",
+  "month": "9월",
+  "part": "공통",
+  "num": 8,
+  "stars": 2,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2026-09-c9",
+  "year": "2026",
+  "month": "9월",
+  "part": "공통",
+  "num": 9,
+  "stars": 3,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2026-09-c10",
+  "year": "2026",
+  "month": "9월",
+  "part": "공통",
+  "num": 10,
+  "stars": 3,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2026-09-c16",
+  "year": "2026",
+  "month": "9월",
+  "part": "공통",
+  "num": 16,
+  "stars": 1,
+  "choice": false,
+  "answer": 8
+ },
+ {
+  "id": "2026-09-c17",
+  "year": "2026",
+  "month": "9월",
+  "part": "공통",
+  "num": 17,
+  "stars": 1,
+  "choice": false,
+  "answer": 17
+ },
+ {
+  "id": "2026-09-c18",
+  "year": "2026",
+  "month": "9월",
+  "part": "공통",
+  "num": 18,
+  "stars": 2,
+  "choice": false,
+  "answer": 30
+ },
+ {
+  "id": "2026-09-c19",
+  "year": "2026",
+  "month": "9월",
+  "part": "공통",
+  "num": 19,
+  "stars": 2,
+  "choice": false,
+  "answer": 10
+ },
+ {
+  "id": "2026-09-k23",
+  "year": "2026",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2026-09-k24",
+  "year": "2026",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 3
+ },
+ {
+  "id": "2026-09-k25",
+  "year": "2026",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 5
+ },
+ {
+  "id": "2026-09-k26",
+  "year": "2026",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2026-09-k27",
+  "year": "2026",
+  "month": "9월",
+  "part": "확률과 통계",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2026-09-m23",
+  "year": "2026",
+  "month": "9월",
+  "part": "미적분",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2026-09-m24",
+  "year": "2026",
+  "month": "9월",
+  "part": "미적분",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2026-09-m25",
+  "year": "2026",
+  "month": "9월",
+  "part": "미적분",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2026-09-m26",
+  "year": "2026",
+  "month": "9월",
+  "part": "미적분",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2026-09-m27",
+  "year": "2026",
+  "month": "9월",
+  "part": "미적분",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2026-09-g23",
+  "year": "2026",
+  "month": "9월",
+  "part": "기하",
+  "num": 23,
+  "stars": 1,
+  "choice": true,
+  "answer": 2
+ },
+ {
+  "id": "2026-09-g24",
+  "year": "2026",
+  "month": "9월",
+  "part": "기하",
+  "num": 24,
+  "stars": 1,
+  "choice": true,
+  "answer": 4
+ },
+ {
+  "id": "2026-09-g25",
+  "year": "2026",
+  "month": "9월",
+  "part": "기하",
+  "num": 25,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2026-09-g26",
+  "year": "2026",
+  "month": "9월",
+  "part": "기하",
+  "num": 26,
+  "stars": 2,
+  "choice": true,
+  "answer": 1
+ },
+ {
+  "id": "2026-09-g27",
+  "year": "2026",
+  "month": "9월",
+  "part": "기하",
+  "num": 27,
+  "stars": 3,
+  "choice": true,
+  "answer": 2
+ }
+]

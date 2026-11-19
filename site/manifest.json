@@ -1,0 +1,33 @@
+{
+ "name": "루키들의 수학몰",
+ "short_name": "루키수학몰",
+ "id": "/",
+ "start_url": "/",
+ "scope": "/",
+ "lang": "ko",
+ "display": "standalone",
+ "background_color": "#fffaf0",
+ "theme_color": "#fffaf0",
+ "categories": [
+  "education"
+ ],
+ "description": "오늘의 루키가 내일의 킬러가 된다. 평가원 기출 2~3점 문항을 한 문제씩 풀고 바로 채점하는 수학 학습 앱",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "icon-maskable.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>루키들의 수학몰</title>
+<meta name="description" content="오늘의 루키가 내일의 킬러가 된다. 평가원 기출 2~3점·쉬운 4점 문항을 한 문제씩 풀고 바로 채점하는 수학 학습 앱">
+<meta name="theme-color" content="#fffaf0">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="favicon-32.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=JetBrains+Mono:wght@600;700&display=swap">
+<style>
+/* 루키들의 수학몰 — 킬러들의 수학몰(어두운 영화관)의 짝: 밝은 동네 가게. 카드 진열 구조는 같고 색·말투만 따뜻하게. */
+:root{
+  --bg:#fffaf0; --bg2:#fff3dc; --panel:#ffffff; --panel2:#f6f1e6; --fg:#24261f; --mute:#6b6a60; --line:#e8dfcb;
+  --green:#1f9d55; --green-d:#157a41; --green-soft:#e3f5ea; --orange:#f07b22; --orange-soft:#fff0e2;
+  --red:#d93a3a; --red-soft:#fde8e8; --blue:#2f7fd8; --gold:#e6a700;
+  --s1:#1f9d55; --s2:#2f7fd8; --s3:#f07b22;
+  --ph:#0e9488; --pc:#1f9d55; --pk:#c2410c; --pm:#2f7fd8; --pg:#8b5cf6;
+  --r:14px; --sh:0 1px 2px rgba(60,50,20,.06),0 6px 18px rgba(60,50,20,.07);
+  --body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#17191a; --bg2:#1f2223; --panel:#222527; --panel2:#2b2f31; --fg:#f1f1ec; --mute:#a7aaa2; --line:#363a3c;
+  --green:#3ccf7a; --green-d:#2fb66a; --green-soft:#1c3326; --orange:#ff9a4d; --orange-soft:#3a2a1c; --red:#ff6b6b; --red-soft:#3a2224;
+  --sh:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#17191a; --bg2:#1f2223; --panel:#222527; --panel2:#2b2f31; --fg:#f1f1ec; --mute:#a7aaa2; --line:#363a3c;
+  --green:#3ccf7a; --green-d:#2fb66a; --green-soft:#1c3326; --orange:#ff9a4d; --orange-soft:#3a2a1c; --red:#ff6b6b; --red-soft:#3a2224;
+  --sh:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25); color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.65;
+  padding:0 max(16px,env(safe-area-inset-right)) 80px max(16px,env(safe-area-inset-left))}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* 상단 */
+.top{position:sticky;top:0;z-index:20;margin:0 calc(-1*max(16px,env(safe-area-inset-left)));padding:calc(10px + env(safe-area-inset-top)) max(16px,env(safe-area-inset-left)) 10px;
+  background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:12px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;font-weight:900;font-size:1.25rem;letter-spacing:-.03em;white-space:nowrap}
+.logo .sprout{width:30px;height:30px;border-radius:9px;background:var(--green);display:grid;place-items:center;color:#fff;font-size:1rem}
+.logo b{color:var(--green)}
+.lv{margin-left:auto;display:flex;align-items:center;gap:8px;padding:5px 12px 5px 6px;border-radius:999px;background:var(--panel);border:1px solid var(--line);font-size:.85rem;font-weight:700;white-space:nowrap}
+.lv .badge{background:var(--orange);color:#fff;border-radius:999px;padding:1px 8px;font-family:var(--mono);font-size:.8rem}
+.lv .bar{width:64px;height:7px;border-radius:9px;background:var(--panel2);overflow:hidden}
+.lv .bar i{display:block;height:100%;background:var(--green);border-radius:9px;transition:width .5s}
+.iconbtn{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;border:1px solid var(--line);background:var(--panel);font-size:1.05rem}
+
+/* 탭 */
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:14px 0 4px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;padding:8px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--panel);font-weight:700;font-size:.95rem;color:var(--mute)}
+.tabs button .n{font-family:var(--mono);font-size:.72rem;margin-left:4px;opacity:.8}
+.tabs button.on{background:var(--fg);border-color:var(--fg);color:var(--bg)}
+
+/* 미션 */
+.mission{grid-template-columns:minmax(0,1fr);margin:14px 0 6px;padding:20px;border-radius:20px;background:linear-gradient(135deg,var(--green-soft),var(--orange-soft));border:1px solid var(--line);display:grid;gap:14px}
+.mission h1{margin:0;font-size:clamp(1.35rem,4.6vw,1.9rem);line-height:1.3;letter-spacing:-.03em;font-weight:900;text-wrap:balance}
+.mission h1 em{font-style:normal;color:var(--green)}
+.mission p{margin:0;color:var(--mute);font-size:.95rem}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,120px));gap:8px}
+@media (max-width:480px){.mission{padding:16px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.stats .stat{min-width:0;padding:7px 8px}.stats .stat b{font-size:1.05rem}.stats .stat span{font-size:.68rem;white-space:nowrap}}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 12px;min-width:88px}
+.stat b{display:block;font-family:var(--mono);font-size:1.25rem;line-height:1.2}
+.stat span{font-size:.78rem;color:var(--mute);font-weight:500}
+.mbtns{display:flex;gap:8px;flex-wrap:wrap}
+@media (max-width:480px){.mbtns .btn{flex:1 1 40%;padding:0 8px;font-size:.92rem;white-space:nowrap}.mbtns .go{flex-basis:100%;font-size:1rem}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:46px;padding:0 18px;border-radius:12px;font-weight:700;border:1.5px solid var(--line);background:var(--panel)}
+.btn.go{background:var(--green);border-color:var(--green);color:#fff}
+.btn.go:hover{background:var(--green-d)}
+.btn.warm{background:var(--orange);border-color:var(--orange);color:#fff}
+.btn:disabled{opacity:.45;cursor:default}
+
+/* 필터 */
+.filters{display:grid;gap:6px;margin:14px 0 4px}
+.frow{display:flex;gap:6px;align-items:center;overflow-x:auto;scrollbar-width:none;padding:1px 0}
+.frow::-webkit-scrollbar{display:none}
+.frow .chip,.frow select{flex:none}
+.frow .lab{flex:none;width:42px}
+.filters .lab{font-size:.78rem;color:var(--mute);font-weight:700;margin-right:2px}
+.chip{padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--panel);font-size:.85rem;font-weight:500}
+.chip.on{background:var(--green);border-color:var(--green);color:#fff}
+.chip.st.on{background:var(--orange);border-color:var(--orange)}
+.sep{width:1px;height:20px;background:var(--line);margin:0 4px}
+.filters select{font:inherit;font-size:.85rem;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--fg)}
+.filters select.on{border-color:var(--green);color:var(--green);font-weight:700}
+
+/* 진열대 */
+.shelf{margin-top:22px}
+.shelf h2{font-size:1.08rem;margin:0 0 2px;display:flex;align-items:baseline;gap:8px;letter-spacing:-.02em}
+.shelf h2 .cnt{font-family:var(--mono);font-size:.78rem;color:var(--mute);font-weight:600}
+.shelf .sub{font-size:.82rem;color:var(--mute);margin:0 0 10px}
+.track{display:grid;grid-auto-flow:column;grid-auto-columns:min(260px,72vw);gap:12px;overflow-x:auto;padding:4px 2px 12px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.card{scroll-snap-align:start;position:relative;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;display:flex;flex-direction:column;transition:transform .15s}
+.card:hover{transform:translateY(-2px)}
+.card .thumb{height:112px;overflow:hidden;background:#fff;border-bottom:1px solid var(--line)}
+.card .thumb{padding:8px 0 0 6px}
+.card .thumb img{display:block;max-width:none}
+.card .meta{padding:9px 12px 11px;display:grid;gap:3px}
+.card .t{font-weight:700;font-size:.95rem}
+.card .d{font-size:.78rem;color:var(--mute);display:flex;gap:6px;align-items:center}
+.stars{color:var(--gold);letter-spacing:1px;font-size:.8rem}
+.tag{font-size:.7rem;font-weight:700;padding:1px 7px;border-radius:999px;color:#fff;background:var(--pc)}
+.card .mark{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:.9rem;font-weight:900;color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+.mark.ok{background:var(--green)}.mark.no{background:var(--red)}
+.empty{padding:26px;text-align:center;color:var(--mute);background:var(--panel);border:1px dashed var(--line);border-radius:var(--r)}
+
+/* 문제 보기 */
+#view{padding-top:14px}
+.vhead{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.vhead>div{flex:1;min-width:0}
+@media (max-width:480px){.vhead .back{padding:0 12px}.vhead h1{font-size:1rem}.timer{padding:4px 9px;font-size:.85rem}}
+.vhead .back{font-weight:700}
+.vhead h1{font-size:1.15rem;margin:0;letter-spacing:-.02em}
+.vhead .d{color:var(--mute);font-size:.85rem}
+.timer{margin-left:auto;font-family:var(--mono);font-weight:700;padding:5px 12px;border-radius:999px;background:var(--panel);border:1px solid var(--line)}
+.timer.over{color:var(--orange);border-color:var(--orange)}
+.vgrid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:820px){.vgrid{grid-template-columns:1fr}}
+.paper{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px;box-shadow:var(--sh);overflow-x:auto;position:relative}
+.paper img{width:100%;display:block;cursor:zoom-in}
+.paper.zoom img{width:170%;cursor:zoom-out}
+.paper .zh{display:block;text-align:right;font-size:.72rem;color:#8a8576;margin-top:4px}
+@media (max-width:480px){.paper{padding:8px}}
+:root[data-theme="dark"] .paper img,:root:not([data-theme="light"]) .paper img{filter:none}
+.answer{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:14px;box-shadow:var(--sh);position:sticky;top:76px}
+.answer h3{margin:0;font-size:1rem}
+.choices{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.choices button{min-height:54px;border-radius:12px;border:2px solid var(--line);background:var(--panel);font-size:1.35rem;font-weight:700}
+.choices button.sel{border-color:var(--green);background:var(--green-soft)}
+.choices button.right{border-color:var(--green);background:var(--green);color:#fff}
+.choices button.wrong{border-color:var(--red);background:var(--red-soft);color:var(--red)}
+.numin{display:flex;gap:8px}
+.numin input{flex:1;min-width:0;min-height:54px;border-radius:12px;border:2px solid var(--line);background:var(--panel);color:var(--fg);font:700 1.35rem var(--mono);text-align:center}
+.keypad{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.keypad button{min-height:44px;border-radius:10px;background:var(--panel2);font:700 1.05rem var(--mono)}
+.fb{border-radius:12px;padding:12px 14px;font-weight:700;display:flex;gap:10px;align-items:center}
+.fb.ok{background:var(--green-soft);color:var(--green-d)}
+.fb.no{background:var(--red-soft);color:var(--red)}
+.fb small{display:block;font-weight:500;color:var(--mute)}
+.fb .big{font-size:1.6rem}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.row .btn{flex:1}
+.hint{font-size:.85rem;color:var(--mute);background:var(--panel2);border-radius:10px;padding:10px 12px}
+.reveal{color:var(--mute);font-size:.88rem;text-decoration:underline;justify-self:start}
+
+/* 토스트·레벨업 */
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,20px);opacity:0;transition:.25s;background:var(--fg);color:var(--bg);padding:10px 18px;border-radius:999px;font-weight:700;z-index:50;pointer-events:none;max-width:90vw;text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+#lvup{position:fixed;inset:0;z-index:60;display:grid;place-items:center;background:rgba(0,0,0,.45);padding:16px}
+#lvup .box{background:var(--panel);border-radius:22px;padding:28px 26px;max-width:340px;width:100%;text-align:center;display:grid;gap:10px;animation:pop .35s cubic-bezier(.2,1.4,.4,1)}
+#lvup .em{font-size:3rem;line-height:1}
+#lvup h2{margin:0;font-size:1.4rem}
+@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:none;opacity:1}}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:var(--mute);font-size:.8rem;line-height:1.7}
+footer a{color:var(--green)}
+@media (max-width:480px){.lv .bar{display:none}}
+@media (max-width:420px){#lvName{display:none}.logo{font-size:1.12rem}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="#" id="logo"><span class="sprout">🌱</span><span>루키들의 <b>수학몰</b></span></a>
+  <div class="lv" id="lv" title="루키 레벨"><span class="badge" id="lvN">Lv.1</span><span id="lvName">새싹 루키</span><span class="bar"><i id="lvBar"></i></span></div>
+  <button class="iconbtn" id="themeBtn" aria-label="밝기 바꾸기">🌓</button>
+</div></header>
+
+<main class="wrap" id="home">
+  <nav class="tabs" id="tabs"></nav>
+  <section class="mission">
+    <div>
+      <h1 id="mTitle">오늘의 루키가 <em>내일의 킬러</em>가 된다</h1>
+      <p id="mText">고1 학력평가와 평가원 모의평가·수능에서 2~3점, 쉬운 4점 문항만 모았어요. 한 문제씩 풀고 바로 채점해요.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="sToday">0/3</b><span>오늘의 미션</span></div>
+      <div class="stat"><b id="sStreak">0일</b><span>연속 출석</span></div>
+      <div class="stat"><b id="sOk">0</b><span>맞힌 문제</span></div>
+      <div class="stat"><b id="sRate">–</b><span>정답률</span></div>
+    </div>
+    <div class="mbtns">
+      <button class="btn go" id="missionBtn">🎯 오늘의 3문제 시작</button>
+      <button class="btn" id="randBtn">🎲 아무 문제나</button>
+      <button class="btn" id="wrongBtn">📝 틀린 문제 다시</button>
+    </div>
+  </section>
+  <div class="filters" id="filters"></div>
+  <div id="shelves"></div>
+  <footer>
+    문항 출처: 시·도교육청 2012~2020년 고1 전국연합학력평가, 한국교육과정평가원 2022~2026학년도 6월·9월 모의평가 및 대학수학능력시험 수학 영역 (문제지 원본 이미지, 공식 정답표로 자동 채점). 고1 학력평가는 예전 교육과정 문항이라 지금 교과서와 단원 이름이 다를 수 있어요.<br>
+    풀이 기록은 이 기기에만 저장돼요. · <a href="https://killershrekmath.vercel.app" target="_blank" rel="noopener">더 어려운 문제는 킬러들의 수학몰에서 →</a><br>
+    인천과학예술영재학교 허석 · <a href="privacy">개인정보처리방침</a>
+  </footer>
+</main>
+
+<main class="wrap" id="view" hidden>
+  <div class="vhead">
+    <button class="btn back" id="backBtn">← 목록</button>
+    <div><h1 id="vTitle"></h1><div class="d" id="vSub"></div></div>
+    <span class="timer mono" id="timer">0:00</span>
+  </div>
+  <div class="vgrid">
+    <div class="paper" id="paper"><img id="vImg" alt="문제"><span class="zh">눌러서 확대</span></div>
+    <div class="answer" id="ans"></div>
+  </div>
+</main>
+
+<div id="toast" role="status"></div>
+<div id="lvup" hidden><div class="box"><div class="em">🎉</div><h2 id="lvupT"></h2><p id="lvupP" style="margin:0;color:var(--mute)"></p><button class="btn go" id="lvupX">계속 풀기</button></div></div>
+
+<script>
+/*__INLINE_DATA__*/
+const $=s=>document.querySelector(s), el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const IMGBASE=window.__IMGBASE__||'';
+let LIST=[];
+const PARTS=[['h','고1 기초','var(--ph)'],['c','공통','var(--pc)'],['k','확률과 통계','var(--pk)'],['m','미적분','var(--pm)'],['g','기하','var(--pg)']];
+const PC=Object.fromEntries(PARTS.map(p=>[p[1],p[2]]));PC['고1']='var(--ph)';
+const UNIT_ORDER=['중학 복습','다항식','복소수·이차방정식','이차함수','여러 방정식·부등식','도형의 방정식','집합과 명제','함수','경우의 수·확률·수열','기타'];
+const LEVELS=[[0,'새싹 루키','🌱'],[30,'떡잎 루키','🌿'],[80,'주전 후보','⚾'],[160,'주전','🏃'],[280,'에이스 후보','🔥'],[450,'에이스','⭐'],[700,'킬러 후보','🗡️'],[1000,'킬러','👑']];
+const XP={1:10,2:15,3:20};
+const LIMIT={1:120,2:180,3:240};
+/* 저장 */
+const KEY='rookie.v1';
+let S;try{S=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){S=null}
+S=Object.assign({tab:'h',rec:{},xp:0,days:[],mission:null,f:{st:0,ex:'',state:'',unit:''},theme:''},S||{});
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const today=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('show'),2200)}
+
+/* 이름 */
+const exName=x=>x.key==='h'?`${x.year}년 ${x.month} 고1 학력평가`:`${x.year}학년도 ${x.month==='11월'?'수능':x.month+' 모평'}`;
+const exShort=x=>x.key==='h'?`${String(x.year).slice(2)}년 ${x.month} 고1 학평`:`${String(x.year).slice(2)}학년도 ${x.month==='11월'?'수능':x.month.replace('월','월 모평')}`;
+const stars=n=>'★'.repeat(n)+'☆'.repeat(3-n);
+const partKey=x=>x.key;
+function band(x){const n=x.num;if(x.key==='h'){if(n<=5)return 0;if(n<=10)return 1;if(n<=14)return 2;return 3}if(partKey(x)==='c'){if(n<=4)return 0;if(n<=8)return 1;if(n<=10)return 2;return 3}return n<=24?0:n<=26?1:2}
+const BANDS={h:[['워밍업 · 1~5번','2점, 계산 한 번이면 끝'],['3점 실력 · 6~10번','교과서 개념을 정확히 쓰는 문제'],['3점 도전 · 11~14번','조금 생각하면 풀리는 문제'],['단답형 · 22~26번','보기 없이 숫자로 답하는 문제']],c:[['워밍업 · 1~4번','2점과 쉬운 3점, 계산 한 번이면 끝'],['3점 실력 · 5~8번','개념 하나를 정확히 쓰는 문제'],['쉬운 4점 도전 · 9~10번','루키에서 주전으로 가는 문'],['단답형 · 16~19번','보기 없이 숫자로 답하는 3점']],
+  s:[['워밍업 · 23~24번','선택과목 첫 문제, 공식 하나로'],['3점 실력 · 25~26번','개념을 조금 응용하는 문제'],['3점 마무리 · 27번','선택과목 3점의 마지막 관문']]};
+
+/* 레벨 */
+function level(xp){let i=0;while(i+1<LEVELS.length&&xp>=LEVELS[i+1][0])i++;return i}
+function drawLv(){const i=level(S.xp),[a,name,em]=LEVELS[i],nx=LEVELS[i+1];$('#lvN').textContent='Lv.'+(i+1);$('#lvName').textContent=em+' '+name;
+  $('#lvBar').style.width=nx?Math.round(100*(S.xp-a)/(nx[0]-a))+'%':'100%';$('#lv').title=`경험치 ${S.xp}`+(nx?` · 다음 레벨까지 ${nx[0]-S.xp}`:'')}
+
+/* 기록 */
+function stats(){const r=Object.values(S.rec);const tried=r.filter(v=>v.n>0).length,ok=r.filter(v=>v.ok).length,first=r.filter(v=>v.first===true).length;
+  const t=today();const m=S.mission&&S.mission.day===t?S.mission:null;
+  $('#sToday').textContent=m?`${m.ids.filter(id=>S.rec[id]&&S.rec[id].ok).length}/3`:'0/3';
+  $('#sStreak').textContent=streak()+'일';$('#sOk').textContent=ok;$('#sRate').textContent=tried?Math.round(100*first/tried)+'%':'–'}
+function streak(){const set=new Set(S.days);let n=0,d=new Date();if(!set.has(today()))d.setDate(d.getDate()-1);
+  for(;;){const k=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');if(!set.has(k))break;n++;d.setDate(d.getDate()-1)}return n}
+
+/* 홈 */
+const inTab=x=>partKey(x)===S.tab;
+function pass(x){const f=S.f;const r=S.rec[x.id];if(f.st&&x.stars!==f.st)return false;if(f.unit&&x.key==='h'&&x.unit!==f.unit)return false;if(f.ex&&x.year+x.month!==f.ex)return false;
+  if(f.state==='new'&&r&&r.n)return false;if(f.state==='no'&&!(r&&r.n&&!r.ok))return false;if(f.state==='ok'&&!(r&&r.ok))return false;return true}
+function tabs(){const t=$('#tabs');t.innerHTML='';for(const [k,name] of PARTS){const b=el('button',S.tab===k?'on':'',`${name}<span class="n">${LIST.filter(x=>partKey(x)===k).length}</span>`);b.onclick=()=>{S.tab=k;save();home()};t.append(b)}}
+function filters(){const F=$('#filters');F.innerHTML='';let f=F;const add=(lab,items,key,cls)=>{f=el('div','frow');F.append(f);f.append(el('span','lab',lab));for(const [v,t] of items){const b=el('button','chip '+(cls||'')+(S.f[key]===v?' on':''),t);b.onclick=()=>{S.f[key]=S.f[key]===v?(key==='st'?0:''):v;save();home()};f.append(b)}};
+  if(S.tab==='h'){const us=[...new Set(LIST.filter(x=>x.key==='h').map(x=>x.unit))].sort((a,b)=>UNIT_ORDER.indexOf(a)-UNIT_ORDER.indexOf(b));add('단원',us.map(u=>[u,u]),'unit')}
+  add('난이도',[[1,'★'],[2,'★★'],[3,'★★★']],'st');
+  add('상태',[['new','안 푼 문제'],['no','틀린 문제'],['ok','맞힌 문제']],'state','st');
+  const exs=[...new Set(LIST.map(x=>x.year+x.month))].sort().reverse();f=el('div','frow');F.append(f);f.append(el('span','lab','시험'));const sl=el('select',S.f.ex?'on':'');sl.setAttribute('aria-label','시험 고르기');
+  sl.append(new Option('전체 시험',''));for(const e of exs)sl.append(new Option(`${e.slice(2,4)}학년도 ${e.slice(4)==='11월'?'수능':e.slice(4)+' 모평'}`,e));sl.value=S.f.ex;sl.onchange=()=>{S.f.ex=sl.value;save();home()};f.append(sl)}
+function card(x){const r=S.rec[x.id];const c=el('button','card');
+  c.innerHTML=`<div class="thumb"><img loading="lazy" alt="" style="width:${Math.round(x.w*.36)}px" src="${IMGBASE}img/${x.id}.webp"></div><div class="meta"><div class="t">${esc(exShort(x))} ${x.num}번</div><div class="d"><span class="tag" style="background:${PC[x.part]}">${esc(x.part)}</span><span class="stars">${stars(x.stars)}</span><span>${x.key==='h'?esc(x.unit):x.choice?'객관식':'단답형'}</span></div></div>`+(r&&r.n?`<span class="mark ${r.ok?'ok':'no'}">${r.ok?'✓':'✗'}</span>`:'');
+  c.onclick=()=>{location.hash='q/'+x.id};return c}
+function home(){$('#home').hidden=false;$('#view').hidden=true;stopTimer();tabs();filters();drawLv();stats();
+  const sh=$('#shelves');sh.innerHTML='';const xs=LIST.filter(x=>inTab(x)&&pass(x));
+  if(!xs.length){sh.append(el('div','empty','조건에 맞는 문제가 없어요. 필터를 하나 꺼 보세요.'));return}
+  const B=BANDS[S.tab]||BANDS.s;
+  B.forEach(([title,sub],i)=>{const g=xs.filter(x=>band(x)===i).sort((a,b)=>(b.year+b.month).localeCompare(a.year+a.month)||a.num-b.num);if(!g.length)return;
+    const s=el('section','shelf');const done=g.filter(x=>S.rec[x.id]&&S.rec[x.id].ok).length;
+    s.append(el('h2','',`${esc(title)} <span class="cnt">${done}/${g.length}</span>`),el('p','sub',esc(sub)));const t=el('div','track');g.forEach(x=>t.append(card(x)));s.append(t);sh.append(s)})}
+
+/* 미션 */
+function pickMission(){const t=today();if(S.mission&&S.mission.day===t)return S.mission;
+  const pool=LIST.filter(x=>partKey(x)===S.tab&&!(S.rec[x.id]&&S.rec[x.id].ok));const lv=level(S.xp);
+  const want=lv<2?[1,1,2]:lv<4?[1,2,2]:[2,2,3];const ids=[];
+  for(const st of want){const c=pool.filter(x=>x.stars===st&&!ids.includes(x.id));const p=(c.length?c:pool.filter(x=>!ids.includes(x.id)));if(p.length)ids.push(p[Math.floor(Math.random()*p.length)].id)}
+  S.mission={day:t,ids};save();return S.mission}
+$('#missionBtn').onclick=()=>{const m=pickMission();const nx=m.ids.find(id=>!(S.rec[id]&&S.rec[id].ok));if(!nx){toast('오늘 미션 완료! 내일 또 만나요 🎉');return}location.hash='q/'+nx+'/m'};
+$('#randBtn').onclick=()=>{const p=LIST.filter(x=>inTab(x)&&!(S.rec[x.id]&&S.rec[x.id].n));const q=p.length?p:LIST.filter(inTab);location.hash='q/'+q[Math.floor(Math.random()*q.length)].id};
+$('#wrongBtn').onclick=()=>{const p=LIST.filter(x=>S.rec[x.id]&&S.rec[x.id].n&&!S.rec[x.id].ok);if(!p.length){toast('틀린 문제가 없어요 👍');return}location.hash='q/'+p[Math.floor(Math.random()*p.length)].id};
+
+/* 문제 */
+let X=null,T0=0,TI=null,sel=null,inMission=false;
+function stopTimer(){clearInterval(TI);TI=null}
+function tick(){const s=Math.floor((Date.now()-T0)/1000),e=$('#timer');e.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0');e.classList.toggle('over',s>LIMIT[X.stars])}
+function open(id,mission){X=LIST.find(x=>x.id===id);if(!X){location.hash='';return}inMission=!!mission;sel=null;
+  $('#home').hidden=true;$('#view').hidden=false;scrollTo(0,0);
+  $('#vTitle').textContent=`${innerWidth<520?exShort(X):exName(X)} ${X.num}번`;$('#vSub').innerHTML=`<span class="tag" style="background:${PC[X.part]}">${esc(X.key==='h'?X.unit:X.part)}</span> <span class="stars">${stars(X.stars)}</span> · 목표 ${LIMIT[X.stars]/60}분`+(X.topic&&innerWidth>=520?` · ${esc(X.topic)}`:'')+(inMission?' · 🎯 오늘의 미션':'');
+  $('#paper').classList.remove('zoom');$('#vImg').src=IMGBASE+'img/'+X.id+'.webp';$('#vImg').alt=`${exName(X)} ${X.num}번 문제`;
+  T0=Date.now();stopTimer();tick();TI=setInterval(tick,1000);drawAns()}
+function drawAns(fb){const a=$('#ans');a.innerHTML='';const r=S.rec[X.id]||{};const solved=r.ok&&fb;
+  a.append(el('h3','',X.choice?'답을 골라 보세요':'답을 숫자로 입력해요'));
+  if(X.choice){const c=el('div','choices');for(let i=1;i<=5;i++){const b=el('button','','①②③④⑤'[i-1]);if(sel===i)b.classList.add('sel');
+      if(fb){if(fb.ok&&i===X.answer)b.classList.add('right');else if(!fb.ok&&i===fb.v)b.classList.add('wrong');if(fb.show&&i===X.answer)b.classList.add('right')}
+      b.onclick=()=>{sel=i;drawAns()};c.append(b)}a.append(c)}
+  else{const w=el('div','numin');const inp=el('input');inp.id='numIn';inp.inputMode='numeric';inp.autocomplete='off';inp.placeholder='정수 답 (0~999)';inp.value=sel==null?'':sel;
+    inp.oninput=()=>{const v=inp.value.replace(/[^0-9]/g,'').slice(0,3);inp.value=v;sel=v===''?null:+v};inp.onkeydown=e=>{if(e.key==='Enter')check()};w.append(inp);a.append(w)}
+  if(fb){const box=el('div','fb '+(fb.ok?'ok':'no'));box.innerHTML=fb.ok?`<span class="big">🎉</span><div>정답이에요!${fb.xp?` +${fb.xp} XP`:''}<small>${fb.sec}초 걸렸어요${fb.sec<=LIMIT[X.stars]?' · 목표 시간 안에 성공':''}</small></div>`
+      :`<span class="big">🤔</span><div>${fb.show?`정답은 ${X.choice?'①②③④⑤'[X.answer-1]:X.answer}이에요`:'아쉬워요, 다시 한 번!'}<small>${fb.show?'틀린 문제에 저장했어요. 내일 다시 풀어 봐요.':'계산을 한 줄씩 다시 확인해 보세요.'}</small></div>`;a.append(box)}
+  const row=el('div','row');
+  if(!(fb&&(fb.ok||fb.show))){const b=el('button','btn go','채점하기');b.onclick=check;row.append(b)}
+  else{const nx=nextId();const b=el('button','btn go',nx?'다음 문제 →':'목록으로');b.onclick=()=>{location.hash=nx?'q/'+nx+(inMission?'/m':''):''};row.append(b);
+    const again=el('button','btn','다시 풀기');again.onclick=()=>{sel=null;T0=Date.now();drawAns()};row.append(again)}
+  a.append(row);
+  if(fb&&!fb.ok&&!fb.show&&(r.n||0)>=2){const rv=el('button','reveal','정답 보기');rv.onclick=()=>drawAns(Object.assign({},fb,{show:true}));a.append(rv)}
+  if(!fb)a.append(el('div','hint',X.choice?'💡 계산은 종이에. 고른 다음 [채점하기]를 눌러요.':'💡 단답형은 0 이상 999 이하의 정수예요.'));
+  if(!X.choice&&!fb){const i=$('#numIn');i&&i.focus({preventScroll:true})}}
+function nextId(){if(inMission){const m=S.mission;return m&&m.ids.find(id=>id!==X.id&&!(S.rec[id]&&S.rec[id].ok))}
+  const g=LIST.filter(x=>partKey(x)===partKey(X)&&band(x)===band(X));const i=g.findIndex(x=>x.id===X.id);return (g.slice(i+1).find(x=>!(S.rec[x.id]&&S.rec[x.id].ok))||{}).id}
+function check(){if(sel==null){toast(X.choice?'보기를 하나 골라 주세요':'답을 입력해 주세요');return}
+  const sec=Math.round((Date.now()-T0)/1000);const ok=sel===X.answer;const r=S.rec[X.id]||{n:0};const wasOk=r.ok;
+  r.n=(r.n||0)+1;if(r.first===undefined)r.first=ok;if(ok)r.ok=true;r.last=Date.now();r.sec=sec;S.rec[X.id]=r;
+  const t=today();if(!S.days.includes(t)){S.days.push(t);S.days=S.days.slice(-400)}
+  let xp=0;if(ok&&!wasOk){const before=level(S.xp);xp=XP[X.stars]+(r.n===1?5:0);S.xp+=xp;const after=level(S.xp);if(after>before)setTimeout(()=>lvup(after),700)}
+  save();drawLv();if(ok)stopTimer();
+  drawAns({ok,v:sel,sec,xp});
+  if(inMission&&ok){const m=S.mission;if(m&&m.ids.every(id=>S.rec[id]&&S.rec[id].ok))setTimeout(()=>toast('🎯 오늘의 미션 완료! 내일도 3문제!'),400)}}
+function lvup(i){const [,name,em]=LEVELS[i];$('#lvupT').textContent=`Lv.${i+1} ${name}!`;$('#lvup .em').textContent=em;
+  $('#lvupP').textContent=i+1<LEVELS.length?`다음 목표: ${LEVELS[i+1][1]}`:'이제 킬러들의 수학몰에 도전해 보세요!';$('#lvup').hidden=false}
+$('#vImg').onclick=()=>$('#paper').classList.toggle('zoom');
+$('#lvupX').onclick=()=>$('#lvup').hidden=true;
+$('#backBtn').onclick=()=>{location.hash=''};
+$('#logo').onclick=e=>{e.preventDefault();location.hash='';home()};
+
+/* 테마 */
+function applyTheme(){if(S.theme)document.documentElement.dataset.theme=S.theme;else delete document.documentElement.dataset.theme}
+$('#themeBtn').onclick=()=>{const dark=S.theme?S.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;S.theme=dark?'light':'dark';save();applyTheme()};
+
+/* 라우팅 */
+function route(){const h=location.hash.slice(1);const m=h.match(/^q\/([\w-]+)(\/m)?$/);if(m)open(m[1],!!m[2]);else home()}
+addEventListener('hashchange',route);
+document.addEventListener('keydown',e=>{if($('#view').hidden||e.target.tagName==='INPUT')return;if(X&&X.choice&&/^[1-5]$/.test(e.key)){sel=+e.key;drawAns()}else if(e.key==='Enter'&&[...document.querySelectorAll('#ans .btn')].some(b=>b.textContent==='채점하기'))check()});
+
+(async()=>{applyTheme();try{LIST=window.__LIST__||await (await fetch('list.json')).json()}catch(e){document.body.innerHTML='<p style="padding:40px">문항을 불러오지 못했어요. 인터넷 연결을 확인해 주세요.</p>';return}route()})();
+if('serviceWorker' in navigator&&location.protocol==='https:')addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+</script>
+</body>
+</html>

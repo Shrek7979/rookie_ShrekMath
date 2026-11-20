@@ -104,7 +104,7 @@ def main():
                 '<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">\n'
                 '<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">\n'
                 '<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">\n'
-                '<meta property="og:title" content="루키들의 수학몰"><meta property="og:image" content="https://rookieshrekmath.vercel.app/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">\n'
+                '<meta property="og:title" content="루키들의 수학몰"><meta property="og:image" content="https://rookieshrekmath.vercel.app/og-v2.png"><meta property="og:type" content="website"><meta property="og:url" content="https://rookieshrekmath.vercel.app/"><meta property="og:description" content="고1 학력평가와 평가원 기출의 2~3점 문항을 시험처럼 풀고 바로 채점"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">\n'
                 '<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}</style>\n'
                 '<script>if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}))</script>\n'
                 '</head>\n<body>\n__BODY__\n</body>\n</html>\n')
@@ -115,7 +115,7 @@ def main():
     fav.resize((32, 32), Image.LANCZOS).save(os.path.join(SITE, 'favicon-32.png')); fav.resize((16, 16), Image.LANCZOS).save(os.path.join(SITE, 'favicon-16.png'))
     fav.resize((48, 48), Image.LANCZOS).save(os.path.join(SITE, 'favicon.ico'), sizes=[(16, 16), (32, 32), (48, 48)])
     Image.open(os.path.join(ROOT, 'src', 'app', 'icon-square-1024.png')).resize((180, 180), Image.LANCZOS).save(os.path.join(SITE, 'apple-touch-icon.png'))
-    shutil.copy(os.path.join(ROOT, 'src', 'app', 'og.png'), os.path.join(SITE, 'og.png'))
+    shutil.copy(os.path.join(ROOT, 'src', 'app', 'og.png'), os.path.join(SITE, 'og.png')); shutil.copy(os.path.join(ROOT, 'src', 'app', 'og.png'), os.path.join(SITE, 'og-v2.png'))
     json.dump({'name': '루키들의 수학몰', 'short_name': '루키수학몰', 'id': '/', 'start_url': '/', 'scope': '/', 'lang': 'ko',
                'display': 'standalone', 'background_color': '#fdf9f6', 'theme_color': '#192c46', 'categories': ['education'],
                'description': '오늘의 루키가 내일의 킬러가 된다. 고1 학력평가와 평가원 기출의 2~3점 문항을 시험처럼 풀고 바로 채점하는 수학 학습 앱',

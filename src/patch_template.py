@@ -68,6 +68,14 @@ img,video,iframe,canvas,.sheet,.art .paper,#fullSheet,#lb,#gBtn{filter:invert(1)
 .stats .tile:nth-child(3){{background:linear-gradient(160deg,{pre('#fef3c7')},{pre('#ffffff')});border-color:{pre('#fcd34d')};--tc:{pre('#f59e0b')}}}
 .ghead::before{{content:"";width:6px;height:1.1em;border-radius:3px;background:linear-gradient(180deg,{pre('#22c55e')},{pre('#3b82f6')})}}
 .card .dbadge{{background:var(--dc)!important;color:#000!important}}
+/* 진행 방식 칩: 킬러와 같은 모양(진한 테두리 알약 + 같은 색 글자) */
+#flowPast{{gap:7px}}
+#flowPast span{{font-weight:700!important;font-size:.9rem;padding:4px 13px;border-radius:999px;border:1.5px solid var(--fc);color:var(--fc);background:var(--fb)}}
+#flowPast .f1{{--fc:{pre('#dc2626')};--fb:{pre('#fde8e8')}}}
+#flowPast .f2{{--fc:{pre('#2563eb')};--fb:{pre('#e3ecfd')}}}
+#flowPast .f3{{--fc:{pre('#b7791f')};--fb:{pre('#fdf3dc')}}}
+#flowPast .f4{{--fc:{pre('#15803d')};--fb:{pre('#e2f6e8')}}}
+#flowPast .f5{{--fc:{pre('#db2777')};--fb:{pre('#fde7f1')}}}
 /* 로고 */
 .logo{{color:{pre('#1c2d47')}!important;text-shadow:none!important;font-weight:800!important;font-size:1.32rem!important;letter-spacing:-.03em!important;position:relative;padding-left:44px}}
 .logo em{{font-style:normal;color:{pre('#5cb531')}}}
@@ -135,7 +143,7 @@ rep("$('#flowNote').textContent=past?'제한시간: 22·30번 13분 · 13·15·2
 rep("  else if(past)$('#footPast').innerHTML=window.__footPastKo||$('#footPast').innerHTML;",
     "  else if(past)$('#footPast').innerHTML=g1?'문항: 시·도교육청 2012~2020년 고1 전국연합학력평가 수학 영역 (문제지 이미지 그대로, 공식 정답표로 자동 채점). 예전 교육과정 문항이라 지금 교과서와 단원 이름이 다를 수 있어요. 유사문항은 ShrekMath가 새로 썼습니다.<br>기록은 이 브라우저에만 저장됩니다.':'문항: 한국교육과정평가원 2022~2026학년도 6월·9월 모의평가와 대학수학능력시험 수학 영역 (홀수형, 문제지 이미지 그대로, 평가원 정답표로 자동 채점). 해설은 EBSi 등에서 확인하세요.<br>더 어려운 문제는 <a href=\"https://killershrekmath.vercel.app\" target=\"_blank\" rel=\"noopener\">킬러들의 수학몰</a>에서.';")
 rep('<div class="flow" id="flowPast" hidden><span style="--kc:var(--k-solve)">① 실전 · 제한시간</span><span style="--kc:var(--k-intro)">② 채점 · 진단</span><span style="--kc:var(--k-end)">③ 정리</span></div>',
-    '<div class="flow" id="flowPast" hidden><span style="--kc:var(--k-solve)">① 실전 · 제한시간</span><span style="--kc:var(--k-intro)">② 채점 · 진단</span><span style="--kc:var(--k-sim)">③ 유사문항</span><span style="--kc:var(--k-end)">④ 정리</span></div>')
+    '<div class="flow" id="flowPast" hidden><span class="f1">① 실전</span><span class="f2">② 진단</span><span class="f4">③ 유사</span><span class="f5">④ 정리</span></div>')
 # 통계 타일: 킬러·논술 대신 채점 기준
 rep('<span>킬러 <b id="rSolved">0</b></span>', '<span>채점 <b id="rSolved">0</b></span>')
 rep('<span>논술 <b id="rEssay">0</b></span><span>논술 평균 <b id="rEssayAvg">–</b></span>', '<span hidden><b id="rEssay">0</b><b id="rEssayAvg">–</b></span>')

@@ -1,9 +1,9 @@
-/* 킬러들의 수학몰 서비스 워커 — 빌드할 때 20261120091444 이 바뀌어 옛 캐시를 지운다.
+/* 킬러들의 수학몰 서비스 워커 — 빌드할 때 20261120092456 이 바뀌어 옛 캐시를 지운다.
    - 페이지·목록(JSON): 네트워크 우선, 안 되면 캐시 (오프라인)
    - 문제 이미지·KaTeX·글꼴: 캐시 우선 (한 번 본 문제는 오프라인에서도 열림) */
-const V = '20261120091444';
+const V = '20261120092456';
 const SHELL = 'shell-' + V, RUN = 'run-v1';
-const PRE = ['/', '/list.json', '/katex/katex.min.js', '/katex/auto-render.min.js', '/katex/katex.inline.css', '/manifest.json', '/icon-192.png', '/icon-512.png', '/favicon-32.png', '/privacy'];
+const PRE = ['/', '/list.json', '/elist.json', '/jlist.json', '/cats.json', '/manifest.json', '/icon-192.png', '/icon-512.png', '/favicon-32.png', '/privacy'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(SHELL).then(c => Promise.all(PRE.map(u => c.add(u).catch(() => {})))).then(() => self.skipWaiting()));

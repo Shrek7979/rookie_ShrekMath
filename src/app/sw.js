@@ -3,7 +3,7 @@
    - 문제 이미지·KaTeX·글꼴: 캐시 우선 (한 번 본 문제는 오프라인에서도 열림) */
 const V = '__VERSION__';
 const SHELL = 'shell-' + V, RUN = 'run-v1';
-const PRE = ['/', '/list.json', '/katex/katex.min.js', '/katex/auto-render.min.js', '/katex/katex.inline.css', '/manifest.json', '/icon-192.png', '/icon-512.png', '/favicon-32.png', '/privacy'];
+const PRE = ['/', '/list.json', '/elist.json', '/jlist.json', '/cats.json', '/manifest.json', '/icon-192.png', '/icon-512.png', '/favicon-32.png', '/privacy'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(SHELL).then(c => Promise.all(PRE.map(u => c.add(u).catch(() => {})))).then(() => self.skipWaiting()));

@@ -1,13 +1,17 @@
-"""루키들의 수학몰 빌드: src/ → site/ (Vercel 정적 배포)
-사용: python build.py"""
-import os, re, json, shutil, time
+"""루키들의 수학몰 빌드: 킬러들의 수학몰과 같은 화면(template.html) + 루키 문항 → site/ (Vercel 정적 배포)
+사용: python build.py
+  1) src/patch_template.py 로 킬러 화면(src/killer_template.html)에서 template.html 을 만든다
+  2) 문항(고1 학력평가, 평가원 기출)과 유사문항을 킬러 '기출관' 형식(jlist.json)으로 내보낸다"""
+import os, re, json, shutil, time, subprocess, sys, glob, importlib.util
 from PIL import Image, ImageDraw
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.join(ROOT, 'site')
 PAST = os.path.join(ROOT, 'src', 'past')
+G1 = os.path.join(ROOT, 'src', 'g1')
 APP = os.path.join(ROOT, 'src', 'app')
 PACKAGE = 'com.shrekmath.rookiemath'
-G1 = os.path.join(ROOT, 'src', 'g1')
+CIRC = '①②③④⑤'
+
 # 고1 학력평가 출제의도 → 2022 개정 공통수학 단원 (앞에서부터 먼저 맞는 것)
 UNITS = [
     ('도형의 방정식', ['부등식의 영역', '두 점 사이', '내분점', '외분점', '직선', '원의 방정식', '원과 직선', '평행이동', '대칭이동', '도형의 이동', '점의 평행', '내분']),
@@ -20,6 +24,7 @@ UNITS = [
     ('여러 방정식·부등식', ['삼차방정식', '사차방정식', '연립', '부등식', '절댓값']),
     ('다항식', ['다항식', '곱셈공식', '곱셈 공식', '인수분해', '나머지', '인수정리', '조립제법', '항등식', '미정계수', '최대공약수', '분모의 유리화']),
 ]
+PUA = re.compile(r'[-]')
 
 
 def unit(topic):
@@ -41,43 +46,86 @@ def icon(size, pad=0.0):
     return im.resize((size, size), Image.LANCZOS)
 
 
+def blocks(html):
+    """유사문항 문제 문자열(KaTeX $…$, <br>, 표) → 킬러 화면의 블록 [{p:…},{box:[…]}]"""
+    html = html.replace('&lsquo;', '‘').replace('&rsquo;', '’')
+    out = []
+    for part in re.split(r'(<table class="mt">.*?</table>)', html):
+        if part.startswith('<table'):
+            rows = re.findall(r'<tr>(.*?)</tr>', part)
+            out.append({'box': [' · '.join(re.sub(r'<[^>]+>', '', c).strip() for c in re.findall(r'<t[hd]>(.*?)</t[hd]>', r)) for r in rows]})
+        else:
+            for line in re.split(r'<br\s*/?>', part):
+                line = line.strip()
+                if line: out.append({'p': line})
+    return out
+
+
+def sim_of(m):
+    q = blocks(m['q'])
+    if m['ch']: q.append({'ch': [c.strip()[1:-1] if c.strip().startswith('$') and c.strip().endswith('$') else c for c in m['ch']]})
+    ans = f"{CIRC[m['a'] - 1]} {m['ch'][m['a'] - 1]}" if m['ch'] else f"${m['a']}$"
+    return {'ko': q, 'ans': {'ko': ans}, 'sol': {'ko': blocks(m['sol'])}}
+
+
 def main():
+    subprocess.run([sys.executable, os.path.join(ROOT, 'src', 'patch_template.py')], check=True)
     shutil.rmtree(SITE, ignore_errors=True); os.makedirs(os.path.join(SITE, 'img'))
-    items = json.load(open(os.path.join(PAST, 'index.json'), encoding='utf-8'))
-    for x in items: x['key'] = x['id'].split('-')[2][0]; x['src'] = PAST
-    g1 = json.load(open(os.path.join(G1, 'index.json'), encoding='utf-8'))
-    for x in g1:
-        x['key'] = 'h'; x['src'] = G1; x['unit'] = unit(re.sub(r'[\ue000-\uf8ff]', '', x.get('topic', '')))
-        x['topic'] = re.sub(r'[\ue000-\uf8ff]', '', x['topic']).strip()
-    items = g1 + items
     sims = {}
-    import importlib.util, glob
     for f in sorted(glob.glob(os.path.join(ROOT, 'src', 'sim', 'batch*.py'))):
         spec = importlib.util.spec_from_file_location('b', f); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
         sims.update(m.S)
-    for x in items:
-        if x['id'] in sims: x['sim'] = sims[x['id']]
-    for x in items:
+    g1 = json.load(open(os.path.join(G1, 'index.json'), encoding='utf-8'))
+    past = json.load(open(os.path.join(PAST, 'index.json'), encoding='utf-8'))
+    J = []
+    for x in g1:   # 고1 기초관: 최신 시험부터
+        t = PUA.sub('', x.get('topic', '')).strip(); u = unit(t)
+        J.append({'kind': 'past', 'id': x['id'], 'year': x['year'], 'month': x['month'], 'num0': x['num'], 'stars': x['stars'],
+                  'univ': f"{x['year']}년 {x['month']} 고1 학력평가", 'track': f"{x['num']}번 · {u}", 'part': '고1', 'subj': u, 'topic': t,
+                  'text': t or u, 'answer': x['answer'], 'choice': x['choice'], 'src': G1})
+    for x in past:
+        mon = '수능' if x['month'] == '11월' else x['month'] + ' 모평'
+        J.append({'kind': 'past', 'id': x['id'], 'year': x['year'], 'month': x['month'], 'num0': x['num'], 'stars': x['stars'],
+                  'univ': f"{x['year']}학년도 {mon}", 'track': f"{x['part']} {x['num']}번", 'part': x['part'], 'subj': x['part'],
+                  'text': f"{x['year']}학년도 {mon} {x['part']} {x['num']}번", 'answer': x['answer'], 'choice': x['choice'], 'src': PAST})
+    for i, x in enumerate(J, 1):
         im = Image.open(os.path.join(x.pop('src'), 'img', x['id'] + '.webp')).convert('RGB')
-        g = im.convert('L').point(lambda v: 255 if v < 200 else 0); bb = g.getbbox()   # 글자 있는 영역
-        if bb: im = im.crop((0, 0, min(im.width, bb[2] + 24), im.height))          # 오른쪽 빈 여백만 잘라 글자를 크게
+        g = im.convert('L').point(lambda v: 255 if v < 200 else 0); bb = g.getbbox()
+        if bb: im = im.crop((0, 0, min(im.width, bb[2] + 24), im.height))   # 오른쪽 빈 여백만 잘라 글자를 크게
         im.save(os.path.join(SITE, 'img', x['id'] + '.webp'), 'WEBP', quality=86, method=6)
-        x['w'], x['h'] = im.size
-    json.dump(items, open(os.path.join(SITE, 'list.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+        x['num'] = i; x['qimg'] = ['img/' + x['id'] + '.webp']; x['simg'] = []; x['art'] = ''
+        if x['id'] in sims: x['sim'] = sim_of(sims[x['id']])
+    J = [{k: x[k] for k in ['num'] + [k for k in x if k != 'num']} for x in J]
+    dump = lambda name, obj: json.dump(obj, open(os.path.join(SITE, name), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+    dump('jlist.json', J); dump('list.json', []); dump('elist.json', []); dump('cats.json', {})
+
     tpl = open(os.path.join(ROOT, 'template.html'), encoding='utf-8').read()
-    open(os.path.join(SITE, 'index.html'), 'w', encoding='utf-8').write(tpl.replace('/*__INLINE_DATA__*/', ''))
+    tpl = tpl.replace('/*__KATEX_CSS__*/', open(os.path.join(ROOT, 'src', 'katex.inline.css'), encoding='utf-8').read())
+    skeleton = ('<!doctype html>\n<html lang="ko">\n<head>\n<meta charset="utf-8">\n'
+                '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n'
+                '<meta name="description" content="루키들의 수학몰 · 고1 학력평가와 평가원 기출의 2~3점 문항을 시험처럼 풀고 바로 채점">\n'
+                '<meta name="theme-color" content="#141414">\n'
+                '<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="루키수학몰">\n'
+                '<link rel="manifest" href="manifest.json">\n'
+                '<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">\n'
+                '<link rel="apple-touch-icon" sizes="180x180" href="icon-192.png">\n'
+                '<meta property="og:title" content="루키들의 수학몰"><meta property="og:image" content="https://rookieshrekmath.vercel.app/icon-512.png">\n'
+                '<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}</style>\n'
+                '<script>if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}))</script>\n'
+                '</head>\n<body>\n__BODY__\n</body>\n</html>\n')
+    open(os.path.join(SITE, 'index.html'), 'w', encoding='utf-8').write(skeleton.replace('__BODY__', tpl.replace('/*__INLINE_DATA__*/', '')))
+
     icon(192).save(os.path.join(SITE, 'icon-192.png')); icon(512).save(os.path.join(SITE, 'icon-512.png'))
     icon(512, pad=.12).save(os.path.join(SITE, 'icon-maskable.png')); icon(32).save(os.path.join(SITE, 'favicon-32.png'))
     json.dump({'name': '루키들의 수학몰', 'short_name': '루키수학몰', 'id': '/', 'start_url': '/', 'scope': '/', 'lang': 'ko',
-               'display': 'standalone', 'background_color': '#fffaf0', 'theme_color': '#fffaf0', 'categories': ['education'],
-               'description': '오늘의 루키가 내일의 킬러가 된다. 평가원 기출 2~3점 문항을 한 문제씩 풀고 바로 채점하는 수학 학습 앱',
+               'display': 'standalone', 'background_color': '#141414', 'theme_color': '#141414', 'categories': ['education'],
+               'description': '오늘의 루키가 내일의 킬러가 된다. 고1 학력평가와 평가원 기출의 2~3점 문항을 시험처럼 풀고 바로 채점하는 수학 학습 앱',
                'icons': [{'src': 'icon-192.png', 'sizes': '192x192', 'type': 'image/png'}, {'src': 'icon-512.png', 'sizes': '512x512', 'type': 'image/png'},
                          {'src': 'icon-maskable.png', 'sizes': '512x512', 'type': 'image/png', 'purpose': 'maskable'}]},
               open(os.path.join(SITE, 'manifest.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     sw = open(os.path.join(APP, 'sw.js'), encoding='utf-8').read().replace('__VERSION__', time.strftime('%Y%m%d%H%M%S'))
     open(os.path.join(SITE, 'sw.js'), 'w', encoding='utf-8').write(sw)
     shutil.copy(os.path.join(APP, 'privacy.html'), os.path.join(SITE, 'privacy.html'))
-    shutil.copytree(os.path.join(ROOT, 'src', 'katex'), os.path.join(SITE, 'katex'))
     fp = os.path.join(APP, 'sha256.txt')
     if os.path.exists(fp):
         fps = [l.strip() for l in open(fp, encoding='utf-8') if l.strip() and not l.startswith('#')]
@@ -85,7 +133,7 @@ def main():
             os.makedirs(os.path.join(SITE, '.well-known'))
             json.dump([{'relation': ['delegate_permission/common.handle_all_urls'], 'target': {'namespace': 'android_app', 'package_name': PACKAGE, 'sha256_cert_fingerprints': fps}}],
                       open(os.path.join(SITE, '.well-known', 'assetlinks.json'), 'w'), indent=1)
-    print(f'{len(items)}문항 (유사문항 {sum(1 for x in items if "sim" in x)}) → site/')
+    print(f"{len(J)}문항 (고1 {sum(x['part'] == '고1' for x in J)} · 평가원 {sum(x['part'] != '고1' for x in J)} · 유사문항 {sum('sim' in x for x in J)}) → site/")
 
 
 if __name__ == '__main__':

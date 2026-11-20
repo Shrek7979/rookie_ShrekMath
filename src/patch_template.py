@@ -298,5 +298,62 @@ s = s.replace("</style>", """.card .topic{align-self:stretch!important;text-alig
 rep('🎲<span class="lbl"> 랜덤 문제</span>', '🎲<span class="lbl ld"> 랜덤 문제</span><span class="lbl lm"> 랜덤</span>')
 rep('🧾<span class="lbl"> 학습 기록 내보내기</span>', '🧾<span class="lbl ld"> 학습 기록 내보내기</span><span class="lbl lm"> 기록</span>')
 
+# ── 연습장: 문제 전체 화면 아래 빈 공간에 손가락·펜으로 쓰기 (저장 안 함, 원하면 '저장'으로 그림 파일) ──
+rep('<button id="fullBtn" class="mob" data-en="Full view">전체 보기</button>', '<button id="fullBtn" data-en="Scratch pad">✏️ 연습장</button>')
+rep('<div class="exam open fsexam" id="fullExam"></div>', '''<div class="exam open fsexam" id="fullExam"></div>
+<div id="fsPad"><div class="padbar"><span class="padlbl">연습장</span><button data-c="#1f2937" class="pc on" title="검정 펜" style="--c:#1f2937"></button><button data-c="#dc2626" class="pc" title="빨강 펜" style="--c:#dc2626"></button><button data-c="#2563eb" class="pc" title="파랑 펜" style="--c:#2563eb"></button><button id="padEr" title="지우개">지우개</button><button id="padUndo" title="되돌리기">↶</button><button id="padClr" title="전체 지우기">전체 지우기</button><button id="padSave" title="문제와 함께 그림 파일로 저장">💾 저장</button><button id="padHide" title="연습장 숨기기">▾</button></div><canvas id="padCv"></canvas><div class="padtip" id="padTip">여기에 손가락이나 펜으로 풀어 보세요</div></div>''')
+s = s.replace("</style>", """#fullSheet canvas{filter:none}
+#fullSheet .fsexam{flex:0 1 auto!important;max-height:52%!important;padding-bottom:14px!important}
+#fullSheet.padoff .fsexam{flex:1!important;max-height:none!important}
+#fsPad{flex:1;min-height:150px;position:relative;border-top:2px dashed #d6cfbd;background:#fffdf7 repeating-linear-gradient(#fffdf7 0 31px,#ece6d6 31px 32px)}
+#fullSheet.padoff #fsPad{flex:0 0 auto;min-height:0}
+@media (min-width:901px){#fullSheet .fsexam img.pg{max-width:820px;display:block;margin:0 auto}}
+#fullSheet.padoff #fsPad canvas,#fullSheet.padoff #fsPad .padtip,#fullSheet.padoff #fsPad .padbar>*:not(.padlbl):not(#padHide){display:none}
+#fullSheet.padoff #fsPad .padbar{position:static;justify-content:flex-end;background:rgba(0,0,0,.03)}
+#padCv{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair}
+#fsPad .padbar{position:absolute;top:6px;right:8px;left:8px;z-index:2;display:flex;gap:5px;align-items:center;justify-content:flex-end;flex-wrap:wrap;pointer-events:none}
+#fsPad .padbar>*{pointer-events:auto}
+#fsPad .padlbl{margin-right:auto;font-size:.72rem;color:#9a937f;letter-spacing:.1em;font-weight:700;pointer-events:none}
+#fsPad .padbar button{border:1px solid #d6cfbd;border-radius:8px;background:#fffffff0;color:#4a4639;font-size:.8rem;padding:5px 9px;line-height:1.2}
+#fsPad .padbar button.on{background:#1f2937;color:#fff;border-color:#1f2937}
+#fsPad .padbar .pc{width:28px;height:28px;padding:0;border-radius:50%;background:var(--c);border:3px solid #fff;box-shadow:0 0 0 1px #c9c1ad}
+#fsPad .padbar .pc.on{background:var(--c);border-color:#fff;box-shadow:0 0 0 3px var(--c)}
+#fullSheet.padoff #fsPad .padlbl{display:none!important}
+#fsPad .padtip{position:absolute;inset:0;display:grid;place-items:center;color:#c5bda6;font-size:.95rem;pointer-events:none}
+@media (max-width:900px){#fullSheet .fsexam{max-height:46%!important}#fsPad .padbar button{font-size:.74rem;padding:4px 7px}#fsPad .padbar .pc{width:24px;height:24px}}
+</style>""", 1)
+rep("fsPad();$('#fullSheet').hidden=false;", "fsPad();$('#fullSheet').hidden=false;PAD.open();")
+s = s.replace("\n</script>", r"""
+/* ───────── 연습장 ───────── */
+const PAD=(()=>{const cv=$('#padCv'),ctx=cv.getContext('2d');let strokes=[],cur=null,color='#1f2937',erase=false,key='',penSeen=false;
+  const fit=()=>{const r=cv.getBoundingClientRect();if(!r.width)return;const d=Math.min(2,devicePixelRatio||1);cv.width=Math.round(r.width*d);cv.height=Math.round(r.height*d);ctx.setTransform(d,0,0,d,0,0);draw()};
+  const line=st=>{if(!st.p.length)return;ctx.globalCompositeOperation=st.e?'destination-out':'source-over';ctx.strokeStyle=st.c;ctx.lineWidth=st.e?22:2.4;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(st.p[0][0],st.p[0][1]);if(st.p.length===1)ctx.lineTo(st.p[0][0]+.1,st.p[0][1]);for(let i=1;i<st.p.length;i++)ctx.lineTo(st.p[i][0],st.p[i][1]);ctx.stroke();ctx.globalCompositeOperation='source-over'};
+  const draw=()=>{ctx.clearRect(0,0,cv.width,cv.height);strokes.forEach(line);$('#padTip').hidden=strokes.length>0};
+  const pt=e=>{const r=cv.getBoundingClientRect();return[e.clientX-r.left,e.clientY-r.top]};
+  cv.addEventListener('pointerdown',e=>{if(e.pointerType==='pen')penSeen=true;else if(penSeen&&e.pointerType==='touch')return;cv.setPointerCapture(e.pointerId);cur={c:color,e:erase,p:[pt(e)],id:e.pointerId};strokes.push(cur);draw();e.preventDefault()});
+  cv.addEventListener('pointermove',e=>{if(!cur||e.pointerId!==cur.id)return;const ev=e.getCoalescedEvents?e.getCoalescedEvents():[e];ev.forEach(x=>cur.p.push(pt(x)));draw()});
+  const end=e=>{if(cur&&e.pointerId===cur.id)cur=null};cv.addEventListener('pointerup',end);cv.addEventListener('pointercancel',end);
+  document.querySelectorAll('#fsPad .pc').forEach(b=>b.onclick=()=>{color=b.dataset.c;erase=false;document.querySelectorAll('#fsPad .pc,#padEr').forEach(x=>x.classList.toggle('on',x===b))});
+  $('#padEr').onclick=()=>{erase=!erase;$('#padEr').classList.toggle('on',erase);document.querySelectorAll('#fsPad .pc').forEach(x=>x.classList.toggle('on',!erase&&x.dataset.c===color))};
+  $('#padUndo').onclick=()=>{strokes.pop();draw()};
+  $('#padClr').onclick=()=>{if(!strokes.length)return;if(confirm('연습장을 모두 지울까요?')){strokes=[];draw()}};
+  $('#padHide').onclick=()=>{const off=$('#fullSheet').classList.toggle('padoff');$('#padHide').textContent=off?'✏️ 연습장 펴기':'▾';try{localStorage.setItem('rk:padoff',off?'1':'')}catch(_){}if(!off)requestAnimationFrame(fit)};
+  $('#padSave').onclick=async()=>{if(!strokes.length){toast('연습장에 쓴 내용이 없어요');return}
+    const W=1000,ims=[...$('#fullExam').querySelectorAll('img.pg')].filter(i=>i.complete&&i.naturalWidth);let H=70;const hs=ims.map(i=>Math.round(i.naturalHeight*W/i.naturalWidth));hs.forEach(h=>H+=h+10);
+    const r=cv.getBoundingClientRect(),sc=W/r.width,ph=Math.round(r.height*sc);H+=ph+20;
+    const o=document.createElement('canvas');o.width=W;o.height=H;const g=o.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,W,H);
+    g.fillStyle='#1f2937';g.font='bold 26px sans-serif';const ttl=($('#opTitle')&&$('#opTitle').textContent)||document.title;g.fillText(ttl.slice(0,40),24,44);
+    g.fillStyle='#9a937f';g.font='18px sans-serif';g.fillText('루키들의 수학몰 · '+new Date().toLocaleDateString('ko-KR'),W-300,44);
+    let y=70;ims.forEach((im,i)=>{g.drawImage(im,0,y,W,hs[i]);y+=hs[i]+10});
+    g.strokeStyle='#d6cfbd';g.setLineDash([8,6]);g.beginPath();g.moveTo(0,y+5);g.lineTo(W,y+5);g.stroke();g.setLineDash([]);y+=15;
+    g.drawImage(cv,0,y,W,ph);
+    const blob=await new Promise(res=>o.toBlob(res,'image/png'));const t=new Date(),z=n=>String(n).padStart(2,'0');const name=`rookie_pad_${t.getFullYear()}${z(t.getMonth()+1)}${z(t.getDate())}_${z(t.getHours())}${z(t.getMinutes())}.png`;
+    const f=new File([blob],name,{type:'image/png'});
+    if(matchMedia('(pointer:coarse)').matches&&navigator.canShare&&navigator.canShare({files:[f]})){try{await navigator.share({files:[f],title:name});return}catch(e){if(e.name==='AbortError')return}}
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);toast('저장했어요: '+name)};
+  addEventListener('resize',()=>{if(!$('#fullSheet').hidden)fit()});
+  return{open(){const k=location.hash.split('-')[0];if(k!==key){key=k;strokes=[];penSeen=false}let off='';try{off=localStorage.getItem('rk:padoff')||''}catch(_){}$('#fullSheet').classList.toggle('padoff',!!off);$('#padHide').textContent=off?'✏️ 연습장 펴기':'▾';requestAnimationFrame(fit)}}})();
+</script>""", 1)
+
 open(os.path.join(ROOT, 'template.html'), 'w', encoding='utf-8').write(s)
 print('template.html 생성 (킬러 화면 + 루키 수정)')

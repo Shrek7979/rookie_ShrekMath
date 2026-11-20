@@ -1660,7 +1660,7 @@ function renderJapanCard(p){
       gb.onclick=()=>{if(!si.value){toast(sa.choice?'번호를 먼저 고르세요':'답을 입력하세요');return}const ok=Number(si.value)===sa.v;res.innerHTML='';res.append(el('div','result '+(ok?'ok':'no'),`<div class="big">${ok?'정답입니다':'오답입니다'}</div><div>${ok?'같은 개념을 제대로 잡았어요. 풀이와 내 방법을 비교해 보세요.':'풀이를 보고 어느 단계에서 달라졌는지 찾아보세요.'}</div>`));an.hidden=false;bt.hidden=true;ai.hidden=true};
       si.onkeydown=e=>{if(e.key==='Enter')gb.click()};b.append(ai,res)}
     row.append(bt);b.append(row,an);
-    b.append(el('p','note',ja?'※ 類題はShrekMathの自作問題です(答えは計算・全数確認で検証済み)。':'※ 유사문항은 ShrekMath 자체 제작입니다. (정답은 계산과 전수 확인으로 검증)'));
+    b.append(el('p','note',ja?'※ 類題はShrekMathの自作問題です。':'※ 유사문항은 ShrekMath 자체 제작입니다.'));
     w.append(b);return w}
   if(p.k==='end'){w.append(head('end'));const b=el('div','body');b.append(el('h2',null,auto?'정리':tj('스스로 점검','自己チェック')));
     if(auto){b.append(el('p','lead',rec&&rec.r==='ok'?`정답 <b class="num">${esc(cN(J.answer))}</b>. 맞았어도 ‘어느 조건이 어느 단계에서 쓰였는지’ 한 줄로 말할 수 있어야 진짜 내 것입니다.`:`정답은 <b class="num">${esc(cN(J.answer))}</b>. 내 풀이가 어디서 갈라졌는지 적어 두고, 3일 뒤 다시 풀어 보세요.`))}

@@ -149,6 +149,9 @@ rep("'원문제와 같은 아이디어로 조건을 바꾼 문제입니다. 종�
 rep("const q=el('div');renderEnBlocks(q,ja?s.ja:s.ko);if(ja)q.lang='ja';b.append(q);", "const q=el('div','simq');renderEnBlocks(q,ja?s.ja:s.ko);if(ja)q.lang='ja';b.append(q);")
 rep("const gb=el('button','btn','채점');ai.append(el('span',null,'내 답'),si,gb);if(sa.choice)choicePad(ai,si);", "const gb=el('button','btn','채점');ai.className='ansin simansin';ai.append(el('span','al',sa.choice?'답 고르기':'답 입력'),si,gb);if(sa.choice)choicePad(ai,si);")
 
+rep("'※ 유사문항은 ShrekMath 자체 제작입니다. (정답은 계산과 전수 확인으로 검증)'", "'※ 유사문항은 ShrekMath 자체 제작입니다.'")
+rep("'※ 類題はShrekMathの自作問題です(答えは計算・全数確認で検証済み)。'", "'※ 類題はShrekMathの自作問題です。'")
+
 # ── 로고: 새싹 아이콘 + '루키들의' + 초록 '수학몰' ──
 rep('<a class="logo" id="logoHome" href="#" title="홈으로">루키들의 수학몰<span class="meta">',
     '<a class="logo" id="logoHome" href="#" title="홈으로">'+RKSVG+'루키들의 <em>수학몰</em><span class="meta">')

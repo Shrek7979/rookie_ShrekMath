@@ -68,6 +68,14 @@ img,video,iframe,canvas,.sheet,.art .paper,#fullSheet,#lb,#gBtn{filter:invert(1)
 .stats .tile:nth-child(3){{background:linear-gradient(160deg,{pre('#fef3c7')},{pre('#ffffff')});border-color:{pre('#fcd34d')};--tc:{pre('#f59e0b')}}}
 .ghead::before{{content:"";width:6px;height:1.1em;border-radius:3px;background:linear-gradient(180deg,{pre('#22c55e')},{pre('#3b82f6')})}}
 .card .dbadge{{background:var(--dc)!important;color:#000!important}}
+/* 5지선다 번호 버튼 */
+.chpad{{display:flex;gap:8px;flex-wrap:wrap}}
+.chb{{width:50px;height:50px;border-radius:50%;font-size:1.45rem;line-height:1;cursor:pointer;font-family:inherit;border:2px solid {pre('#d6d0c2')};background:{pre('#ffffff')};color:{pre('#1f2937')};transition:transform .08s}}
+.chb:hover{{border-color:{pre('#16a34a')}}}.chb:active{{transform:scale(.94)}}
+.chb.on{{background:{pre('#16a34a')};border-color:{pre('#16a34a')};color:{pre('#ffffff')}}}
+#fullSheet .chb{{border-color:#d6d0c2;background:#fff;color:#1f2937}}#fullSheet .chb:hover{{border-color:#16a34a}}
+#fullSheet .chb.on{{background:#16a34a;border-color:#16a34a;color:#fff}}
+.ansin .chpad~#answer,.ansin .chpad~#fsAns{{display:none}}
 /* 진행 방식 칩: 킬러와 같은 모양(진한 테두리 알약 + 같은 색 글자) */
 #flowPast{{gap:7px}}
 #flowPast span{{font-weight:700!important;font-size:.9rem;padding:4px 13px;border-radius:999px;border:1.5px solid var(--fc);color:var(--fc);background:var(--fb)}}
@@ -100,6 +108,17 @@ img,video,iframe,canvas,.sheet,.art .paper,#fullSheet,#lb,#gBtn{filter:invert(1)
 s = s.replace('<style>/*__KATEX_CSS__*/</style>', '<style>/*__KATEX_CSS__*/</style>\n' + LIGHT, 1)
 
 RKSVG = '<img class="rkico" src="/icon-192.png" alt="">'
+# ── 5지선다: 번호 버튼을 눌러 고르기 / 단답형: 숫자만 입력 ──
+rep("const ai=el('div','ansin');ai.hidden=true;const inp=el('input');inp.type='number';inp.min=1;inp.max=999;inp.id='answer';inp.placeholder=J.choice?'번호 1~5':'정답';const gb=el('button','btn','채점');ai.append(el('span',null,'내 답'),inp,gb);if(auto)b.append(ai);",
+    "const ai=el('div','ansin');ai.hidden=true;const inp=el('input');inp.type='text';inp.inputMode='numeric';inp.pattern='[0-9]*';inp.maxLength=3;inp.oninput=()=>{inp.value=inp.value.replace(/[^0-9]/g,'')};inp.id='answer';inp.placeholder=J.choice?'번호 1~5':'숫자 입력';const gb=el('button','btn','채점');ai.append(el('span',null,'내 답'),inp,gb);if(J.choice)choicePad(ai,inp);if(auto)b.append(ai);")
+rep("'답은 ①~⑤ 중 번호(1~5)를 입력하세요.':'답은 자연수를 입력하세요.'", "'답은 ①~⑤ 중 하나를 눌러 고른 뒤 채점을 누르세요.':'답은 숫자로 입력하세요.'")
+rep("if(window.innerWidth<=900)$('#fullBtn').click();else if(auto)inp.focus()};", "if(window.innerWidth<=900)$('#fullBtn').click();else if(auto&&!J.choice)inp.focus()};", 2)
+rep("const grade=()=>{if(inp.value==='')return;", "const grade=()=>{if(inp.value===''){toast(J&&J.choice?'번호를 먼저 고르세요':'답을 입력하세요');return}", 4)
+rep("$('#fsAns').value='';$('#fullSheet').hidden=false;if(solving&&autoG&&window.innerWidth>900)setTimeout(()=>$('#fsAns').focus(),50);",
+    "$('#fsAns').value='';fsPad();$('#fullSheet').hidden=false;if(solving&&autoG&&window.innerWidth>900&&!(J&&J.choice))setTimeout(()=>$('#fsAns').focus(),50);")
+rep("$('#fsGrade').onclick=()=>{const v=$('#fsAns').value.trim();if(!v){$('#fsAns').focus();return}",
+    "function choicePad(row,inp){const p=el('div','chpad');for(let n=1;n<=5;n++){const b=el('button','chb','①②③④⑤'[n-1]);b.type='button';b.setAttribute('aria-label',n+'번');b.onclick=()=>{inp.value=String(n);p.querySelectorAll('.chb').forEach(x=>x.classList.toggle('on',x===b))};p.append(b)}row.insertBefore(p,inp);return p}\nfunction fsPad(){const r=$('#fsAnsRow');const o=r.querySelector('.chpad');if(o)o.remove();const i=$('#fsAns');i.type='text';i.inputMode='numeric';i.maxLength=3;i.placeholder='숫자 입력';i.oninput=()=>{i.value=i.value.replace(/[^0-9]/g,'')};if(J&&J.choice&&mode==='japan')choicePad(r,i)}\n$('#fsGrade').onclick=()=>{const v=$('#fsAns').value.trim();if(!v){if(J&&J.choice)toast('번호를 먼저 고르세요');else $('#fsAns').focus();return}")
+
 # ── 로고: 새싹 아이콘 + '루키들의' + 초록 '수학몰' ──
 rep('<a class="logo" id="logoHome" href="#" title="홈으로">루키들의 수학몰<span class="meta">',
     '<a class="logo" id="logoHome" href="#" title="홈으로">'+RKSVG+'루키들의 <em>수학몰</em><span class="meta">')

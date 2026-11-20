@@ -65,12 +65,13 @@ def main():
     subprocess.run([sys.executable, os.path.join(ROOT, 'src', 'patch_template.py')], check=True)
     shutil.rmtree(SITE, ignore_errors=True); os.makedirs(os.path.join(SITE, 'img'))
     sims = {}
+    G3U = {}
     expls = {}   # 원문항 해설: src/expl/*.py 의 E = {id: '해설 문자열'}
     subprocess.run([sys.executable, os.path.join(ROOT, 'src', 'expl', 'check_expl.py')], check=True)
     for f in sorted(glob.glob(os.path.join(ROOT, 'src', 'expl', '*.py'))):
         if f.endswith('check_expl.py'): continue
         spec = importlib.util.spec_from_file_location('e', f); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
-        expls.update(m.E)
+        expls.update(m.E); G3U.update(getattr(m, 'U', {}))
     for f in sorted(glob.glob(os.path.join(ROOT, 'src', 'sim', 'batch*.py'))):
         spec = importlib.util.spec_from_file_location('b', f); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
         sims.update(m.S)
@@ -88,6 +89,14 @@ def main():
         J.append({'kind': 'past', 'id': x['id'], 'year': x['year'], 'month': x['month'], 'num0': x['num'], 'stars': x['stars'],
                   'univ': f"{x['year']}학년도 {mon}", 'track': f"{x['part']} {x['num']}번 · {PU.get(x['id'], '')}", 'unit': PU.get(x['id'], ''), 'part': x['part'], 'subj': x['part'],
                   'text': f"{x['year']}학년도 {mon} {x['part']} {x['num']}번", 'answer': x['answer'], 'choice': x['choice'], 'src': PAST})
+    # 고3 교육청 학력평가 3점 문항 (2021~2025): src/g3 — 단원은 해설 파일의 U
+    G3 = os.path.join(ROOT, 'src', 'g3')
+    for x in json.load(open(os.path.join(G3, 'index.json'), encoding='utf-8')):
+        if x['id'] not in expls: continue   # 해설을 다 쓴 문항만 올린다
+        u = G3U.get(x['id'], '')
+        J.append({'kind': 'past', 'id': x['id'], 'year': x['year'], 'month': x['month'], 'num0': x['num'], 'stars': 1 if x['num'] <= 5 else 2,
+                  'univ': f"{x['year']}년 {x['month']} 고3 학력평가", 'track': f"공통 {x['num']}번 · {u}", 'unit': u, 'part': '공통', 'subj': '공통',
+                  'text': f"{x['year']}년 {x['month']} 고3 학력평가 {x['num']}번", 'answer': x['answer'], 'choice': x['choice'], 'src': G3})
     for i, x in enumerate(J, 1):
         im = Image.open(os.path.join(x.pop('src'), 'img', x['id'] + '.webp')).convert('RGB')
         g = im.convert('L').point(lambda v: 255 if v < 200 else 0); bb = g.getbbox()
@@ -107,14 +116,14 @@ def main():
     tpl = tpl.replace('/*__KATEX_CSS__*/', open(os.path.join(ROOT, 'src', 'katex.inline.css'), encoding='utf-8').read())
     skeleton = ('<!doctype html>\n<html lang="ko">\n<head>\n<meta charset="utf-8">\n'
                 '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n'
-                '<meta name="description" content="루키들의 수학몰 · 고1 학력평가와 평가원 기출의 2~3점 문항을 시험처럼 풀고 바로 채점">\n'
+                '<meta name="description" content="루키들의 수학몰 · 고1·고3 학력평가와 평가원 기출의 2~3점 문항을 시험처럼 풀고 바로 채점">\n'
                 '<meta name="theme-color" content="#fdf9f6">\n'
                 '<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="루키수학몰">\n'
                 '<link rel="manifest" href="manifest.json">\n'
                 '<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">\n'
                 '<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">\n'
                 '<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">\n'
-                '<meta property="og:title" content="루키들의 수학몰"><meta property="og:image" content="https://rookieshrekmath.vercel.app/og-v2.png"><meta property="og:type" content="website"><meta property="og:url" content="https://rookieshrekmath.vercel.app/"><meta property="og:description" content="고1 학력평가와 평가원 기출의 2~3점 문항을 시험처럼 풀고 바로 채점"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">\n'
+                '<meta property="og:title" content="루키들의 수학몰"><meta property="og:image" content="https://rookieshrekmath.vercel.app/og-v2.png"><meta property="og:type" content="website"><meta property="og:url" content="https://rookieshrekmath.vercel.app/"><meta property="og:description" content="고1·고3 학력평가와 평가원 기출의 2~3점 문항을 시험처럼 풀고 바로 채점"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">\n'
                 '<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}</style>\n'
                 '<script>if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}))</script>\n'
                 '</head>\n<body>\n__BODY__\n</body>\n</html>\n')
@@ -128,7 +137,7 @@ def main():
     shutil.copy(os.path.join(ROOT, 'src', 'app', 'og.png'), os.path.join(SITE, 'og.png')); shutil.copy(os.path.join(ROOT, 'src', 'app', 'og.png'), os.path.join(SITE, 'og-v2.png'))
     json.dump({'name': '루키들의 수학몰', 'short_name': '루키수학몰', 'id': '/', 'start_url': '/', 'scope': '/', 'lang': 'ko',
                'display': 'standalone', 'background_color': '#fdf9f6', 'theme_color': '#192c46', 'categories': ['education'],
-               'description': '오늘의 루키가 내일의 킬러가 된다. 고1 학력평가와 평가원 기출의 2~3점 문항을 시험처럼 풀고 바로 채점하는 수학 학습 앱',
+               'description': '오늘의 루키가 내일의 킬러가 된다. 고1·고3 학력평가와 평가원 기출의 2~3점 문항을 시험처럼 풀고 바로 채점하는 수학 학습 앱',
                'icons': [{'src': 'icon-192.png', 'sizes': '192x192', 'type': 'image/png'}, {'src': 'icon-512.png', 'sizes': '512x512', 'type': 'image/png'},
                          {'src': 'icon-maskable.png', 'sizes': '512x512', 'type': 'image/png', 'purpose': 'maskable'}]},
               open(os.path.join(SITE, 'manifest.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)

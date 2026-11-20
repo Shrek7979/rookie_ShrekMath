@@ -2,7 +2,7 @@
 import os, sys, json, glob, importlib.util
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ans = {}
-for f in ('src/g1/index.json', 'src/past/index.json'):
+for f in ('src/g1/index.json', 'src/past/index.json', 'src/g3/index.json'):
     for x in json.load(open(os.path.join(ROOT, f), encoding='utf-8')): ans[x['id']] = x['answer']
 bad = []; n = 0
 for f in sorted(glob.glob(os.path.join(ROOT, 'src', 'expl', '*.py'))):

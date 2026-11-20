@@ -1,0 +1,1604 @@
+[
+{
+"id": "g3-2021-04-3",
+"year": "2021",
+"month": "4월",
+"num": 3,
+"choice": true,
+"answer": 5,
+"k": 1
+},
+{
+"id": "g3-2024-03-3",
+"year": "2024",
+"month": "3월",
+"num": 3,
+"choice": true,
+"answer": 2,
+"k": 5
+},
+{
+"id": "g3-2024-07-3",
+"year": "2024",
+"month": "7월",
+"num": 3,
+"choice": true,
+"answer": 1,
+"k": 6
+},
+{
+"id": "g3-2024-10-3",
+"year": "2024",
+"month": "10월",
+"num": 3,
+"choice": true,
+"answer": 2,
+"k": 7
+},
+{
+"id": "g3-2023-07-3",
+"year": "2023",
+"month": "7월",
+"num": 3,
+"choice": true,
+"answer": 5,
+"k": 8
+},
+{
+"id": "g3-2021-03-3",
+"year": "2021",
+"month": "3월",
+"num": 3,
+"choice": true,
+"answer": 4,
+"k": 9
+},
+{
+"id": "g3-2021-10-3",
+"year": "2021",
+"month": "10월",
+"num": 3,
+"choice": true,
+"answer": 3,
+"k": 12
+},
+{
+"id": "g3-2025-03-3",
+"year": "2025",
+"month": "3월",
+"num": 3,
+"choice": true,
+"answer": 3,
+"k": 17
+},
+{
+"id": "g3-2024-05-3",
+"year": "2024",
+"month": "5월",
+"num": 3,
+"choice": true,
+"answer": 3,
+"k": 18
+},
+{
+"id": "g3-2023-03-3",
+"year": "2023",
+"month": "3월",
+"num": 3,
+"choice": true,
+"answer": 1,
+"k": 19
+},
+{
+"id": "g3-2023-10-3",
+"year": "2023",
+"month": "10월",
+"num": 3,
+"choice": true,
+"answer": 3,
+"k": 20
+},
+{
+"id": "g3-2022-03-3",
+"year": "2022",
+"month": "3월",
+"num": 3,
+"choice": true,
+"answer": 4,
+"k": 21
+},
+{
+"id": "g3-2022-10-3",
+"year": "2022",
+"month": "10월",
+"num": 3,
+"choice": true,
+"answer": 3,
+"k": 24
+},
+{
+"id": "g3-2025-05-3",
+"year": "2025",
+"month": "5월",
+"num": 3,
+"choice": true,
+"answer": 3,
+"k": 25
+},
+{
+"id": "g3-2023-04-3",
+"year": "2023",
+"month": "4월",
+"num": 3,
+"choice": true,
+"answer": 5,
+"k": 28
+},
+{
+"id": "g3-2022-07-3",
+"year": "2022",
+"month": "7월",
+"num": 3,
+"choice": true,
+"answer": 1,
+"k": 29
+},
+{
+"id": "g3-2022-04-3",
+"year": "2022",
+"month": "4월",
+"num": 3,
+"choice": true,
+"answer": 1,
+"k": 27
+},
+{
+"id": "g3-2021-07-3",
+"year": "2021",
+"month": "7월",
+"num": 3,
+"choice": true,
+"answer": 2,
+"k": 30
+},
+{
+"id": "g3-2022-04-4",
+"year": "2022",
+"month": "4월",
+"num": 4,
+"choice": true,
+"answer": 5,
+"k": 31
+},
+{
+"id": "g3-2024-07-4",
+"year": "2024",
+"month": "7월",
+"num": 4,
+"choice": true,
+"answer": 5,
+"k": 34
+},
+{
+"id": "g3-2021-10-4",
+"year": "2021",
+"month": "10월",
+"num": 4,
+"choice": true,
+"answer": 2,
+"k": 32
+},
+{
+"id": "g3-2025-03-4",
+"year": "2025",
+"month": "3월",
+"num": 4,
+"choice": true,
+"answer": 2,
+"k": 33
+},
+{
+"id": "g3-2023-07-4",
+"year": "2023",
+"month": "7월",
+"num": 4,
+"choice": true,
+"answer": 3,
+"k": 35
+},
+{
+"id": "g3-2022-03-4",
+"year": "2022",
+"month": "3월",
+"num": 4,
+"choice": true,
+"answer": 4,
+"k": 38
+},
+{
+"id": "g3-2022-07-4",
+"year": "2022",
+"month": "7월",
+"num": 4,
+"choice": true,
+"answer": 2,
+"k": 39
+},
+{
+"id": "g3-2022-10-4",
+"year": "2022",
+"month": "10월",
+"num": 4,
+"choice": true,
+"answer": 4,
+"k": 40
+},
+{
+"id": "g3-2021-04-4",
+"year": "2021",
+"month": "4월",
+"num": 4,
+"choice": true,
+"answer": 4,
+"k": 41
+},
+{
+"id": "g3-2021-07-4",
+"year": "2021",
+"month": "7월",
+"num": 4,
+"choice": true,
+"answer": 3,
+"k": 45
+},
+{
+"id": "g3-2024-05-4",
+"year": "2024",
+"month": "5월",
+"num": 4,
+"choice": true,
+"answer": 3,
+"k": 48
+},
+{
+"id": "g3-2024-03-4",
+"year": "2024",
+"month": "3월",
+"num": 4,
+"choice": true,
+"answer": 1,
+"k": 49
+},
+{
+"id": "g3-2023-10-4",
+"year": "2023",
+"month": "10월",
+"num": 4,
+"choice": true,
+"answer": 4,
+"k": 53
+},
+{
+"id": "g3-2023-04-4",
+"year": "2023",
+"month": "4월",
+"num": 4,
+"choice": true,
+"answer": 1,
+"k": 56
+},
+{
+"id": "g3-2024-10-4",
+"year": "2024",
+"month": "10월",
+"num": 4,
+"choice": true,
+"answer": 5,
+"k": 57
+},
+{
+"id": "g3-2022-04-5",
+"year": "2022",
+"month": "4월",
+"num": 5,
+"choice": true,
+"answer": 1,
+"k": 60
+},
+{
+"id": "g3-2023-03-4",
+"year": "2023",
+"month": "3월",
+"num": 4,
+"choice": true,
+"answer": 2,
+"k": 58
+},
+{
+"id": "g3-2021-07-5",
+"year": "2021",
+"month": "7월",
+"num": 5,
+"choice": true,
+"answer": 3,
+"k": 61
+},
+{
+"id": "g3-2021-03-4",
+"year": "2021",
+"month": "3월",
+"num": 4,
+"choice": true,
+"answer": 1,
+"k": 59
+},
+{
+"id": "g3-2024-05-5",
+"year": "2024",
+"month": "5월",
+"num": 5,
+"choice": true,
+"answer": 4,
+"k": 63
+},
+{
+"id": "g3-2022-03-5",
+"year": "2022",
+"month": "3월",
+"num": 5,
+"choice": true,
+"answer": 1,
+"k": 66
+},
+{
+"id": "g3-2022-10-5",
+"year": "2022",
+"month": "10월",
+"num": 5,
+"choice": true,
+"answer": 5,
+"k": 67
+},
+{
+"id": "g3-2023-03-5",
+"year": "2023",
+"month": "3월",
+"num": 5,
+"choice": true,
+"answer": 5,
+"k": 64
+},
+{
+"id": "g3-2023-10-5",
+"year": "2023",
+"month": "10월",
+"num": 5,
+"choice": true,
+"answer": 2,
+"k": 65
+},
+{
+"id": "g3-2021-03-5",
+"year": "2021",
+"month": "3월",
+"num": 5,
+"choice": true,
+"answer": 2,
+"k": 72
+},
+{
+"id": "g3-2024-10-5",
+"year": "2024",
+"month": "10월",
+"num": 5,
+"choice": true,
+"answer": 4,
+"k": 73
+},
+{
+"id": "g3-2022-07-5",
+"year": "2022",
+"month": "7월",
+"num": 5,
+"choice": true,
+"answer": 3,
+"k": 74
+},
+{
+"id": "g3-2021-10-5",
+"year": "2021",
+"month": "10월",
+"num": 5,
+"choice": true,
+"answer": 2,
+"k": 75
+},
+{
+"id": "g3-2025-05-5",
+"year": "2025",
+"month": "5월",
+"num": 5,
+"choice": true,
+"answer": 4,
+"k": 79
+},
+{
+"id": "g3-2023-04-5",
+"year": "2023",
+"month": "4월",
+"num": 5,
+"choice": true,
+"answer": 5,
+"k": 76
+},
+{
+"id": "g3-2025-03-5",
+"year": "2025",
+"month": "3월",
+"num": 5,
+"choice": true,
+"answer": 5,
+"k": 77
+},
+{
+"id": "g3-2021-04-5",
+"year": "2021",
+"month": "4월",
+"num": 5,
+"choice": true,
+"answer": 3,
+"k": 82
+},
+{
+"id": "g3-2024-03-5",
+"year": "2024",
+"month": "3월",
+"num": 5,
+"choice": true,
+"answer": 4,
+"k": 84
+},
+{
+"id": "g3-2024-07-5",
+"year": "2024",
+"month": "7월",
+"num": 5,
+"choice": true,
+"answer": 3,
+"k": 87
+},
+{
+"id": "g3-2023-04-6",
+"year": "2023",
+"month": "4월",
+"num": 6,
+"choice": true,
+"answer": 4,
+"k": 89
+},
+{
+"id": "g3-2021-10-6",
+"year": "2021",
+"month": "10월",
+"num": 6,
+"choice": true,
+"answer": 1,
+"k": 90
+},
+{
+"id": "g3-2025-05-6",
+"year": "2025",
+"month": "5월",
+"num": 6,
+"choice": true,
+"answer": 5,
+"k": 97
+},
+{
+"id": "g3-2022-04-6",
+"year": "2022",
+"month": "4월",
+"num": 6,
+"choice": true,
+"answer": 1,
+"k": 98
+},
+{
+"id": "g3-2025-03-6",
+"year": "2025",
+"month": "3월",
+"num": 6,
+"choice": true,
+"answer": 1,
+"k": 96
+},
+{
+"id": "g3-2022-07-6",
+"year": "2022",
+"month": "7월",
+"num": 6,
+"choice": true,
+"answer": 4,
+"k": 99
+},
+{
+"id": "g3-2021-04-6",
+"year": "2021",
+"month": "4월",
+"num": 6,
+"choice": true,
+"answer": 4,
+"k": 100
+},
+{
+"id": "g3-2024-07-6",
+"year": "2024",
+"month": "7월",
+"num": 6,
+"choice": true,
+"answer": 5,
+"k": 104
+},
+{
+"id": "g3-2021-07-6",
+"year": "2021",
+"month": "7월",
+"num": 6,
+"choice": true,
+"answer": 4,
+"k": 101
+},
+{
+"id": "g3-2024-03-6",
+"year": "2024",
+"month": "3월",
+"num": 6,
+"choice": true,
+"answer": 5,
+"k": 102
+},
+{
+"id": "g3-2024-10-6",
+"year": "2024",
+"month": "10월",
+"num": 6,
+"choice": true,
+"answer": 2,
+"k": 105
+},
+{
+"id": "g3-2023-07-6",
+"year": "2023",
+"month": "7월",
+"num": 6,
+"choice": true,
+"answer": 4,
+"k": 106
+},
+{
+"id": "g3-2021-03-6",
+"year": "2021",
+"month": "3월",
+"num": 6,
+"choice": true,
+"answer": 5,
+"k": 109
+},
+{
+"id": "g3-2023-03-6",
+"year": "2023",
+"month": "3월",
+"num": 6,
+"choice": true,
+"answer": 1,
+"k": 107
+},
+{
+"id": "g3-2024-05-6",
+"year": "2024",
+"month": "5월",
+"num": 6,
+"choice": true,
+"answer": 5,
+"k": 110
+},
+{
+"id": "g3-2022-03-6",
+"year": "2022",
+"month": "3월",
+"num": 6,
+"choice": true,
+"answer": 3,
+"k": 111
+},
+{
+"id": "g3-2022-10-6",
+"year": "2022",
+"month": "10월",
+"num": 6,
+"choice": true,
+"answer": 3,
+"k": 116
+},
+{
+"id": "g3-2023-10-6",
+"year": "2023",
+"month": "10월",
+"num": 6,
+"choice": true,
+"answer": 1,
+"k": 117
+},
+{
+"id": "g3-2023-10-7",
+"year": "2023",
+"month": "10월",
+"num": 7,
+"choice": true,
+"answer": 2,
+"k": 123
+},
+{
+"id": "g3-2022-07-7",
+"year": "2022",
+"month": "7월",
+"num": 7,
+"choice": true,
+"answer": 2,
+"k": 128
+},
+{
+"id": "g3-2021-03-7",
+"year": "2021",
+"month": "3월",
+"num": 7,
+"choice": true,
+"answer": 5,
+"k": 129
+},
+{
+"id": "g3-2021-10-7",
+"year": "2021",
+"month": "10월",
+"num": 7,
+"choice": true,
+"answer": 3,
+"k": 133
+},
+{
+"id": "g3-2021-07-7",
+"year": "2021",
+"month": "7월",
+"num": 7,
+"choice": true,
+"answer": 4,
+"k": 130
+},
+{
+"id": "g3-2021-04-7",
+"year": "2021",
+"month": "4월",
+"num": 7,
+"choice": true,
+"answer": 5,
+"k": 134
+},
+{
+"id": "g3-2023-04-7",
+"year": "2023",
+"month": "4월",
+"num": 7,
+"choice": true,
+"answer": 1,
+"k": 135
+},
+{
+"id": "g3-2024-03-7",
+"year": "2024",
+"month": "3월",
+"num": 7,
+"choice": true,
+"answer": 1,
+"k": 138
+},
+{
+"id": "g3-2024-07-7",
+"year": "2024",
+"month": "7월",
+"num": 7,
+"choice": true,
+"answer": 2,
+"k": 139
+},
+{
+"id": "g3-2025-05-7",
+"year": "2025",
+"month": "5월",
+"num": 7,
+"choice": true,
+"answer": 2,
+"k": 140
+},
+{
+"id": "g3-2023-07-7",
+"year": "2023",
+"month": "7월",
+"num": 7,
+"choice": true,
+"answer": 1,
+"k": 141
+},
+{
+"id": "g3-2025-03-7",
+"year": "2025",
+"month": "3월",
+"num": 7,
+"choice": true,
+"answer": 5,
+"k": 144
+},
+{
+"id": "g3-2022-04-7",
+"year": "2022",
+"month": "4월",
+"num": 7,
+"choice": true,
+"answer": 4,
+"k": 142
+},
+{
+"id": "g3-2024-05-7",
+"year": "2024",
+"month": "5월",
+"num": 7,
+"choice": true,
+"answer": 2,
+"k": 145
+},
+{
+"id": "g3-2024-10-7",
+"year": "2024",
+"month": "10월",
+"num": 7,
+"choice": true,
+"answer": 5,
+"k": 143
+},
+{
+"id": "g3-2023-03-7",
+"year": "2023",
+"month": "3월",
+"num": 7,
+"choice": true,
+"answer": 3,
+"k": 146
+},
+{
+"id": "g3-2022-10-7",
+"year": "2022",
+"month": "10월",
+"num": 7,
+"choice": true,
+"answer": 1,
+"k": 148
+},
+{
+"id": "g3-2022-03-7",
+"year": "2022",
+"month": "3월",
+"num": 7,
+"choice": true,
+"answer": 2,
+"k": 147
+},
+{
+"id": "g3-2025-03-8",
+"year": "2025",
+"month": "3월",
+"num": 8,
+"choice": true,
+"answer": 3,
+"k": 149
+},
+{
+"id": "g3-2025-05-8",
+"year": "2025",
+"month": "5월",
+"num": 8,
+"choice": true,
+"answer": 1,
+"k": 151
+},
+{
+"id": "g3-2021-10-8",
+"year": "2021",
+"month": "10월",
+"num": 8,
+"choice": true,
+"answer": 3,
+"k": 154
+},
+{
+"id": "g3-2023-03-8",
+"year": "2023",
+"month": "3월",
+"num": 8,
+"choice": true,
+"answer": 5,
+"k": 152
+},
+{
+"id": "g3-2024-05-8",
+"year": "2024",
+"month": "5월",
+"num": 8,
+"choice": true,
+"answer": 5,
+"k": 155
+},
+{
+"id": "g3-2023-04-8",
+"year": "2023",
+"month": "4월",
+"num": 8,
+"choice": true,
+"answer": 3,
+"k": 157
+},
+{
+"id": "g3-2022-03-8",
+"year": "2022",
+"month": "3월",
+"num": 8,
+"choice": true,
+"answer": 3,
+"k": 158
+},
+{
+"id": "g3-2022-04-8",
+"year": "2022",
+"month": "4월",
+"num": 8,
+"choice": true,
+"answer": 2,
+"k": 160
+},
+{
+"id": "g3-2022-10-8",
+"year": "2022",
+"month": "10월",
+"num": 8,
+"choice": true,
+"answer": 2,
+"k": 161
+},
+{
+"id": "g3-2021-07-8",
+"year": "2021",
+"month": "7월",
+"num": 8,
+"choice": true,
+"answer": 2,
+"k": 162
+},
+{
+"id": "g3-2022-07-8",
+"year": "2022",
+"month": "7월",
+"num": 8,
+"choice": true,
+"answer": 4,
+"k": 166
+},
+{
+"id": "g3-2021-04-8",
+"year": "2021",
+"month": "4월",
+"num": 8,
+"choice": true,
+"answer": 1,
+"k": 164
+},
+{
+"id": "g3-2024-10-8",
+"year": "2024",
+"month": "10월",
+"num": 8,
+"choice": true,
+"answer": 2,
+"k": 168
+},
+{
+"id": "g3-2024-07-8",
+"year": "2024",
+"month": "7월",
+"num": 8,
+"choice": true,
+"answer": 1,
+"k": 169
+},
+{
+"id": "g3-2024-03-8",
+"year": "2024",
+"month": "3월",
+"num": 8,
+"choice": true,
+"answer": 2,
+"k": 172
+},
+{
+"id": "g3-2023-10-8",
+"year": "2023",
+"month": "10월",
+"num": 8,
+"choice": true,
+"answer": 5,
+"k": 170
+},
+{
+"id": "g3-2021-03-8",
+"year": "2021",
+"month": "3월",
+"num": 8,
+"choice": true,
+"answer": 4,
+"k": 171
+},
+{
+"id": "g3-2023-07-8",
+"year": "2023",
+"month": "7월",
+"num": 8,
+"choice": true,
+"answer": 2,
+"k": 177
+},
+{
+"id": "g3-2024-03-16",
+"year": "2024",
+"month": "3월",
+"num": 16,
+"choice": false,
+"answer": 3,
+"k": 186
+},
+{
+"id": "g3-2025-03-16",
+"year": "2025",
+"month": "3월",
+"num": 16,
+"choice": false,
+"answer": 6,
+"k": 183
+},
+{
+"id": "g3-2024-05-16",
+"year": "2024",
+"month": "5월",
+"num": 16,
+"choice": false,
+"answer": 5,
+"k": 187
+},
+{
+"id": "g3-2025-05-16",
+"year": "2025",
+"month": "5월",
+"num": 16,
+"choice": false,
+"answer": 10,
+"k": 184
+},
+{
+"id": "g3-2024-07-16",
+"year": "2024",
+"month": "7월",
+"num": 16,
+"choice": false,
+"answer": 11,
+"k": 189
+},
+{
+"id": "g3-2023-03-16",
+"year": "2023",
+"month": "3월",
+"num": 16,
+"choice": false,
+"answer": 4,
+"k": 193
+},
+{
+"id": "g3-2023-07-16",
+"year": "2023",
+"month": "7월",
+"num": 16,
+"choice": false,
+"answer": 9,
+"k": 194
+},
+{
+"id": "g3-2023-10-16",
+"year": "2023",
+"month": "10월",
+"num": 16,
+"choice": false,
+"answer": 10,
+"k": 196
+},
+{
+"id": "g3-2024-10-16",
+"year": "2024",
+"month": "10월",
+"num": 16,
+"choice": false,
+"answer": 6,
+"k": 192
+},
+{
+"id": "g3-2022-10-16",
+"year": "2022",
+"month": "10월",
+"num": 16,
+"choice": false,
+"answer": 5,
+"k": 202
+},
+{
+"id": "g3-2022-03-16",
+"year": "2022",
+"month": "3월",
+"num": 16,
+"choice": false,
+"answer": 5,
+"k": 198
+},
+{
+"id": "g3-2022-07-16",
+"year": "2022",
+"month": "7월",
+"num": 16,
+"choice": false,
+"answer": 2,
+"k": 203
+},
+{
+"id": "g3-2022-04-16",
+"year": "2022",
+"month": "4월",
+"num": 16,
+"choice": false,
+"answer": 8,
+"k": 199
+},
+{
+"id": "g3-2023-04-16",
+"year": "2023",
+"month": "4월",
+"num": 16,
+"choice": false,
+"answer": 5,
+"k": 204
+},
+{
+"id": "g3-2021-07-16",
+"year": "2021",
+"month": "7월",
+"num": 16,
+"choice": false,
+"answer": 5,
+"k": 205
+},
+{
+"id": "g3-2021-10-16",
+"year": "2021",
+"month": "10월",
+"num": 16,
+"choice": false,
+"answer": 10,
+"k": 208
+},
+{
+"id": "g3-2021-03-16",
+"year": "2021",
+"month": "3월",
+"num": 16,
+"choice": false,
+"answer": 10,
+"k": 206
+},
+{
+"id": "g3-2023-04-17",
+"year": "2023",
+"month": "4월",
+"num": 17,
+"choice": false,
+"answer": 3,
+"k": 209
+},
+{
+"id": "g3-2021-04-16",
+"year": "2021",
+"month": "4월",
+"num": 16,
+"choice": false,
+"answer": 2,
+"k": 207
+},
+{
+"id": "g3-2021-03-17",
+"year": "2021",
+"month": "3월",
+"num": 17,
+"choice": false,
+"answer": 6,
+"k": 210
+},
+{
+"id": "g3-2021-04-17",
+"year": "2021",
+"month": "4월",
+"num": 17,
+"choice": false,
+"answer": 40,
+"k": 211
+},
+{
+"id": "g3-2025-03-17",
+"year": "2025",
+"month": "3월",
+"num": 17,
+"choice": false,
+"answer": 3,
+"k": 214
+},
+{
+"id": "g3-2024-05-17",
+"year": "2024",
+"month": "5월",
+"num": 17,
+"choice": false,
+"answer": 7,
+"k": 218
+},
+{
+"id": "g3-2021-07-17",
+"year": "2021",
+"month": "7월",
+"num": 17,
+"choice": false,
+"answer": 17,
+"k": 219
+},
+{
+"id": "g3-2022-10-17",
+"year": "2022",
+"month": "10월",
+"num": 17,
+"choice": false,
+"answer": 15,
+"k": 222
+},
+{
+"id": "g3-2024-07-17",
+"year": "2024",
+"month": "7월",
+"num": 17,
+"choice": false,
+"answer": 50,
+"k": 223
+},
+{
+"id": "g3-2024-10-17",
+"year": "2024",
+"month": "10월",
+"num": 17,
+"choice": false,
+"answer": 58,
+"k": 224
+},
+{
+"id": "g3-2021-10-17",
+"year": "2021",
+"month": "10월",
+"num": 17,
+"choice": false,
+"answer": 20,
+"k": 221
+},
+{
+"id": "g3-2023-03-17",
+"year": "2023",
+"month": "3월",
+"num": 17,
+"choice": false,
+"answer": 11,
+"k": 225
+},
+{
+"id": "g3-2025-05-17",
+"year": "2025",
+"month": "5월",
+"num": 17,
+"choice": false,
+"answer": 2,
+"k": 228
+},
+{
+"id": "g3-2023-10-17",
+"year": "2023",
+"month": "10월",
+"num": 17,
+"choice": false,
+"answer": 22,
+"k": 226
+},
+{
+"id": "g3-2024-03-17",
+"year": "2024",
+"month": "3월",
+"num": 17,
+"choice": false,
+"answer": 16,
+"k": 230
+},
+{
+"id": "g3-2022-04-17",
+"year": "2022",
+"month": "4월",
+"num": 17,
+"choice": false,
+"answer": 32,
+"k": 236
+},
+{
+"id": "g3-2023-07-17",
+"year": "2023",
+"month": "7월",
+"num": 17,
+"choice": false,
+"answer": 20,
+"k": 234
+},
+{
+"id": "g3-2022-07-17",
+"year": "2022",
+"month": "7월",
+"num": 17,
+"choice": false,
+"answer": 13,
+"k": 238
+},
+{
+"id": "g3-2022-03-17",
+"year": "2022",
+"month": "3월",
+"num": 17,
+"choice": false,
+"answer": 24,
+"k": 235
+},
+{
+"id": "g3-2021-10-18",
+"year": "2021",
+"month": "10월",
+"num": 18,
+"choice": false,
+"answer": 18,
+"k": 239
+},
+{
+"id": "g3-2023-04-18",
+"year": "2023",
+"month": "4월",
+"num": 18,
+"choice": false,
+"answer": 8,
+"k": 243
+},
+{
+"id": "g3-2022-03-18",
+"year": "2022",
+"month": "3월",
+"num": 18,
+"choice": false,
+"answer": 105,
+"k": 248
+},
+{
+"id": "g3-2025-03-18",
+"year": "2025",
+"month": "3월",
+"num": 18,
+"choice": false,
+"answer": 12,
+"k": 249
+},
+{
+"id": "g3-2025-05-18",
+"year": "2025",
+"month": "5월",
+"num": 18,
+"choice": false,
+"answer": 23,
+"k": 250
+},
+{
+"id": "g3-2024-03-18",
+"year": "2024",
+"month": "3월",
+"num": 18,
+"choice": false,
+"answer": 113,
+"k": 253
+},
+{
+"id": "g3-2022-10-18",
+"year": "2022",
+"month": "10월",
+"num": 18,
+"choice": false,
+"answer": 109,
+"k": 252
+},
+{
+"id": "g3-2024-07-18",
+"year": "2024",
+"month": "7월",
+"num": 18,
+"choice": false,
+"answer": 37,
+"k": 255
+},
+{
+"id": "g3-2023-07-18",
+"year": "2023",
+"month": "7월",
+"num": 18,
+"choice": false,
+"answer": 65,
+"k": 259
+},
+{
+"id": "g3-2023-10-18",
+"year": "2023",
+"month": "10월",
+"num": 18,
+"choice": false,
+"answer": 110,
+"k": 260
+},
+{
+"id": "g3-2024-10-18",
+"year": "2024",
+"month": "10월",
+"num": 18,
+"choice": false,
+"answer": 12,
+"k": 257
+},
+{
+"id": "g3-2023-03-18",
+"year": "2023",
+"month": "3월",
+"num": 18,
+"choice": false,
+"answer": 427,
+"k": 258
+},
+{
+"id": "g3-2024-05-18",
+"year": "2024",
+"month": "5월",
+"num": 18,
+"choice": false,
+"answer": 16,
+"k": 265
+},
+{
+"id": "g3-2021-04-18",
+"year": "2021",
+"month": "4월",
+"num": 18,
+"choice": false,
+"answer": 8,
+"k": 263
+},
+{
+"id": "g3-2022-04-18",
+"year": "2022",
+"month": "4월",
+"num": 18,
+"choice": false,
+"answer": 9,
+"k": 266
+},
+{
+"id": "g3-2021-07-18",
+"year": "2021",
+"month": "7월",
+"num": 18,
+"choice": false,
+"answer": 13,
+"k": 264
+},
+{
+"id": "g3-2022-07-18",
+"year": "2022",
+"month": "7월",
+"num": 18,
+"choice": false,
+"answer": 16,
+"k": 267
+},
+{
+"id": "g3-2021-03-18",
+"year": "2021",
+"month": "3월",
+"num": 18,
+"choice": false,
+"answer": 9,
+"k": 268
+},
+{
+"id": "g3-2022-07-19",
+"year": "2022",
+"month": "7월",
+"num": 19,
+"choice": false,
+"answer": 4,
+"k": 271
+},
+{
+"id": "g3-2024-07-19",
+"year": "2024",
+"month": "7월",
+"num": 19,
+"choice": false,
+"answer": 2,
+"k": 272
+},
+{
+"id": "g3-2024-05-19",
+"year": "2024",
+"month": "5월",
+"num": 19,
+"choice": false,
+"answer": 11,
+"k": 270
+},
+{
+"id": "g3-2024-10-19",
+"year": "2024",
+"month": "10월",
+"num": 19,
+"choice": false,
+"answer": 84,
+"k": 273
+},
+{
+"id": "g3-2021-03-19",
+"year": "2021",
+"month": "3월",
+"num": 19,
+"choice": false,
+"answer": 162,
+"k": 275
+},
+{
+"id": "g3-2021-04-19",
+"year": "2021",
+"month": "4월",
+"num": 19,
+"choice": false,
+"answer": 16,
+"k": 276
+},
+{
+"id": "g3-2021-10-19",
+"year": "2021",
+"month": "10월",
+"num": 19,
+"choice": false,
+"answer": 7,
+"k": 277
+},
+{
+"id": "g3-2024-03-19",
+"year": "2024",
+"month": "3월",
+"num": 19,
+"choice": false,
+"answer": 80,
+"k": 280
+},
+{
+"id": "g3-2025-05-19",
+"year": "2025",
+"month": "5월",
+"num": 19,
+"choice": false,
+"answer": 16,
+"k": 278
+},
+{
+"id": "g3-2022-03-19",
+"year": "2022",
+"month": "3월",
+"num": 19,
+"choice": false,
+"answer": 32,
+"k": 285
+},
+{
+"id": "g3-2023-04-19",
+"year": "2023",
+"month": "4월",
+"num": 19,
+"choice": false,
+"answer": 6,
+"k": 283
+},
+{
+"id": "g3-2022-04-19",
+"year": "2022",
+"month": "4월",
+"num": 19,
+"choice": false,
+"answer": 11,
+"k": 286
+},
+{
+"id": "g3-2023-07-19",
+"year": "2023",
+"month": "7월",
+"num": 19,
+"choice": false,
+"answer": 22,
+"k": 284
+},
+{
+"id": "g3-2021-07-19",
+"year": "2021",
+"month": "7월",
+"num": 19,
+"choice": false,
+"answer": 24,
+"k": 289
+},
+{
+"id": "g3-2025-03-19",
+"year": "2025",
+"month": "3월",
+"num": 19,
+"choice": false,
+"answer": 32,
+"k": 292
+},
+{
+"id": "g3-2023-03-19",
+"year": "2023",
+"month": "3월",
+"num": 19,
+"choice": false,
+"answer": 18,
+"k": 294
+},
+{
+"id": "g3-2022-10-19",
+"year": "2022",
+"month": "10월",
+"num": 19,
+"choice": false,
+"answer": 80,
+"k": 297
+},
+{
+"id": "g3-2023-10-19",
+"year": "2023",
+"month": "10월",
+"num": 19,
+"choice": false,
+"answer": 102,
+"k": 296
+}
+]

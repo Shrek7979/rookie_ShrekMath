@@ -101,6 +101,7 @@ def main():
                 '<meta name="theme-color" content="#141414">\n'
                 '<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="루키수학몰">\n'
                 '<link rel="manifest" href="manifest.json">\n'
+                '<link rel="icon" type="image/svg+xml" href="icon.svg">\n'
                 '<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">\n'
                 '<link rel="apple-touch-icon" sizes="180x180" href="icon-192.png">\n'
                 '<meta property="og:title" content="루키들의 수학몰"><meta property="og:image" content="https://rookieshrekmath.vercel.app/icon-512.png">\n'
@@ -109,6 +110,7 @@ def main():
                 '</head>\n<body>\n__BODY__\n</body>\n</html>\n')
     open(os.path.join(SITE, 'index.html'), 'w', encoding='utf-8').write(skeleton.replace('__BODY__', tpl.replace('/*__INLINE_DATA__*/', '')))
 
+    shutil.copy(os.path.join(ROOT, 'src', 'app', 'icon.svg'), os.path.join(SITE, 'icon.svg'))
     icon(192).save(os.path.join(SITE, 'icon-192.png')); icon(512).save(os.path.join(SITE, 'icon-512.png'))
     icon(512, pad=.12).save(os.path.join(SITE, 'icon-maskable.png')); icon(32).save(os.path.join(SITE, 'favicon-32.png'))
     json.dump({'name': '루키들의 수학몰', 'short_name': '루키수학몰', 'id': '/', 'start_url': '/', 'scope': '/', 'lang': 'ko',

@@ -71,7 +71,7 @@ img,video,iframe,canvas,.sheet,.art .paper,#fullSheet,#lb,#gBtn{filter:invert(1)
 /* 로고 */
 .logo{{color:{pre('#1f2937')}!important;text-shadow:none!important;font-weight:800!important;font-size:1.32rem!important;letter-spacing:-.03em!important;position:relative;padding-left:40px}}
 .logo em{{font-style:normal;color:{pre('#16a34a')}}}
-.logo .rkico{{position:absolute;left:0;top:0;width:31px;height:31px;border-radius:8px}}
+.logo .rkico{{position:absolute;left:0;top:0;width:31px;height:31px;filter:invert(1) hue-rotate(180deg)}}
 .logo small{{font-weight:500!important;font-size:.52rem!important;letter-spacing:.22em!important;margin-top:4px!important}}
 .logo .meta{{background:transparent!important;border:1px solid {pre('#e5e7eb')}!important;padding:3px 9px!important;font-size:.72rem}}
 .logo .meta b{{font-weight:600!important}}
@@ -91,11 +91,12 @@ img,video,iframe,canvas,.sheet,.art .paper,#fullSheet,#lb,#gBtn{filter:invert(1)
 """
 s = s.replace('<style>/*__KATEX_CSS__*/</style>', '<style>/*__KATEX_CSS__*/</style>\n' + LIGHT, 1)
 
+RKSVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="rkico" aria-hidden="true"><defs><linearGradient id="rkbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#34d17a"/><stop offset="1" stop-color="#128a48"/></linearGradient><linearGradient id="rklf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e3f9ec"/></linearGradient></defs><rect width="100" height="100" rx="23" fill="url(#rkbg)"/><path d="M50 80 C50 68 50 58 50 48" stroke="#ffffff" stroke-width="5" stroke-linecap="round" fill="none"/><path d="M50 50 C49 37 38 28 21 29 C21 45 33 53 50 50 Z" fill="url(#rklf)"/><path d="M50 46 C51 31 62 21 80 21 C80 39 68 48 50 46 Z" fill="url(#rklf)"/><path d="M50 50 C44 45 36 39 28 34" stroke="#2fbf6f" stroke-width="1.6" stroke-linecap="round" fill="none" opacity=".55"/><path d="M50 46 C56 39 65 31 73 27" stroke="#2fbf6f" stroke-width="1.6" stroke-linecap="round" fill="none" opacity=".55"/><path d="M34 80 Q50 75 66 80" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" opacity=".55"/></svg>'
 # ── 로고: 새싹 아이콘 + '루키들의' + 초록 '수학몰' ──
 rep('<a class="logo" id="logoHome" href="#" title="홈으로">루키들의 수학몰<span class="meta">',
-    '<a class="logo" id="logoHome" href="#" title="홈으로"><img class="rkico" src="/icon-192.png" alt="">루키들의 <em>수학몰</em><span class="meta">')
+    '<a class="logo" id="logoHome" href="#" title="홈으로">'+RKSVG+'루키들의 <em>수학몰</em><span class="meta">')
 rep('<a class="logo" id="logoOp" href="#" title="홈으로">루키들의 수학몰<span class="tot"',
-    '<a class="logo" id="logoOp" href="#" title="홈으로"><img class="rkico" src="/icon-192.png" alt="">루키들의 <em>수학몰</em><span class="tot"')
+    '<a class="logo" id="logoOp" href="#" title="홈으로">'+RKSVG+'루키들의 <em>수학몰</em><span class="tot"')
 
 # ── 관(탭): 고1 기초관 · 기출관 (킬러·논술·일본관은 숨김) ──
 rep('<button data-tab="killer" class="on">킬러관<span class="n" id="nKiller">0</span></button>',

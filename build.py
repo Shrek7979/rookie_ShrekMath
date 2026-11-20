@@ -66,7 +66,9 @@ def main():
     shutil.rmtree(SITE, ignore_errors=True); os.makedirs(os.path.join(SITE, 'img'))
     sims = {}
     expls = {}   # 원문항 해설: src/expl/*.py 의 E = {id: '해설 문자열'}
+    subprocess.run([sys.executable, os.path.join(ROOT, 'src', 'expl', 'check_expl.py')], check=True)
     for f in sorted(glob.glob(os.path.join(ROOT, 'src', 'expl', '*.py'))):
+        if f.endswith('check_expl.py'): continue
         spec = importlib.util.spec_from_file_location('e', f); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
         expls.update(m.E)
     for f in sorted(glob.glob(os.path.join(ROOT, 'src', 'sim', 'batch*.py'))):
@@ -93,7 +95,10 @@ def main():
         im.save(os.path.join(SITE, 'img', x['id'] + '.webp'), 'WEBP', quality=86, method=6)
         x['num'] = i; x['qimg'] = ['img/' + x['id'] + '.webp']; x['simg'] = []; x['art'] = ''
         if x['id'] in sims: x['sim'] = sim_of(sims[x['id']])
-        if x['id'] in expls: x['expl'] = blocks(expls[x['id']])
+        if x['id'] in expls:
+            eb = blocks(expls[x['id']].replace('<b>', '**').replace('</b>', '**'))
+            if eb and eb[0].get('p', '').startswith('**핵심**'): eb[0] = {'box': [eb[0]['p']]}   # 핵심 개념은 상자로
+            x['expl'] = eb
     J = [{k: x[k] for k in ['num'] + [k for k in x if k != 'num']} for x in J]
     dump = lambda name, obj: json.dump(obj, open(os.path.join(SITE, name), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
     dump('jlist.json', J); dump('list.json', []); dump('elist.json', []); dump('cats.json', {})

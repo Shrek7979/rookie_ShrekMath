@@ -70,7 +70,7 @@ img,video,iframe,canvas,.sheet,.art .paper,#fullSheet,#lb,#gBtn{filter:invert(1)
 .card .dbadge{{background:var(--dc)!important;color:#000!important}}
 /* 유사문항 */
 .simq{{background:{pre('#ffffff')};border:1px solid {pre('#e7e1d3')};border-radius:12px;padding:18px 20px 12px;margin:14px 0 6px;box-shadow:0 1px 3px rgba(0,0,0,.12)}}
-.simq .entext{{font-size:1.04rem;line-height:1.95;font-weight:400}}
+.simq .entext{{font-size:1.04rem;line-height:1.95;font-weight:400;color:{pre('#2f3640')};-webkit-font-smoothing:antialiased}}
 .simq .entext p{{font-weight:400!important;margin:0 0 .9em}}
 .simq .entext b{{font-weight:600}}
 .simq .entext .choices{{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:.55em 1.2em;margin:1em 0 .4em;padding-top:.8em;border-top:1px dashed {pre('#e7e1d3')}}}

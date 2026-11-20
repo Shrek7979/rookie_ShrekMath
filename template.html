@@ -1,7 +1,17 @@
 <title>루키들의 수학몰</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap">
-<style>/*__KATEX_CSS__*/</style>
+<style>/*__KATEX_CSS__*/.card .topic{align-self:stretch!important;text-align:left}
+@media (max-width:900px){
+  .topbar .cta .lbl{display:inline!important;font-size:.72rem}
+  .topbar .cta{padding:6px 9px!important}
+  .veil{padding:10px 14px;font-size:.84rem;line-height:1.5}
+  .veil b{font-size:1.1rem;margin-bottom:3px}
+}
+@media (max-width:380px){.topbar .cta .lbl{display:none!important}}
+.topbar .cta .lm{display:none!important}
+@media (max-width:900px){.topbar .cta .ld{display:none!important}.topbar .cta .lm{display:inline!important}}
+</style>
 <style id="rookieLight">
 html{filter:invert(1) hue-rotate(180deg);background:#090400}
 img,video,iframe,canvas,.sheet,.art .paper,#fullSheet,#lb,#gBtn{filter:invert(1) hue-rotate(180deg)}
@@ -664,7 +674,7 @@ details.orig summary{cursor:pointer;color:#8a8577;font-size:.9rem;margin-bottom:
       <button data-tab="past">기출관<span class="n" id="nPast">0</span></button>
       <span hidden><span id="nKiller"></span><span id="nEssay"></span><span id="nJapan"></span></span>
     </nav>
-    <button class="cta" id="proBtn" hidden>🔓<span class="lbl"> 전체 열기</span></button><button class="cta ghostc" id="langBtn" title="View in English (Past Exams)" hidden>EN</button><button class="cta ghostc" id="jpBtn" title="日本語で見る(日本館)" hidden>JP</button><button class="cta ghostc" id="randBtn" title="아직 안 푼 문제 중 하나">🎲<span class="lbl"> 랜덤 문제</span></button><button class="cta" id="exportBtn">🧾<span class="lbl"> 학습 기록 내보내기</span></button>
+    <button class="cta" id="proBtn" hidden>🔓<span class="lbl"> 전체 열기</span></button><button class="cta ghostc" id="langBtn" title="View in English (Past Exams)" hidden>EN</button><button class="cta ghostc" id="jpBtn" title="日本語で見る(日本館)" hidden>JP</button><button class="cta ghostc" id="randBtn" title="아직 안 푼 문제 중 하나">🎲<span class="lbl ld"> 랜덤 문제</span><span class="lbl lm"> 랜덤</span></button><button class="cta" id="exportBtn">🧾<span class="lbl ld"> 학습 기록 내보내기</span><span class="lbl lm"> 기록</span></button>
   </div>
   <div class="hero">
     <div class="mosaic" id="mosaic"></div>
@@ -865,8 +875,8 @@ details.orig summary{cursor:pointer;color:#8a8577;font-size:.9rem;margin-bottom:
 <div id="fullSheet" hidden><div class="fsbar"><b data-en="Problem">문제</b><span class="tmr" id="fsTimer" hidden>00:00</span><button id="fsPause" hidden>⏸<span class="lbl" data-en=" Pause"> 일시정지</span></button><span class="hint" id="fsHint" hidden data-en="Tap image to zoom">그림을 누르면 확대</span><button id="fsDown2" data-en="A−">가−</button><button id="fsUp2" data-en="A+">가+</button><button id="fsAnswer" hidden data-en="✎ Answer">✎ 답</button><button id="fsClose" data-en="✕ Close">✕ 닫기</button></div><div class="exam open fsexam" id="fullExam"></div>
 <div class="fsfoot" id="fsFoot" hidden><div class="ansin" id="fsAnsRow"><span data-en="My answer">내 답</span><input id="fsAns" type="number" inputmode="numeric" min="1" max="999" placeholder="정답"><button class="btn" id="fsGrade" data-en="Check">채점</button></div><button class="btn" id="fsDone" hidden>풀이 완료 → 해설 보기</button></div></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js"></script>
+<script src="/lib/katex.min.js"></script>
+<script src="/lib/auto-render.min.js"></script>
 <script>/*__INLINE_DATA__*/</script>
 <script>
 /* ───────── 설정 ───────── */
@@ -1388,7 +1398,6 @@ function go(i,silent){
   if(!silent&&window.innerWidth<=900){const sh=$('.sheet').getBoundingClientRect().height;const ob=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--opbar'))||52;const kc=$('#kcard');kc.style.scrollMarginTop=(sh+ob+10)+'px';kc.scrollIntoView({behavior:'smooth',block:'start'})}
   $('#exam').classList.toggle('shownum',p.k==='cond');$('#numBtn').classList.toggle('on',p.k==='cond');
   $('#op').classList.toggle('solving',p.k==='solve');
-  if(window.innerWidth<=900&&unlocked&&!userUnfold){$('#exam').classList.add('fold');$('#foldBtn').textContent=LP()?'Unfold':'펼치기'}
 }
 let userUnfold=false;
 $('#prev').onclick=()=>go(cur-1);$('#next').onclick=()=>cur===pages.length-1?(location.hash=''):go(cur+1);
@@ -1633,7 +1642,7 @@ function renderJapanCard(p){
   if(p.k==='expl'){w.append(head('expl'));const b=el('div','body expl');b.append(el('p','lead',`정답 <b class="num">${esc(cN(J.answer))}</b>`));const q=el('div');renderEnBlocks(q,J.expl);b.append(q);b.append(el('p','note','※ 해설은 ShrekMath가 작성했습니다. 다른 방법으로 풀었다면 두 방법을 비교해 보세요.'));w.append(b);return w}
   if(p.k==='sim'){w.append(head('sim'));const b=el('div','body');const s=J.sim;let ja=JA();
     const ja2=!s.ko;if(ja2)ja=true;else ja=false;if(!ja2&&s.ja)b.append(langSeg(jaRefresh));
-    b.append(el('p','lead',ja?'原題と同じ考え方で、条件を変えた問題です。紙に解いてから答えを確かめましょう。':'원문제와 같은 아이디어로 조건을 바꾼 문제입니다. 풀고 나서 답을 골라(입력해) 채점하면 풀이가 열립니다.'));
+    b.append(el('p','lead',ja?'原題と同じ考え方で、条件を変えた問題です。紙に解いてから答えを確かめましょう。':'원문제와 같은 아이디어로 조건을 바꾼 문제입니다. 종이에 풀고 답을 골라 채점하면 풀이가 열립니다.'));
     const q=el('div','simq');renderEnBlocks(q,ja?s.ja:s.ko);if(ja)q.lang='ja';b.append(q);
     const bt=el('button','btn',ja?'答えと解説を見る':'정답·풀이 보기');const an=el('div','simans');an.hidden=true;if(ja)an.lang='ja';
     an.append(el('p','lead',`<b>${ja?'答':'정답'}</b>　${md(ja?s.ans.ja:s.ans.ko)}`));renderEnBlocks(an,ja?s.sol.ja:s.sol.ko);

@@ -143,7 +143,7 @@ rep("const re=el('button','btn ghost',tj('다시 풀기','もう一度解く'));
     "const su=isP&&JLIST.find(x=>x.num!==J.num&&x.kind==='past'&&isG1(x)===isG1(J)&&(x.unit||x.subj)===(J.unit||J.subj)&&!S.jrec[x.num]);if(su){const sb=el('button','btn ghost','같은 단원 더 풀기 · '+esc(J.unit||J.subj));sb.onclick=()=>location.hash='j'+su.num;row.append(sb)}\n    const re=el('button','btn ghost',tj('다시 풀기','もう一度解く'));re.onclick=()=>{delete S.jrec[J.num];save();unlocked=false;openJapan(J.num,0)};row.append(re);\n    const hm=")
 rep("bt.onclick=()=>{an.hidden=false;bt.hidden=true};const row=el('div','btnrow');row.append(bt);b.append(row,an);",
     "bt.onclick=()=>{an.hidden=false;bt.hidden=true};const row=el('div','btnrow');const sa=simAns(s);\n    if(!ja&&sa.v!=null){bt.className='btn ghost';bt.textContent='풀지 않고 정답·풀이 보기';const ai=el('div','ansin');const si=el('input');si.type='text';si.inputMode='numeric';si.maxLength=3;si.placeholder='숫자 입력';si.oninput=()=>{si.value=si.value.replace(/[^0-9]/g,'')};const gb=el('button','btn','채점');ai.append(el('span',null,'내 답'),si,gb);if(sa.choice)choicePad(ai,si);const res=el('div');\n      gb.onclick=()=>{if(!si.value){toast(sa.choice?'번호를 먼저 고르세요':'답을 입력하세요');return}const ok=Number(si.value)===sa.v;res.innerHTML='';res.append(el('div','result '+(ok?'ok':'no'),`<div class=\"big\">${ok?'정답입니다':'오답입니다'}</div><div>${ok?'같은 개념을 제대로 잡았어요. 풀이와 내 방법을 비교해 보세요.':'풀이를 보고 어느 단계에서 달라졌는지 찾아보세요.'}</div>`));an.hidden=false;bt.hidden=true;ai.hidden=true};\n      si.onkeydown=e=>{if(e.key==='Enter')gb.click()};b.append(ai,res)}\n    row.append(bt);b.append(row,an);")
-rep("'원문제와 같은 아이디어로 조건을 바꾼 문제입니다. 종이에 풀고 나서 답을 확인하세요.'", "'원문제와 같은 아이디어로 조건을 바꾼 문제입니다. 풀고 나서 답을 골라(입력해) 채점하면 풀이가 열립니다.'")
+rep("'원문제와 같은 아이디어로 조건을 바꾼 문제입니다. 종이에 풀고 나서 답을 확인하세요.'", "'원문제와 같은 아이디어로 조건을 바꾼 문제입니다. 종이에 풀고 답을 골라 채점하면 풀이가 열립니다.'")
 
 # ── 유사문항 가독성: 문제는 종이 카드에, 보기는 한 줄씩, 답 고르기 칸은 따로 ──
 rep("const q=el('div');renderEnBlocks(q,ja?s.ja:s.ko);if(ja)q.lang='ja';b.append(q);", "const q=el('div','simq');renderEnBlocks(q,ja?s.ja:s.ko);if(ja)q.lang='ja';b.append(q);")
@@ -277,6 +277,26 @@ rep("const ORDER=['solve','intro',", "const ORDER=['solve','intro','expl',")
 rep("--k-answer:#a6e85c;", "--k-answer:#a6e85c; --k-expl:#f5a524;")
 rep("    if(J.sim)pages.push({k:'sim'});\n  }", "    if(J.expl)pages.push({k:'expl'});\n    if(J.sim)pages.push({k:'sim'});\n  }")
 rep("  if(p.k==='sim'){w.append(head('sim'));", "  if(p.k==='expl'){w.append(head('expl'));const b=el('div','body expl');b.append(el('p','lead',`정답 <b class=\"num\">${esc(cN(J.answer))}</b>`));const q=el('div');renderEnBlocks(q,J.expl);b.append(q);b.append(el('p','note','※ 해설은 ShrekMath가 작성했습니다. 다른 방법으로 풀었다면 두 방법을 비교해 보세요.'));w.append(b);return w}\n  if(p.k==='sim'){w.append(head('sim'));")
+
+# ── 학생 입장 사용성 (2026-11 검토) ──
+# 수식 라이브러리를 사이트에 직접 둔다 (학교망·느린 망에서 CDN이 막혀도 수식이 깨지지 않게)
+rep('<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js"></script>', '<script src="/lib/katex.min.js"></script>')
+rep('<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js"></script>', '<script src="/lib/auto-render.min.js"></script>')
+# 휴대폰: 채점 뒤에도 문제를 접지 않는다 (해설·진단을 보며 문제를 같이 볼 수 있게. 필요하면 '접기')
+rep("  if(window.innerWidth<=900&&unlocked&&!userUnfold){$('#exam').classList.add('fold');$('#foldBtn').textContent=LP()?'Unfold':'펼치기'}\n", "")
+s = s.replace("</style>", """.card .topic{align-self:stretch!important;text-align:left}
+@media (max-width:900px){
+  .topbar .cta .lbl{display:inline!important;font-size:.72rem}
+  .topbar .cta{padding:6px 9px!important}
+  .veil{padding:10px 14px;font-size:.84rem;line-height:1.5}
+  .veil b{font-size:1.1rem;margin-bottom:3px}
+}
+@media (max-width:380px){.topbar .cta .lbl{display:none!important}}
+.topbar .cta .lm{display:none!important}
+@media (max-width:900px){.topbar .cta .ld{display:none!important}.topbar .cta .lm{display:inline!important}}
+</style>""", 1)
+rep('🎲<span class="lbl"> 랜덤 문제</span>', '🎲<span class="lbl ld"> 랜덤 문제</span><span class="lbl lm"> 랜덤</span>')
+rep('🧾<span class="lbl"> 학습 기록 내보내기</span>', '🧾<span class="lbl ld"> 학습 기록 내보내기</span><span class="lbl lm"> 기록</span>')
 
 open(os.path.join(ROOT, 'template.html'), 'w', encoding='utf-8').write(s)
 print('template.html 생성 (킬러 화면 + 루키 수정)')

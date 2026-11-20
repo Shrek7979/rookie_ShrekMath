@@ -144,6 +144,7 @@ def main():
     sw = open(os.path.join(APP, 'sw.js'), encoding='utf-8').read().replace('__VERSION__', time.strftime('%Y%m%d%H%M%S'))
     open(os.path.join(SITE, 'sw.js'), 'w', encoding='utf-8').write(sw)
     shutil.copy(os.path.join(APP, 'privacy.html'), os.path.join(SITE, 'privacy.html'))
+    shutil.copytree(os.path.join(ROOT, 'src', 'lib'), os.path.join(SITE, 'lib'))
     fp = os.path.join(APP, 'sha256.txt')
     if os.path.exists(fp):
         fps = [l.strip() for l in open(fp, encoding='utf-8') if l.strip() and not l.startswith('#')]

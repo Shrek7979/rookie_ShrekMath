@@ -60,9 +60,32 @@ img,video,iframe,canvas,.sheet,.art .paper,#fullSheet,#lb,#gBtn{filter:invert(1)
 .stats .tile:nth-child(3){{background:linear-gradient(160deg,{pre('#fef3c7')},{pre('#ffffff')});border-color:{pre('#fcd34d')};--tc:{pre('#f59e0b')}}}
 .ghead::before{{content:"";width:6px;height:1.1em;border-radius:3px;background:linear-gradient(180deg,{pre('#22c55e')},{pre('#3b82f6')})}}
 .card .dbadge{{background:var(--dc)!important;color:#000!important}}
+/* 로고 */
+.logo{{color:{pre('#1f2a1f')}!important;text-shadow:none!important;font-weight:800!important;position:relative;padding-left:44px}}
+.logo em{{font-style:normal;color:{pre('#16a34a')}}}
+.logo .rkico{{position:absolute;left:0;top:-2px;width:36px;height:36px;border-radius:10px}}
+.logo small{{font-weight:500!important}}
+/* 카드 미리보기: 문제 첫 줄부터 읽히게 + 형광펜 */
+.snap .paper{{top:34px!important;height:58%!important}}
+.snap .paper img{{width:135%!important;margin:0 0 0 -2px!important}}
+.snap .paper::before{{background:var(--hl)!important}}
+.snap .paper:has(img)::after{{content:"";position:absolute;left:4px;top:11px;width:74%;height:11px;border-radius:3px;background:color-mix(in srgb,var(--hl) 38%,transparent);mix-blend-mode:multiply;transform:rotate(-.6deg)}}
+.snap .paper:has(img) img+*{{display:none}}
+/* 굵은 글씨 줄이기 */
+.card .topic{{font-weight:600!important;font-size:.98rem!important;text-shadow:0 1px 6px rgba(0,0,0,.9)!important}}
+.card .top,.card .top .num,.chip,.flow span,.tile .lbl,.dbadge,.tag,#tabs button,select{{font-weight:500!important}}
+.tile .big{{font-weight:800!important}}
+.ghead{{font-weight:700!important}}
+.btn,.cta,.hero .go{{font-weight:600!important}}
 </style>
 """
 s = s.replace('<style>/*__KATEX_CSS__*/</style>', '<style>/*__KATEX_CSS__*/</style>\n' + LIGHT, 1)
+
+# ── 로고: 새싹 아이콘 + '루키들의' + 초록 '수학몰' ──
+rep('<a class="logo" id="logoHome" href="#" title="홈으로">루키들의 수학몰<span class="meta">',
+    '<a class="logo" id="logoHome" href="#" title="홈으로"><img class="rkico" src="/icon-192.png" alt="">루키들의 <em>수학몰</em><span class="meta">')
+rep('<a class="logo" id="logoOp" href="#" title="홈으로">루키들의 수학몰<span class="tot"',
+    '<a class="logo" id="logoOp" href="#" title="홈으로"><img class="rkico" src="/icon-192.png" alt="">루키들의 <em>수학몰</em><span class="tot"')
 
 # ── 관(탭): 고1 기초관 · 기출관 (킬러·논술·일본관은 숨김) ──
 rep('<button data-tab="killer" class="on">킬러관<span class="n" id="nKiller">0</span></button>',
@@ -137,9 +160,9 @@ rep("const LIMIT={5:13,4:10,3:8,2:8};   // 제한시간(분): 킬러 13 · 고�
     "const LIMIT={3:8,2:6,1:4};   // 제한시간(분): ★★★ 8 · ★★ 6 · ★ 4\nconst RDN={1:'기본',2:'실력',3:'도전'};\nconst UNIT_ORDER=['중학 복습','다항식','복소수·이차방정식','이차함수','여러 방정식·부등식','도형의 방정식','집합과 명제','함수','경우의 수·확률·수열','기타'];")
 
 # 카드·모자이크 색: 난이도 대신 단원·과목 색 (더 알록달록하게)
-rep("const RDN={1:'기본',2:'실력',3:'도전'};", "const RDN={1:'기본',2:'실력',3:'도전'};\nconst UCOL=" + json.dumps({k: pre(v) for k, v in UNIT_COL.items()}, ensure_ascii=False) + ";const UC=x=>UCOL[x.subj]||UCOL[x.part]||'#5a5a5a';")
+rep("const RDN={1:'기본',2:'실력',3:'도전'};", "const RDN={1:'기본',2:'실력',3:'도전'};\nconst UCOL=" + json.dumps({k: pre(v) for k, v in UNIT_COL.items()}, ensure_ascii=False) + ";const UC=x=>UCOL[x.subj]||UCOL[x.part]||'#5a5a5a';\nconst UCOLR=" + json.dumps(UNIT_COL, ensure_ascii=False) + ";const UCR=x=>UCOLR[x.subj]||UCOLR[x.part]||'#facc15';")
 rep("const c=el('button','card');const rec=S.jrec[x.num];c.style.setProperty('--dc',DC(x.stars));c.dataset.big=String(x.num0);",
-    "const c=el('button','card');const rec=S.jrec[x.num];c.style.setProperty('--dc',UC(x));c.dataset.big=String(x.num0);")
+    "const c=el('button','card');const rec=S.jrec[x.num];c.style.setProperty('--dc',UC(x));c.style.setProperty('--hl',UCR(x));c.dataset.big=String(x.num0);")
 rep("artEl(x.text,x.subj,x.art,x.id,DC(x.stars),null,x.qimg&&x.qimg[0])", "artEl(x.text,x.subj,x.art,x.id,UC(x),null,x.qimg&&x.qimg[0])", 2)
 rep("...JLIST.filter((x,i)=>i%3===0).map(x=>({t:x.subj,c:'var(--d'+(x.stars+1)+')',n:x.part==='고1'?'고1':'기출'}))",
     "...JLIST.filter((x,i)=>i%3===0).map(x=>({t:x.subj,c:UC(x),n:x.part==='고1'?'고1':'기출'}))")

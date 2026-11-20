@@ -18,7 +18,21 @@ def rep(old, new, count=1):
 s = s.replace('킬러들의 수학몰', '루키들의 수학몰').replace("KILLERS' MATH MALL", "ROOKIES' MATH MALL")
 rep("const KEY='km:v2';", "const KEY='rk:v2';")
 # 로고만 초록 (나머지 색·배치는 킬러와 같게)
-s = s.replace('<style>/*__KATEX_CSS__*/</style>', '<style>/*__KATEX_CSS__*/</style>\n<style>.topbar .logo,.opbar .logo{color:#2ecc71!important}#auth .alogo{color:#2ecc71!important}</style>', 1)
+# 밝은 화면: 배치는 킬러와 같게 두고, 전체 밝기를 뒤집은 뒤(invert + hue-rotate) 문제지·그림만 원래대로 되돌린다.
+# 뒤집기 전 색을 미리 골라 두면 뒤집힌 결과가 루키 색이 된다: 배경 크림 #fffaf0, 카드 흰색, 강조 새싹 초록 #1f9d55
+PRE = {'#e50914': '#24a25a', '#141414': '#090400', '#1b1b1b': '#050200', '#181818': '#050200', '#1f1f1f': '#000000',
+       '#2b2b2b': '#120d02', '#2a2a2a': '#1a1408', '#262626': '#1a1408', '#2c2c2c': '#1a1408', '#333': '#281f0b'}
+for a, b in PRE.items():
+    s = re.sub(re.escape(a) + r'(?![0-9a-fA-F])', b, s)
+s = s.replace('rgba(229,9,20,', 'rgba(36,162,90,')
+LIGHT = """<style id="rookieLight">
+html{filter:invert(1) hue-rotate(180deg);background:#090400}
+img,video,iframe,canvas,.sheet,.art .paper,.fsexam,#lb,#gBtn{filter:invert(1) hue-rotate(180deg)}
+.sheet img,.art .paper img,.fsexam img,#lb img{filter:none}
+.result.no{background:rgba(255,129,129,.16)!important;border-color:#ff8181!important}.st.no{background:#ff8181!important;color:#000!important}   /* 오답은 빨강 유지 */
+.btn:not(.ghost),.hero .go,.cta:not(.ghostc),#auth .abtn:not(.ghost):not(.danger),.stage.on,#fsGrade,#fsDone{color:#000!important}   /* 초록 위 글자는 흰색으로 보이게 */
+</style>"""
+s = s.replace('<style>/*__KATEX_CSS__*/</style>', '<style>/*__KATEX_CSS__*/</style>\n' + LIGHT, 1)
 
 # ── 관(탭): 고1 기초관 · 기출관 (킬러·논술·일본관은 숨김) ──
 rep('<button data-tab="killer" class="on">킬러관<span class="n" id="nKiller">0</span></button>',

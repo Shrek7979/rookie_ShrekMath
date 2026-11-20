@@ -242,7 +242,7 @@ rep("$('#opId').innerHTML=isP?`#P${JNO(J)} · 평가원 기출 <span class=\"sub
     "$('#opId').innerHTML=isP?`${isG1(J)?'#G':'#P'}${JNO(J)} · ${isG1(J)?'고1 학력평가':'평가원 기출'} <span class=\"subj\" style=\"--sc:${SC(J.subj)}\">${esc(isG1(J)?J.subj:J.part)}</span>`")
 rep("const nx=JLIST.find(x=>x.num>J.num&&(x.kind==='past')===isP);", "const nx=JLIST.find(x=>x.num>J.num&&(x.kind==='past')===isP&&isG1(x)===isG1(J));")
 rep("    b.append(el('dl','kv',`<dt>출처</dt><dd>한국교육과정평가원 · ${J.year}학년도 ${J.month==='11월'?'대학수학능력시험':'대학수학능력시험 '+J.month+' 모의평가'} (홀수형)</dd><dt>과목</dt><dd>${esc(J.part)}</dd><dt>형식</dt><dd>${J.choice?'5지선다형':'단답형'} · 4점</dd><dt>난이도</dt><dd><span class=\"stars\" style=\"--dc:${DC(J.stars)}\">${'★'.repeat(J.stars)}</span> ${J.stars>=5?'킬러':J.stars>=4?'고난도':'준킬러'} · 제한 ${lim}분</dd>",
-    "    b.append(el('dl','kv',`<dt>출처</dt><dd>${isG1(J)?`시·도교육청 · ${J.year}년 ${J.month} 고1 전국연합학력평가`:`한국교육과정평가원 · ${J.year}학년도 ${J.month==='11월'?'대학수학능력시험':'대학수학능력시험 '+J.month+' 모의평가'} (홀수형)`}</dd><dt>${isG1(J)?'단원':'과목'}</dt><dd>${esc(isG1(J)?J.subj:J.part)}${J.topic?' · '+esc(J.topic):''}</dd><dt>형식</dt><dd>${J.choice?'5지선다형':'단답형'}</dd><dt>난이도</dt><dd><span class=\"stars\" style=\"--dc:${DC(J.stars)}\">${'★'.repeat(J.stars)}</span> ${RDN[J.stars]} · 제한 ${lim}분</dd>")
+    "    b.append(el('dl','kv',`<dt>출처</dt><dd>${isG1(J)?`시·도교육청 · ${J.year}년 ${J.month} 고1 전국연합학력평가`:J.id.startsWith('g3')?`시·도교육청 · ${J.year}년 ${J.month} 고3 전국연합학력평가`:`한국교육과정평가원 · ${J.year}학년도 ${J.month==='11월'?'대학수학능력시험':'대학수학능력시험 '+J.month+' 모의평가'} (홀수형)`}</dd><dt>${isG1(J)?'단원':'과목'}</dt><dd>${esc(isG1(J)?J.subj:J.part)}${J.topic?' · '+esc(J.topic):''}</dd><dt>형식</dt><dd>${J.choice?'5지선다형':'단답형'}</dd><dt>난이도</dt><dd><span class=\"stars\" style=\"--dc:${DC(J.stars)}\">${'★'.repeat(J.stars)}</span> ${RDN[J.stars]} · 제한 ${lim}분</dd>")
 rep("    b.append(el('p','note','평가원 기출은 해설을 싣지 않습니다. EBSi(ebsi.co.kr) 기출문제 해설이나 교사의 풀이로 확인하세요. 같은 번호 자리의 창작 문항은 킬러관에 있습니다.'));",
     "    b.append(el('p','note',(J.expl?'다음 단계에서 해설을 보고, ':'해설은 준비 중입니다. ')+(J.sim?'유사문항(쌍둥이 문제)으로 같은 개념을 한 번 더 확인하세요.':'선생님 풀이나 EBSi(ebsi.co.kr) 해설로 확인하세요.')));")
 # 유사문항: 한국어만 있으면 언어 버튼 숨김
@@ -268,7 +268,7 @@ rep(">복습 필요 (오답·시간초과)</button>", ">다시 풀 문제 (틀�
 rep("c.innerHTML=`<div class=\"top\"><span><span class=\"num\">${isG1(x)?'#G':'#P'}${JNO(x)}</span> · ${isG1(x)?x.month:(x.month==='11월'?'수능':x.month)}",
     "c.innerHTML=`<div class=\"top\"><span><span class=\"num\">${x.year}${isG1(x)?'년':'학년도'} ${isG1(x)?x.month:(x.month==='11월'?'수능':x.month+' 모평')}</span>")
 rep("<div class=\"topic\">${esc(x.track)+' · '+x.year+(isG1(x)?'년':'학년도')}</div>", "<div class=\"topic\">${esc(x.track)}</div>")
-rep("$('#opId').innerHTML=isP?`${isG1(J)?'#G':'#P'}${JNO(J)} · ${isG1(J)?'고1 학력평가':'평가원 기출'}", "$('#opId').innerHTML=isP?`${isG1(J)?'고1 학력평가':'평가원 기출'}")
+rep("$('#opId').innerHTML=isP?`${isG1(J)?'#G':'#P'}${JNO(J)} · ${isG1(J)?'고1 학력평가':'평가원 기출'}", "$('#opId').innerHTML=isP?`${isG1(J)?'고1 학력평가':J.id.startsWith('g3')?'고3 학력평가':'평가원 기출'}")
 rep("head('solve','STEP 0')", "head('solve','')", 4)
 
 # ── 원문항 해설 단계 (진단 → 해설 → 유사 → 정리) ──

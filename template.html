@@ -26,6 +26,17 @@ img,video,iframe,canvas,.sheet,.art .paper,#fullSheet,#lb,#gBtn{filter:invert(1)
 .stats .tile:nth-child(3){background:linear-gradient(160deg,#190e00,#000000);border-color:#572e00;--tc:#a85100}
 .ghead::before{content:"";width:6px;height:1.1em;border-radius:3px;background:linear-gradient(180deg,#008e27,#448bff)}
 .card .dbadge{background:var(--dc)!important;color:#000!important}
+/* 유사문항 */
+.simq{background:#000000;border:1px solid #231d0f;border-radius:12px;padding:18px 20px 12px;margin:14px 0 6px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.simq .entext{font-size:1.04rem;line-height:1.95;font-weight:400}
+.simq .entext p{font-weight:400!important;margin:0 0 .9em}
+.simq .entext b{font-weight:600}
+.simq .entext .choices{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:.55em 1.2em;margin:1em 0 .4em;padding-top:.8em;border-top:1px dashed #231d0f}
+.simq .entext .choices span{white-space:nowrap}
+.simq .entext .box{background:#0a0700}
+.simansin{margin:18px 0 6px!important;padding:14px 16px;border-radius:12px;background:#050a06;border:1px solid #0d2112;justify-content:flex-start!important;row-gap:10px}
+.simansin .al{width:100%;font-size:.86rem;font-weight:600;color:#4bb673}
+.simansin+div .result{margin-top:10px}
 /* 5지선다 번호 버튼 */
 .chpad{display:flex;gap:8px;flex-wrap:wrap}
 .chb{width:50px;height:50px;border-radius:50%;font-size:1.45rem;line-height:1;cursor:pointer;font-family:inherit;border:2px solid #342e20;background:#000000;color:#ced8e6;transition:transform .08s}
@@ -1623,11 +1634,11 @@ function renderJapanCard(p){
   if(p.k==='sim'){w.append(head('sim'));const b=el('div','body');const s=J.sim;let ja=JA();
     const ja2=!s.ko;if(ja2)ja=true;else ja=false;if(!ja2&&s.ja)b.append(langSeg(jaRefresh));
     b.append(el('p','lead',ja?'原題と同じ考え方で、条件を変えた問題です。紙に解いてから答えを確かめましょう。':'원문제와 같은 아이디어로 조건을 바꾼 문제입니다. 풀고 나서 답을 골라(입력해) 채점하면 풀이가 열립니다.'));
-    const q=el('div');renderEnBlocks(q,ja?s.ja:s.ko);if(ja)q.lang='ja';b.append(q);
+    const q=el('div','simq');renderEnBlocks(q,ja?s.ja:s.ko);if(ja)q.lang='ja';b.append(q);
     const bt=el('button','btn',ja?'答えと解説を見る':'정답·풀이 보기');const an=el('div','simans');an.hidden=true;if(ja)an.lang='ja';
     an.append(el('p','lead',`<b>${ja?'答':'정답'}</b>　${md(ja?s.ans.ja:s.ans.ko)}`));renderEnBlocks(an,ja?s.sol.ja:s.sol.ko);
     bt.onclick=()=>{an.hidden=false;bt.hidden=true};const row=el('div','btnrow');const sa=simAns(s);
-    if(!ja&&sa.v!=null){bt.className='btn ghost';bt.textContent='풀지 않고 정답·풀이 보기';const ai=el('div','ansin');const si=el('input');si.type='text';si.inputMode='numeric';si.maxLength=3;si.placeholder='숫자 입력';si.oninput=()=>{si.value=si.value.replace(/[^0-9]/g,'')};const gb=el('button','btn','채점');ai.append(el('span',null,'내 답'),si,gb);if(sa.choice)choicePad(ai,si);const res=el('div');
+    if(!ja&&sa.v!=null){bt.className='btn ghost';bt.textContent='풀지 않고 정답·풀이 보기';const ai=el('div','ansin');const si=el('input');si.type='text';si.inputMode='numeric';si.maxLength=3;si.placeholder='숫자 입력';si.oninput=()=>{si.value=si.value.replace(/[^0-9]/g,'')};const gb=el('button','btn','채점');ai.className='ansin simansin';ai.append(el('span','al',sa.choice?'답 고르기':'답 입력'),si,gb);if(sa.choice)choicePad(ai,si);const res=el('div');
       gb.onclick=()=>{if(!si.value){toast(sa.choice?'번호를 먼저 고르세요':'답을 입력하세요');return}const ok=Number(si.value)===sa.v;res.innerHTML='';res.append(el('div','result '+(ok?'ok':'no'),`<div class="big">${ok?'정답입니다':'오답입니다'}</div><div>${ok?'같은 개념을 제대로 잡았어요. 풀이와 내 방법을 비교해 보세요.':'풀이를 보고 어느 단계에서 달라졌는지 찾아보세요.'}</div>`));an.hidden=false;bt.hidden=true;ai.hidden=true};
       si.onkeydown=e=>{if(e.key==='Enter')gb.click()};b.append(ai,res)}
     row.append(bt);b.append(row,an);

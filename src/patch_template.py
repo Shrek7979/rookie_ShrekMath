@@ -68,6 +68,17 @@ img,video,iframe,canvas,.sheet,.art .paper,#fullSheet,#lb,#gBtn{filter:invert(1)
 .stats .tile:nth-child(3){{background:linear-gradient(160deg,{pre('#fef3c7')},{pre('#ffffff')});border-color:{pre('#fcd34d')};--tc:{pre('#f59e0b')}}}
 .ghead::before{{content:"";width:6px;height:1.1em;border-radius:3px;background:linear-gradient(180deg,{pre('#22c55e')},{pre('#3b82f6')})}}
 .card .dbadge{{background:var(--dc)!important;color:#000!important}}
+/* 유사문항 */
+.simq{{background:{pre('#ffffff')};border:1px solid {pre('#e7e1d3')};border-radius:12px;padding:18px 20px 12px;margin:14px 0 6px;box-shadow:0 1px 3px rgba(0,0,0,.12)}}
+.simq .entext{{font-size:1.04rem;line-height:1.95;font-weight:400}}
+.simq .entext p{{font-weight:400!important;margin:0 0 .9em}}
+.simq .entext b{{font-weight:600}}
+.simq .entext .choices{{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:.55em 1.2em;margin:1em 0 .4em;padding-top:.8em;border-top:1px dashed {pre('#e7e1d3')}}}
+.simq .entext .choices span{{white-space:nowrap}}
+.simq .entext .box{{background:{pre('#fbf8f0')}}}
+.simansin{{margin:18px 0 6px!important;padding:14px 16px;border-radius:12px;background:{pre('#f3f8f4')};border:1px solid {pre('#d5e9da')};justify-content:flex-start!important;row-gap:10px}}
+.simansin .al{{width:100%;font-size:.86rem;font-weight:600;color:{pre('#15803d')}}}
+.simansin+div .result{{margin-top:10px}}
 /* 5지선다 번호 버튼 */
 .chpad{{display:flex;gap:8px;flex-wrap:wrap}}
 .chb{{width:50px;height:50px;border-radius:50%;font-size:1.45rem;line-height:1;cursor:pointer;font-family:inherit;border:2px solid {pre('#d6d0c2')};background:{pre('#ffffff')};color:{pre('#1f2937')};transition:transform .08s}}
@@ -133,6 +144,10 @@ rep("const re=el('button','btn ghost',tj('다시 풀기','もう一度解く'));
 rep("bt.onclick=()=>{an.hidden=false;bt.hidden=true};const row=el('div','btnrow');row.append(bt);b.append(row,an);",
     "bt.onclick=()=>{an.hidden=false;bt.hidden=true};const row=el('div','btnrow');const sa=simAns(s);\n    if(!ja&&sa.v!=null){bt.className='btn ghost';bt.textContent='풀지 않고 정답·풀이 보기';const ai=el('div','ansin');const si=el('input');si.type='text';si.inputMode='numeric';si.maxLength=3;si.placeholder='숫자 입력';si.oninput=()=>{si.value=si.value.replace(/[^0-9]/g,'')};const gb=el('button','btn','채점');ai.append(el('span',null,'내 답'),si,gb);if(sa.choice)choicePad(ai,si);const res=el('div');\n      gb.onclick=()=>{if(!si.value){toast(sa.choice?'번호를 먼저 고르세요':'답을 입력하세요');return}const ok=Number(si.value)===sa.v;res.innerHTML='';res.append(el('div','result '+(ok?'ok':'no'),`<div class=\"big\">${ok?'정답입니다':'오답입니다'}</div><div>${ok?'같은 개념을 제대로 잡았어요. 풀이와 내 방법을 비교해 보세요.':'풀이를 보고 어느 단계에서 달라졌는지 찾아보세요.'}</div>`));an.hidden=false;bt.hidden=true;ai.hidden=true};\n      si.onkeydown=e=>{if(e.key==='Enter')gb.click()};b.append(ai,res)}\n    row.append(bt);b.append(row,an);")
 rep("'원문제와 같은 아이디어로 조건을 바꾼 문제입니다. 종이에 풀고 나서 답을 확인하세요.'", "'원문제와 같은 아이디어로 조건을 바꾼 문제입니다. 풀고 나서 답을 골라(입력해) 채점하면 풀이가 열립니다.'")
+
+# ── 유사문항 가독성: 문제는 종이 카드에, 보기는 한 줄씩, 답 고르기 칸은 따로 ──
+rep("const q=el('div');renderEnBlocks(q,ja?s.ja:s.ko);if(ja)q.lang='ja';b.append(q);", "const q=el('div','simq');renderEnBlocks(q,ja?s.ja:s.ko);if(ja)q.lang='ja';b.append(q);")
+rep("const gb=el('button','btn','채점');ai.append(el('span',null,'내 답'),si,gb);if(sa.choice)choicePad(ai,si);", "const gb=el('button','btn','채점');ai.className='ansin simansin';ai.append(el('span','al',sa.choice?'답 고르기':'답 입력'),si,gb);if(sa.choice)choicePad(ai,si);")
 
 # ── 로고: 새싹 아이콘 + '루키들의' + 초록 '수학몰' ──
 rep('<a class="logo" id="logoHome" href="#" title="홈으로">루키들의 수학몰<span class="meta">',

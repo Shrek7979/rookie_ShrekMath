@@ -54,7 +54,7 @@ img,video,iframe,canvas,.sheet,.art .paper,#fullSheet,#lb,#gBtn{filter:invert(1)
 """+f"""
 /* ── 컬러풀 ── */
 .hero::after{{background:linear-gradient(120deg,{pre('#e3f8ec')}ee,{pre('#e1f0ff')}dd 40%,{pre('#fff3d6')}dd 70%,{pre('#f6e6ff')}ee)!important}}
-.mosaic{{opacity:.9}}
+.mosaic{{opacity:.45}}
 .hero h1 em{{color:{pre('#16a34a')}}}
 .topbar{{border-bottom:2px solid transparent;border-image:linear-gradient(90deg,{pre('#22c55e')},{pre('#06b6d4')},{pre('#3b82f6')},{pre('#a855f7')},{pre('#f97316')}) 1}}
 #tabs button{{background:transparent!important;border:0!important;border-radius:0!important;opacity:1!important;color:{pre('#6b7280')}!important;padding:10px 14px!important;font-size:.98rem!important}}
@@ -75,7 +75,7 @@ img,video,iframe,canvas,.sheet,.art .paper,#fullSheet,#lb,#gBtn{filter:invert(1)
 .chb.on{{background:{pre('#16a34a')};border-color:{pre('#16a34a')};color:{pre('#ffffff')}}}
 #fullSheet .chb{{border-color:#d6d0c2;background:#fff;color:#1f2937}}#fullSheet .chb:hover{{border-color:#16a34a}}
 #fullSheet .chb.on{{background:#16a34a;border-color:#16a34a;color:#fff}}
-.ansin .chpad~#answer,.ansin .chpad~#fsAns{{display:none}}
+.ansin .chpad~input{{display:none}}
 /* 진행 방식 칩: 킬러와 같은 모양(진한 테두리 알약 + 같은 색 글자) */
 #flowPast{{gap:7px}}
 #flowPast span{{font-weight:700!important;font-size:.9rem;padding:4px 13px;border-radius:999px;border:1.5px solid var(--fc);color:var(--fc);background:var(--fb)}}
@@ -118,6 +118,21 @@ rep("$('#fsAns').value='';$('#fullSheet').hidden=false;if(solving&&autoG&&window
     "$('#fsAns').value='';fsPad();$('#fullSheet').hidden=false;if(solving&&autoG&&window.innerWidth>900&&!(J&&J.choice))setTimeout(()=>$('#fsAns').focus(),50);")
 rep("$('#fsGrade').onclick=()=>{const v=$('#fsAns').value.trim();if(!v){$('#fsAns').focus();return}",
     "function choicePad(row,inp){const p=el('div','chpad');for(let n=1;n<=5;n++){const b=el('button','chb','①②③④⑤'[n-1]);b.type='button';b.setAttribute('aria-label',n+'번');b.onclick=()=>{inp.value=String(n);p.querySelectorAll('.chb').forEach(x=>x.classList.toggle('on',x===b))};p.append(b)}row.insertBefore(p,inp);return p}\nfunction fsPad(){const r=$('#fsAnsRow');const o=r.querySelector('.chpad');if(o)o.remove();const i=$('#fsAns');i.type='text';i.inputMode='numeric';i.maxLength=3;i.placeholder='숫자 입력';i.oninput=()=>{i.value=i.value.replace(/[^0-9]/g,'')};if(J&&J.choice&&mode==='japan')choicePad(r,i)}\n$('#fsGrade').onclick=()=>{const v=$('#fsAns').value.trim();if(!v){if(J&&J.choice)toast('번호를 먼저 고르세요');else $('#fsAns').focus();return}")
+
+
+# ── 학생 관점 보완: 오답일 때 정답 가리기, 진단에 내 답, 유사문항도 채점, 같은 단원 이어 풀기 ──
+rep("function choicePad(row,inp){", "const cN=v=>J&&J.choice&&/^[1-5]$/.test(String(v))?'①②③④⑤'[Number(v)-1]:v;\nfunction simAns(s){const a=String(s.ans&&s.ans.ko||'').trim();const c='①②③④⑤'.indexOf(a[0]);if(c>=0)return{choice:true,v:c+1};const m=a.replace(/\\$/g,'').trim().match(/^\\d+$/);return{choice:false,v:m?Number(m[0]):null}}\nfunction choicePad(row,inp){")
+rep("${auto&&rec.ans!=null?`내 답 <b class=\"num\">${esc(rec.ans)}</b> · 정답 <b class=\"num\">${esc(J.answer)}</b> · `:''}",
+    "${auto&&rec.ans!=null?`내 답 <b class=\"num\">${esc(cN(rec.ans))}</b> · 정답 ${rec.r==='no'?`<button class=\"reveal\" data-a=\"${esc(cN(J.answer))}\" onclick=\"this.outerHTML='<b class=&quot;num&quot;>'+this.dataset.a+'</b>'\">눌러서 보기</button>`:`<b class=\"num\">${esc(cN(J.answer))}</b>`} · `:''}")
+rep("<dt>정답</dt><dd class=\"num\">${J.answer==null?'미등록 (스스로 점검)':(J.choice?['①','②','③','④','⑤'][J.answer-1]||J.answer:J.answer)}</dd>`));",
+    "<dt>정답</dt><dd class=\"num\">${J.answer==null?'미등록 (스스로 점검)':(J.choice?['①','②','③','④','⑤'][J.answer-1]||J.answer:J.answer)}</dd>${S.jrec[J.num]&&S.jrec[J.num].ans!=null?`<dt>내 답</dt><dd class=\"num\">${esc(cN(S.jrec[J.num].ans))} · ${S.jrec[J.num].r==='ok'?'<b style=\"color:var(--ok,#1f9d55)\">정답</b>':'<b style=\"color:#ff8181\">오답</b>'}${S.jrec[J.num].secs?' · '+mmss(S.jrec[J.num].secs):''}</dd>`:''}`));")
+rep("`정답 <b class=\"num\">${esc(J.answer)}</b>. 맞았어도", "`정답 <b class=\"num\">${esc(cN(J.answer))}</b>. 맞았어도")
+rep("`정답은 <b class=\"num\">${esc(J.answer)}</b>. 내 풀이가", "`정답은 <b class=\"num\">${esc(cN(J.answer))}</b>. 내 풀이가")
+rep("const re=el('button','btn ghost',tj('다시 풀기','もう一度解く'));re.onclick=()=>{delete S.jrec[J.num];save();unlocked=false;openJapan(J.num,0)};row.append(re);\n    const hm=",
+    "const su=isP&&JLIST.find(x=>x.num!==J.num&&x.kind==='past'&&isG1(x)===isG1(J)&&(x.unit||x.subj)===(J.unit||J.subj)&&!S.jrec[x.num]);if(su){const sb=el('button','btn ghost','같은 단원 더 풀기 · '+esc(J.unit||J.subj));sb.onclick=()=>location.hash='j'+su.num;row.append(sb)}\n    const re=el('button','btn ghost',tj('다시 풀기','もう一度解く'));re.onclick=()=>{delete S.jrec[J.num];save();unlocked=false;openJapan(J.num,0)};row.append(re);\n    const hm=")
+rep("bt.onclick=()=>{an.hidden=false;bt.hidden=true};const row=el('div','btnrow');row.append(bt);b.append(row,an);",
+    "bt.onclick=()=>{an.hidden=false;bt.hidden=true};const row=el('div','btnrow');const sa=simAns(s);\n    if(!ja&&sa.v!=null){bt.className='btn ghost';bt.textContent='풀지 않고 정답·풀이 보기';const ai=el('div','ansin');const si=el('input');si.type='text';si.inputMode='numeric';si.maxLength=3;si.placeholder='숫자 입력';si.oninput=()=>{si.value=si.value.replace(/[^0-9]/g,'')};const gb=el('button','btn','채점');ai.append(el('span',null,'내 답'),si,gb);if(sa.choice)choicePad(ai,si);const res=el('div');\n      gb.onclick=()=>{if(!si.value){toast(sa.choice?'번호를 먼저 고르세요':'답을 입력하세요');return}const ok=Number(si.value)===sa.v;res.innerHTML='';res.append(el('div','result '+(ok?'ok':'no'),`<div class=\"big\">${ok?'정답입니다':'오답입니다'}</div><div>${ok?'같은 개념을 제대로 잡았어요. 풀이와 내 방법을 비교해 보세요.':'풀이를 보고 어느 단계에서 달라졌는지 찾아보세요.'}</div>`));an.hidden=false;bt.hidden=true;ai.hidden=true};\n      si.onkeydown=e=>{if(e.key==='Enter')gb.click()};b.append(ai,res)}\n    row.append(bt);b.append(row,an);")
+rep("'원문제와 같은 아이디어로 조건을 바꾼 문제입니다. 종이에 풀고 나서 답을 확인하세요.'", "'원문제와 같은 아이디어로 조건을 바꾼 문제입니다. 풀고 나서 답을 골라(입력해) 채점하면 풀이가 열립니다.'")
 
 # ── 로고: 새싹 아이콘 + '루키들의' + 초록 '수학몰' ──
 rep('<a class="logo" id="logoHome" href="#" title="홈으로">루키들의 수학몰<span class="meta">',

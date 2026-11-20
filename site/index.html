@@ -30,7 +30,7 @@ img,video,iframe,canvas,.sheet,.art .paper,#fullSheet,#lb,#gBtn{filter:invert(1)
 
 /* ── 컬러풀 ── */
 .hero::after{background:linear-gradient(120deg,#001206ee,#041322dd 40%,#170b00dd 70%,#1f0f28ee)!important}
-.mosaic{opacity:.9}
+.mosaic{opacity:.45}
 .hero h1 em{color:#18a54c}
 .topbar{border-bottom:2px solid transparent;border-image:linear-gradient(90deg,#008e27,#0090ae,#448bff,#c26fff,#e66003) 1}
 #tabs button{background:transparent!important;border:0!important;border-radius:0!important;opacity:1!important;color:#878e9c!important;padding:10px 14px!important;font-size:.98rem!important}
@@ -51,7 +51,7 @@ img,video,iframe,canvas,.sheet,.art .paper,#fullSheet,#lb,#gBtn{filter:invert(1)
 .chb.on{background:#18a54c;border-color:#18a54c;color:#000000}
 #fullSheet .chb{border-color:#d6d0c2;background:#fff;color:#1f2937}#fullSheet .chb:hover{border-color:#16a34a}
 #fullSheet .chb.on{background:#16a34a;border-color:#16a34a;color:#fff}
-.ansin .chpad~#answer,.ansin .chpad~#fsAns{display:none}
+.ansin .chpad~input{display:none}
 /* 진행 방식 칩: 킬러와 같은 모양(진한 테두리 알약 + 같은 색 글자) */
 #flowPast{gap:7px}
 #flowPast span{font-weight:700!important;font-size:.9rem;padding:4px 13px;border-radius:999px;border:1.5px solid var(--fc);color:var(--fc);background:var(--fb)}
@@ -1607,7 +1607,7 @@ function renderJapanCard(p){
   if(LP())return renderPastCardEn(p);
   const w=el('div');const rec=S.jrec[J.num];const lim=jlim(J);const isP=J.kind==='past';const auto=isP&&J.answer!=null;
   if(p.k==='solve'){w.append(head('solve','STEP 0'));const b=el('div','body');
-    if(rec){b.append(el('div','result '+(rec.r==='no'?'no':'ok'),`<div class="big">${{ok:auto?'정답입니다':tj('맞았어요','正解'),part:tj('부분적으로 맞았어요','部分的に正解'),no:auto?'오답입니다':tj('틀렸어요','不正解')}[rec.r]||tj('풀이 완료','解答完了')}</div><div>${auto&&rec.ans!=null?`내 답 <b class="num">${esc(rec.ans)}</b> · 정답 <b class="num">${esc(J.answer)}</b> · `:''}${tj('걸린 시간','所要時間')} <b class="num">${mmss(rec.secs||0)}</b>${rec.over?` <span class="dbadge" style="--dc:#ff9f3a">${tj('제한시간 초과','制限時間超過')}</span>`:''}</div>`));
+    if(rec){b.append(el('div','result '+(rec.r==='no'?'no':'ok'),`<div class="big">${{ok:auto?'정답입니다':tj('맞았어요','正解'),part:tj('부분적으로 맞았어요','部分的に正解'),no:auto?'오답입니다':tj('틀렸어요','不正解')}[rec.r]||tj('풀이 완료','解答完了')}</div><div>${auto&&rec.ans!=null?`내 답 <b class="num">${esc(cN(rec.ans))}</b> · 정답 ${rec.r==='no'?`<button class="reveal" data-a="${esc(cN(J.answer))}" onclick="this.outerHTML='<b class=&quot;num&quot;>'+this.dataset.a+'</b>'">눌러서 보기</button>`:`<b class="num">${esc(cN(J.answer))}</b>`} · `:''}${tj('걸린 시간','所要時間')} <b class="num">${mmss(rec.secs||0)}</b>${rec.over?` <span class="dbadge" style="--dc:#ff9f3a">${tj('제한시간 초과','制限時間超過')}</span>`:''}</div>`));
       const row=el('div','btnrow primary');const g=el('button','btn',isP?'진단 →':tj('해설 보기 →','解説を見る →'));g.onclick=()=>go(1);const re=el('button','btn ghost',tj('다시 풀기','もう一度解く'));re.onclick=()=>{delete S.jrec[J.num];save();unlocked=false;openJapan(J.num,0)};row.append(g,re);b.append(row);w.append(b);return w}
     b.append(el('h2',null,isP?'해설 없이, 시험처럼':tj('종이에 풀고, 끝나면 완료','紙に解いて、終わったら完了')));
     b.append(el('p','lead',isP?`${J.univ} ${J.track}. 시작을 누르면 문제지가 열리고 시간이 갑니다. 제한시간 <b>${lim}분</b>. ${auto?(J.choice?'답은 ①~⑤ 중 하나를 눌러 고른 뒤 채점을 누르세요.':'답은 숫자로 입력하세요.'):'이 문항은 정답이 아직 등록되지 않아, 풀이 완료 후 스스로 점검합니다.'}`:LJ()?`日本の大学入試はすべて記述式です。スタートを押すと問題が開き、時間が進みます。制限時間 <b>${lim}分</b>。解答を紙に書き、「解答完了」を押すと解説が開きます。${J.ja?'':'<br><i>この問題の日本語訳はまだありません(韓国語版を表示)。</i>'}`:`일본 대학 입시는 전부 서술형입니다. 시작을 누르면 문제가 열리고 시간이 갑니다. 제한시간 <b>${lim}분</b>. 풀이를 종이에 쓰고 ‘풀이 완료’를 누르면 해설이 열려요.`));
@@ -1624,7 +1624,7 @@ function renderJapanCard(p){
     skip.onclick=()=>{S.jrec[J.num]={skip:true,secs:0,r:'',date:new Date().toISOString().slice(0,10)};save();unlocked=true;buildPages();go(1)};
     w.append(b);return w}
   if(p.k==='intro'&&isP){w.append(head('intro'));const b=el('div','body');b.append(el('h2',null,`${esc(J.univ)} · ${esc(J.track)}`));
-    b.append(el('dl','kv',`<dt>출처</dt><dd>${isG1(J)?`시·도교육청 · ${J.year}년 ${J.month} 고1 전국연합학력평가`:`한국교육과정평가원 · ${J.year}학년도 ${J.month==='11월'?'대학수학능력시험':'대학수학능력시험 '+J.month+' 모의평가'} (홀수형)`}</dd><dt>${isG1(J)?'단원':'과목'}</dt><dd>${esc(isG1(J)?J.subj:J.part)}${J.topic?' · '+esc(J.topic):''}</dd><dt>형식</dt><dd>${J.choice?'5지선다형':'단답형'}</dd><dt>난이도</dt><dd><span class="stars" style="--dc:${DC(J.stars)}">${'★'.repeat(J.stars)}</span> ${RDN[J.stars]} · 제한 ${lim}분</dd><dt>정답</dt><dd class="num">${J.answer==null?'미등록 (스스로 점검)':(J.choice?['①','②','③','④','⑤'][J.answer-1]||J.answer:J.answer)}</dd>`));
+    b.append(el('dl','kv',`<dt>출처</dt><dd>${isG1(J)?`시·도교육청 · ${J.year}년 ${J.month} 고1 전국연합학력평가`:`한국교육과정평가원 · ${J.year}학년도 ${J.month==='11월'?'대학수학능력시험':'대학수학능력시험 '+J.month+' 모의평가'} (홀수형)`}</dd><dt>${isG1(J)?'단원':'과목'}</dt><dd>${esc(isG1(J)?J.subj:J.part)}${J.topic?' · '+esc(J.topic):''}</dd><dt>형식</dt><dd>${J.choice?'5지선다형':'단답형'}</dd><dt>난이도</dt><dd><span class="stars" style="--dc:${DC(J.stars)}">${'★'.repeat(J.stars)}</span> ${RDN[J.stars]} · 제한 ${lim}분</dd><dt>정답</dt><dd class="num">${J.answer==null?'미등록 (스스로 점검)':(J.choice?['①','②','③','④','⑤'][J.answer-1]||J.answer:J.answer)}</dd>${S.jrec[J.num]&&S.jrec[J.num].ans!=null?`<dt>내 답</dt><dd class="num">${esc(cN(S.jrec[J.num].ans))} · ${S.jrec[J.num].r==='ok'?'<b style="color:var(--ok,#1f9d55)">정답</b>':'<b style="color:#ff8181">오답</b>'}${S.jrec[J.num].secs?' · '+mmss(S.jrec[J.num].secs):''}</dd>`:''}`));
     b.append(el('p','note',(isG1(J)?'학력평가 기출은 해설을 싣지 않습니다. EBSi(ebsi.co.kr) 해설이나 선생님의 풀이로 확인하세요.':'평가원 기출은 해설을 싣지 않습니다. EBSi(ebsi.co.kr) 기출문제 해설이나 선생님의 풀이로 확인하세요.')+(J.sim?' 이 문항은 다음 단계에 유사문항(쌍둥이 문제)이 있어요.':'')));
     const row=el('div','btnrow');const kb=el('button','btn ghost',`킬러관의 ${J.num0}번형 보기`);kb.onclick=()=>{S.tab='killer';filt.type=`${J.num0}번형`;save();location.hash='';};if(LIST.some(x=>x.type===`${J.num0}번형`))row.append(kb);b.append(row);w.append(b);return w}
   if(p.k==='intro'&&LJ()){w.append(head('intro'));const b=el('div','body');b.append(el('h2',null,esc(jU(J))));
@@ -1638,19 +1638,24 @@ function renderJapanCard(p){
     const im=el('img','pg');im.src=jimg(J.simg[p.i]);im.alt='해설';b.append(im);w.append(b);return w}
   if(p.k==='sim'){w.append(head('sim'));const b=el('div','body');const s=J.sim;let ja=JA();
     const ja2=!s.ko;if(ja2)ja=true;else ja=false;if(!ja2&&s.ja)b.append(langSeg(jaRefresh));
-    b.append(el('p','lead',ja?'原題と同じ考え方で、条件を変えた問題です。紙に解いてから答えを確かめましょう。':'원문제와 같은 아이디어로 조건을 바꾼 문제입니다. 종이에 풀고 나서 답을 확인하세요.'));
+    b.append(el('p','lead',ja?'原題と同じ考え方で、条件を変えた問題です。紙に解いてから答えを確かめましょう。':'원문제와 같은 아이디어로 조건을 바꾼 문제입니다. 풀고 나서 답을 골라(입력해) 채점하면 풀이가 열립니다.'));
     const q=el('div');renderEnBlocks(q,ja?s.ja:s.ko);if(ja)q.lang='ja';b.append(q);
     const bt=el('button','btn',ja?'答えと解説を見る':'정답·풀이 보기');const an=el('div','simans');an.hidden=true;if(ja)an.lang='ja';
     an.append(el('p','lead',`<b>${ja?'答':'정답'}</b>　${md(ja?s.ans.ja:s.ans.ko)}`));renderEnBlocks(an,ja?s.sol.ja:s.sol.ko);
-    bt.onclick=()=>{an.hidden=false;bt.hidden=true};const row=el('div','btnrow');row.append(bt);b.append(row,an);
+    bt.onclick=()=>{an.hidden=false;bt.hidden=true};const row=el('div','btnrow');const sa=simAns(s);
+    if(!ja&&sa.v!=null){bt.className='btn ghost';bt.textContent='풀지 않고 정답·풀이 보기';const ai=el('div','ansin');const si=el('input');si.type='text';si.inputMode='numeric';si.maxLength=3;si.placeholder='숫자 입력';si.oninput=()=>{si.value=si.value.replace(/[^0-9]/g,'')};const gb=el('button','btn','채점');ai.append(el('span',null,'내 답'),si,gb);if(sa.choice)choicePad(ai,si);const res=el('div');
+      gb.onclick=()=>{if(!si.value){toast(sa.choice?'번호를 먼저 고르세요':'답을 입력하세요');return}const ok=Number(si.value)===sa.v;res.innerHTML='';res.append(el('div','result '+(ok?'ok':'no'),`<div class="big">${ok?'정답입니다':'오답입니다'}</div><div>${ok?'같은 개념을 제대로 잡았어요. 풀이와 내 방법을 비교해 보세요.':'풀이를 보고 어느 단계에서 달라졌는지 찾아보세요.'}</div>`));an.hidden=false;bt.hidden=true;ai.hidden=true};
+      si.onkeydown=e=>{if(e.key==='Enter')gb.click()};b.append(ai,res)}
+    row.append(bt);b.append(row,an);
     b.append(el('p','note',ja?'※ 類題はShrekMathの自作問題です(答えは計算・全数確認で検証済み)。':'※ 유사문항은 ShrekMath 자체 제작입니다. (정답은 계산과 전수 확인으로 검증)'));
     w.append(b);return w}
   if(p.k==='end'){w.append(head('end'));const b=el('div','body');b.append(el('h2',null,auto?'정리':tj('스스로 점검','自己チェック')));
-    if(auto){b.append(el('p','lead',rec&&rec.r==='ok'?`정답 <b class="num">${esc(J.answer)}</b>. 맞았어도 ‘어느 조건이 어느 단계에서 쓰였는지’ 한 줄로 말할 수 있어야 진짜 내 것입니다.`:`정답은 <b class="num">${esc(J.answer)}</b>. 내 풀이가 어디서 갈라졌는지 적어 두고, 3일 뒤 다시 풀어 보세요.`))}
+    if(auto){b.append(el('p','lead',rec&&rec.r==='ok'?`정답 <b class="num">${esc(cN(J.answer))}</b>. 맞았어도 ‘어느 조건이 어느 단계에서 쓰였는지’ 한 줄로 말할 수 있어야 진짜 내 것입니다.`:`정답은 <b class="num">${esc(cN(J.answer))}</b>. 내 풀이가 어디서 갈라졌는지 적어 두고, 3일 뒤 다시 풀어 보세요.`))}
     else b.append(el('p','lead',isP?'정답이 등록되지 않은 문항입니다. 해설(EBSi 등)과 비교해서 하나를 고르세요.':tj('해설과 내 풀이를 비교해서 하나를 고르세요. 기록에 남고, 목록에서 색으로 표시됩니다.','解説と自分の解答を比べて1つ選んでください。記録に残り、一覧で色分けされます。')));
     const sc=el('div','selfchk');[['ok',tj('맞았다','合っていた')],['part',tj('부분적으로 맞았다','部分的に合っていた')],['no',tj('틀렸다','間違えた')]].forEach(([v,t])=>{const bt=el('button',rec&&rec.r===v?'on':'',t);bt.onclick=()=>{if(!S.jrec[J.num])S.jrec[J.num]={secs:0,date:new Date().toISOString().slice(0,10)};S.jrec[J.num].r=v;delete S.jrec[J.num].skip;save();[...sc.children].forEach(x=>x.classList.toggle('on',x===bt));toast(tj('저장했어요','保存しました'));report({kind:isP?'기출':'일본',num:J.num,id:J.id,title:J.univ+' '+J.year+' '+J.num0,result:{ok:'맞음',part:'부분',no:'틀림'}[v],secs:S.jrec[J.num].secs,limit:(JLIMIT[J.stars]||25)*60})};sc.append(bt)});if(!auto)b.append(sc);
     if(rec&&rec.secs)b.append(el('p','lead',LJ()?`所要時間 ${mmss(rec.secs)} (制限 ${lim}分)`:`걸린 시간 ${mmss(rec.secs)} (제한 ${lim}분)`));
     const row=el('div','btnrow');const nx=JLIST.find(x=>x.num>J.num&&(x.kind==='past')===isP&&isG1(x)===isG1(J));if(nx){const nb=el('button','btn',tj('다음 문제 → ','次の問題 → ')+esc(isP?nx.univ:jU(nx))+' '+(isP?nx.track:nx.year));nb.onclick=()=>location.hash='j'+nx.num;row.append(nb)}
+    const su=isP&&JLIST.find(x=>x.num!==J.num&&x.kind==='past'&&isG1(x)===isG1(J)&&(x.unit||x.subj)===(J.unit||J.subj)&&!S.jrec[x.num]);if(su){const sb=el('button','btn ghost','같은 단원 더 풀기 · '+esc(J.unit||J.subj));sb.onclick=()=>location.hash='j'+su.num;row.append(sb)}
     const re=el('button','btn ghost',tj('다시 풀기','もう一度解く'));re.onclick=()=>{delete S.jrec[J.num];save();unlocked=false;openJapan(J.num,0)};row.append(re);
     const hm=el('button','btn ghost',tj('목록','一覧'));hm.onclick=()=>location.hash='';row.append(hm);b.append(row);w.append(b);return w}
   return w;
@@ -1665,6 +1670,8 @@ $('.sheet .tools').addEventListener('click',e=>{if(e.target.closest('button'))re
 $('#examText').addEventListener('click',e=>{if(!$('#exam').classList.contains('open'))return;if(e.target.closest('img.pg,summary,button,.langseg'))return;$('#fullBtn').click()});
 $('#fullBtn').onclick=()=>{if(!$('#exam').classList.contains('open')){toast('먼저 실전 시작을 눌러 문항을 여세요');return}$('#fullExam').innerHTML=$('#examText').innerHTML;$('#fullExam').classList.remove('zoom');$('#fsHint').hidden=!$('#fullExam').querySelector('img.pg');$('#fsAnswer').hidden=true;const solving=!!timer&&!unlocked;$('#fsFoot').hidden=!solving;const autoG=mode==='killer'||(mode==='japan'&&J&&J.kind==='past'&&J.answer!=null);$('#fsAnsRow').hidden=!(solving&&autoG);$('#fsDone').hidden=!(solving&&!autoG);$('#fsDone').textContent=mode==='essay'?'답안 작성 완료 → 예시답안':'풀이 완료 → 해설 보기';$('#fsAns').value='';fsPad();$('#fullSheet').hidden=false;if(solving&&autoG&&window.innerWidth>900&&!(J&&J.choice))setTimeout(()=>$('#fsAns').focus(),50);document.body.style.overflow='hidden'};
 $('#fsClose').onclick=()=>{$('#fullSheet').hidden=true;document.body.style.overflow=''};
+const cN=v=>J&&J.choice&&/^[1-5]$/.test(String(v))?'①②③④⑤'[Number(v)-1]:v;
+function simAns(s){const a=String(s.ans&&s.ans.ko||'').trim();const c='①②③④⑤'.indexOf(a[0]);if(c>=0)return{choice:true,v:c+1};const m=a.replace(/\$/g,'').trim().match(/^\d+$/);return{choice:false,v:m?Number(m[0]):null}}
 function choicePad(row,inp){const p=el('div','chpad');for(let n=1;n<=5;n++){const b=el('button','chb','①②③④⑤'[n-1]);b.type='button';b.setAttribute('aria-label',n+'번');b.onclick=()=>{inp.value=String(n);p.querySelectorAll('.chb').forEach(x=>x.classList.toggle('on',x===b))};p.append(b)}row.insertBefore(p,inp);return p}
 function fsPad(){const r=$('#fsAnsRow');const o=r.querySelector('.chpad');if(o)o.remove();const i=$('#fsAns');i.type='text';i.inputMode='numeric';i.maxLength=3;i.placeholder='숫자 입력';i.oninput=()=>{i.value=i.value.replace(/[^0-9]/g,'')};if(J&&J.choice&&mode==='japan')choicePad(r,i)}
 $('#fsGrade').onclick=()=>{const v=$('#fsAns').value.trim();if(!v){if(J&&J.choice)toast('번호를 먼저 고르세요');else $('#fsAns').focus();return}const a=$('#answer');if(!a){toast('채점할 수 없어요');return}a.value=v;$('#fsClose').click();a.dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}))};

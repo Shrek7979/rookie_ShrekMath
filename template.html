@@ -4,11 +4,26 @@
 <style>/*__KATEX_CSS__*/</style>
 <style id="rookieLight">
 html{filter:invert(1) hue-rotate(180deg);background:#090400}
-img,video,iframe,canvas,.sheet,.art .paper,.fsexam,#lb,#gBtn{filter:invert(1) hue-rotate(180deg)}
-.sheet img,.art .paper img,.fsexam img,#lb img{filter:none}
+img,video,iframe,canvas,.sheet,.art .paper,#fullSheet,#lb,#gBtn{filter:invert(1) hue-rotate(180deg)}
+.sheet img,.art .paper img,#fullSheet img,#fullSheet .sheet,#lb img{filter:none}
 .result.no{background:rgba(255,129,129,.16)!important;border-color:#ff8181!important}.st.no{background:#ff8181!important;color:#000!important}   /* 오답은 빨강 유지 */
-.btn:not(.ghost),.hero .go,.cta:not(.ghostc),#auth .abtn:not(.ghost):not(.danger),.stage.on,#fsGrade,#fsDone{color:#000!important}   /* 초록 위 글자는 흰색으로 보이게 */
+.btn:not(.ghost),.hero .go,.cta:not(.ghostc),#auth .abtn:not(.ghost):not(.danger),.stage.on,#fsGrade,#fsDone{color:#000!important}
+#fullSheet .btn,#fullSheet #fsGrade,#fullSheet #fsDone{color:#fff!important}   /* 초록 위 글자는 흰색으로 보이게 */
+
+/* ── 컬러풀 ── */
+.hero::after{background:linear-gradient(120deg,#001206ee,#041322dd 40%,#170b00dd 70%,#1f0f28ee)!important}
+.mosaic{opacity:.9}
+.hero h1 em{color:#18a54c}
+.topbar{border-bottom:3px solid transparent;border-image:linear-gradient(90deg,#008e27,#0090ae,#448bff,#c26fff,#e66003) 1}
+#tabs button[data-tab="g1"].on{background:#008e27!important;color:#000!important;border-color:#008e27!important}
+#tabs button[data-tab="past"].on{background:#448bff!important;color:#000!important;border-color:#448bff!important}
+.stats .tile:nth-child(1){background:linear-gradient(160deg,#001400,#000000);border-color:#004603;--tc:#008e27}
+.stats .tile:nth-child(2){background:linear-gradient(160deg,#0a192d,#000000);border-color:#15477f;--tc:#448bff}
+.stats .tile:nth-child(3){background:linear-gradient(160deg,#190e00,#000000);border-color:#572e00;--tc:#a85100}
+.ghead::before{content:"";width:6px;height:1.1em;border-radius:3px;background:linear-gradient(180deg,#008e27,#448bff)}
+.card .dbadge{background:var(--dc)!important;color:#000!important}
 </style>
+
 <style>
 /* 레이아웃: 늪(진한 이끼색) 위에 시험지(크림 종이)가 떠 있는 구조. 왼쪽 시험지 고정, 오른쪽 분석 카드 한 장. 좁으면 위아래로. */
 :root{
@@ -815,6 +830,7 @@ const REVIEW_DAYS=[3,7,14];   // 오답·시간초과 문항 복습 주기(일)
 const RANKS=[[0,'손님'],[3,'단골'],[10,'VIP'],[25,'점원'],[45,'매니저'],[72,'사장']];   // 마지막 기준은 전체 문항 수로 자동 조정
 const LIMIT={3:8,2:6,1:4};   // 제한시간(분): ★★★ 8 · ★★ 6 · ★ 4
 const RDN={1:'기본',2:'실력',3:'도전'};
+const UCOL={"중학 복습": "#a85100", "다항식": "#00965e", "복소수·이차방정식": "#a879ff", "이차함수": "#e66003", "여러 방정식·부등식": "#0090ae", "도형의 방정식": "#448bff", "집합과 명제": "#ff65b6", "함수": "#008f7d", "경우의 수·확률·수열": "#246c00", "기타": "#505f74", "공통": "#00965e", "확률과 통계": "#e66003", "미적분": "#448bff", "기하": "#a879ff"};const UC=x=>UCOL[x.subj]||UCOL[x.part]||'#5a5a5a';
 const UNIT_ORDER=['중학 복습','다항식','복소수·이차방정식','이차함수','여러 방정식·부등식','도형의 방정식','집합과 명제','함수','경우의 수·확률·수열','기타'];
 const STAGE={solve:['실전','시험처럼 먼저 풀기'],intro:['진단','문항 프로필'],cond:['조건','조건을 문장 단위로 쪼개기'],concept:['개념','문항을 떠받치는 원리'],
   step:['풀이','단계별 풀이'],trap:['함정','출제 포인트와 분기점'],variant:['변형','같은 뼈대, 다른 숫자'],end:['정리','오늘의 한 줄'],
@@ -1013,7 +1029,7 @@ function home(){
 }
 function mosaic(){
   const m=$('#mosaic');if(m.children.length)return;
-  const pool=[...LIST.map(x=>({t:x.topic,c:DC(x.stars),n:'#'+String(x.num).padStart(3,'0')})),...JP().slice(0,30).map(x=>({t:x.univ.replace('대학교',''),c:'var(--d'+x.stars+')',n:x.year})),...JLIST.filter((x,i)=>i%3===0).map(x=>({t:x.subj,c:'var(--d'+(x.stars+1)+')',n:x.part==='고1'?'고1':'기출'})),...ELIST.slice(0,30).map(x=>({t:x.univ.replace(/\(.*$/,''),c:'var(--gold)',n:'논술'}))];
+  const pool=[...LIST.map(x=>({t:x.topic,c:DC(x.stars),n:'#'+String(x.num).padStart(3,'0')})),...JP().slice(0,30).map(x=>({t:x.univ.replace('대학교',''),c:'var(--d'+x.stars+')',n:x.year})),...JLIST.filter((x,i)=>i%3===0).map(x=>({t:x.subj,c:UC(x),n:x.part==='고1'?'고1':'기출'})),...ELIST.slice(0,30).map(x=>({t:x.univ.replace(/\(.*$/,''),c:'var(--gold)',n:'논술'}))];
   for(let i=0;i<112;i++){const p=pool[(i*7)%pool.length];if(!p)break;const d=el('div',null,esc(p.t));d.dataset.n=p.n;d.style.setProperty('--mc',p.c);m.append(d)}
 }
 /* 포스터 삽화: viewBox 120x80, 흰 선 + 강조색 면 */
@@ -1170,7 +1186,7 @@ function homeJapan(){
     c.innerHTML=`<div class="top"><span><span class="num">#J${JNO(x)}</span> · ${x.year} · ${x.num0}${JA()?'番':'번'}${x.ja?` <b class="jab">${JA()?'日・類題':'日·유사'}</b>`:''}</span><span class="subj" style="--sc:${SC(x.subj==='미적분'?'미적분Ⅱ':x.subj)}">${esc(jS(x))}</span></div>
       <div class="topic">${esc(jU(x))} · ${esc(jT(x))}</div>
       <div class="meta"><span><span class="stars">${'★'.repeat(x.stars)}${'☆'.repeat(5-x.stars)}</span><span class="dbadge">${JA()?(x.stars>=5?'最難関':x.stars>=3?'難関':'中級'):(x.stars>=5?'최고난도':x.stars>=3?'고난도':'중급')}</span></span><span><span class="tag" style="white-space:normal;line-height:1.3">${esc((JA()&&x.ja?((x.ja.find(b=>b.p)||{}).p||'').replace(/\$|\\[a-z]+|[{}]/g,''):x.text).slice(0,30))}…</span></span></div>`;
-    c.insertBefore(artEl(x.text,x.subj,x.art,x.id,DC(x.stars),null,x.qimg&&x.qimg[0]),c.querySelector('.topic'));tagPay(c,x);
+    c.insertBefore(artEl(x.text,x.subj,x.art,x.id,UC(x),null,x.qimg&&x.qimg[0]),c.querySelector('.topic'));tagPay(c,x);
     if(rec) c.append(el('span','st '+(rec.r==='ok'?'ok':rec.r==='no'?'no':'skip'),rec.r==='ok'?'맞음':rec.r==='part'?'부분':rec.r==='no'?'틀림':'열람'));
     c.onclick=()=>location.hash='j'+x.num;track.append(c);
   };
@@ -1193,11 +1209,11 @@ function homePast(){
   let last='',track=null;
   for(const x of L){
     const g=pName(x);if(g!==last){last=g;track=newRow(g,L.filter(y=>pName(y)===g).length)}
-    const c=el('button','card');const rec=S.jrec[x.num];c.style.setProperty('--dc',DC(x.stars));c.dataset.big=String(x.num0);
+    const c=el('button','card');const rec=S.jrec[x.num];c.style.setProperty('--dc',UC(x));c.dataset.big=String(x.num0);
     c.innerHTML=`<div class="top"><span><span class="num">${isG1(x)?'#G':'#P'}${JNO(x)}</span> · ${isG1(x)?x.month:(x.month==='11월'?'수능':x.month)}${x.en?' <b class="enb">EN</b>':''}</span><span class="subj" style="--sc:${SC(x.subj)}">${esc(EN()?(PART_EN[x.part]||x.part):x.part)}</span></div>
       <div class="topic">${esc(x.track)+' · '+x.year+(isG1(x)?'년':'학년도')}</div>
       <div class="meta"><span><span class="stars">${'★'.repeat(x.stars)}${'☆'.repeat(3-x.stars)}</span><span class="dbadge">${RDN[x.stars]}</span></span><span><span class="tag">${EN()?(x.choice?'Multiple choice':'Short answer')+' · '+(LIMIT[x.stars]||8)+' min'+(x.answer==null?' · no key':''):(x.choice?'5지선다':'단답형')+' · '+(LIMIT[x.stars]||8)+'분'+(x.sim?' · 🌱유사':'')}</span></span></div>`;
-    c.insertBefore(artEl(x.text,x.subj,x.art,x.id,DC(x.stars),null,x.qimg&&x.qimg[0]),c.querySelector('.topic'));tagPay(c,x);
+    c.insertBefore(artEl(x.text,x.subj,x.art,x.id,UC(x),null,x.qimg&&x.qimg[0]),c.querySelector('.topic'));tagPay(c,x);
     if(rec) c.append(el('span','st '+(rec.r==='ok'?'ok':rec.r==='no'?'no':'skip'),EN()?(rec.r==='ok'?'Correct':rec.r==='no'?'Wrong':rec.r==='part'?'Partial':'Viewed'):rec.r==='ok'?'정답':rec.r==='no'?'오답':rec.r==='part'?'부분':'열람'));
     c.onclick=()=>location.hash='j'+x.num;track.append(c);
   }

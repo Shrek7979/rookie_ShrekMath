@@ -61,42 +61,73 @@ def answers(pdf):
     return out, intent
 
 
-def cut_gap(im, gap=140):
-    """위에서부터 내려가다 흰 띠가 gap 픽셀 넘게 이어지면 거기서 자르고, 아래 여백을 없앤다.
-    단 사이 세로줄에 속지 않게 양옆 14px 는 보지 않는다."""
-    g = im.convert('L'); w, h = g.size; px = g.load(); run = 0; last = 0
+def cut_gap(im):
+    """테두리 쪽 단 구분선(세로줄)을 지우고 아래 여백만 없앤다 (그림 속 빈칸에서 자르지 않음)."""
+    im = im.convert('RGB'); w, h = im.size; g = im.convert('L'); px = g.load()
+    for x in list(range(0, min(30, w))) + list(range(max(0, w - 30), w)):
+        if sum(px[x, y] < 160 for y in range(h)) > h * 0.6:
+            im.paste((255, 255, 255), (x, 0, x + 1, h)); g.paste(255, (x, 0, x + 1, h))
+    last = 0
     for y in range(h):
-        if any(px[x, y] < 200 for x in range(14, w - 14, 2)): run = 0; last = y
-        else:
-            run += 1
-            if run >= gap: break
+        if any(px[x, y] < 200 for x in range(4, w - 4, 2)): last = y
     return im.crop((0, 0, w, min(h, last + 24)))
 
 
+def _ink(px, y, xa, xb):
+    return any(px[x, y] < 200 for x in range(xa, xb, 2))
+
+
+def _climb(px, top, lim, xa, xb, gap=12):
+    """top 줄에서 위로 올라가며 같은 줄에 붙은 글자(분수 분자·벡터 화살표·근호)를 찾는다.
+    흰 줄이 gap 픽셀 넘게 이어지면 그 줄은 끝난 것. 반환: 가장 위 글자 줄."""
+    hi = top; y = top - 1; run = 0
+    while y > top - lim:
+        if sum(px[x, y] < 160 for x in range(xa, xb, 4)) > (xb - xa) / 4 * 0.7: break   # 머리줄(가로 선)에서 멈춤
+        if _ink(px, y, xa, xb): hi = y; run = 0
+        else:
+            run += 1
+            if run > gap: break
+        y -= 1
+    return hi
+
+
 def crop_items(pdf, first, last, wanted):
-    """render_past.crop_items 와 같지만 단 경계를 실제 문항 번호 위치로 정한다 (A4·A3 문제지 모두)"""
+    """render_past.crop_items 와 같지만 단 경계를 실제 문항 번호 위치로 정한다 (A4·A3 문제지 모두).
+    위·아래 경계는 번호 줄에서 시작해 글자(지수·분수)가 이어지는 동안만 넓히고, 흰 줄을 만나면 멈춘다
+    → 윗부분이 잘리지도, 앞 문항·머리줄이 끼지도 않는다."""
     found = {}
+    sc = rp.DPI / 72
     for pg in range(first, last + 1):
         pw, ph, ws = rp.words(pdf, pg)
         nums = [(w, int(w[4][:-1])) for w in ws if re.fullmatch(r'\d{1,2}\.', w[4])]
         left = [n for n in nums if n[0][0] < pw * 0.25]
         right = [n for n in nums if pw * 0.4 < n[0][0] < pw * 0.62]
-        rx = min((n[0][0] for n in right), default=pw / 2 + 8)
-        lx = min((n[0][0] for n in left), default=50)
-        body_bottom = max([w[3] for w in ws if w[3] < ph - ph * 0.09] or [ph - 120])
-        for lst, x0, x1 in ((left, lx - 6, rx - 10), (right, rx - 4, pw - lx + 8)):
+        # 오른쪽 단 시작: 번호들의 x 중앙값 (본문 속 "3." 같은 숫자에 속지 않게)
+        rxs = sorted(n[0][0] for n in right)
+        rx = rxs[len(rxs) // 2] if rxs else pw / 2 + 8
+        lxs = sorted(n[0][0] for n in left)
+        lx = lxs[len(lxs) // 2] if lxs else 50
+        right = [n for n in right if abs(n[0][0] - rx) < 30]
+        left = [n for n in left if abs(n[0][0] - lx) < 30]
+        # 왼쪽 단 오른쪽 끝: 글자가 rx-10 을 살짝 넘는 문제지가 있다 (2015년 9월 등)
+        lmax = max([w[2] for w in ws if w[0] < rx - 20 and w[2] < rx + 2] or [rx - 10])
+        lx1 = min(rx - 2, max(rx - 10, lmax + 3))
+        img = None
+        for lst, x0, x1 in ((left, lx - 6, lx1), (right, rx - 4, pw - lx + 8)):
             lst.sort(key=lambda n: n[0][1])
             for i, (w, n) in enumerate(lst):
                 if n not in wanted or n in found: continue
-                y0 = w[1] - 5
-                y1 = (lst[i + 1][0][1] - 12) if i + 1 < len(lst) else ph * 0.88
-                y1 = min(y1, ph * 0.9)   # 쪽 번호 상자 빼기
-                ys = [t[3] for t in ws if x0 <= t[0] < x1 and y0 <= t[1] < y1]
-                # 그림(벡터)은 글자가 아니라서 글자 높이로 자르면 잘린다 → 아래 빈칸은 trim/cut_gap 이 정리
-                xs = [t[2] for t in ws if x0 <= t[0] < x1 and y0 <= t[1] < y1]
-                x1c = min(x1, (max(xs) + 14) if xs else x1)
-                img = rp.render(pdf, pg); sc = rp.DPI / 72
-                found[n] = cut_gap((img.crop((int(x0 * sc), int(y0 * sc), int(max(x1c, x0 + 200) * sc), int(y1 * sc)))))
+                if img is None: img = rp.render(pdf, pg); gpx = img.convert('L').load()
+                xa, xb = int((x0 + 6) * sc), int((x1 - 6) * sc)
+                top = int(w[1] * sc); lim = int(22 * sc)
+                y0 = max(0, _climb(gpx, top, lim, xa, xb) - 6)
+                if i + 1 < len(lst):
+                    nt = int(lst[i + 1][0][1] * sc)
+                    y1 = _climb(gpx, nt, lim, xa, xb) - 2   # 다음 문항의 위 첨자·분수 윗부분 건너뛰기
+                else:
+                    y1 = int(ph * 0.88 * sc)
+                y1 = min(y1, int(ph * 0.9 * sc))   # 쪽 번호 상자 빼기
+                found[n] = cut_gap(img.crop((int(x0 * sc), y0, int(max(x1, x0 + 200) * sc), y1)))
     return found
 
 

@@ -1,7 +1,7 @@
 """킬러들의 수학몰 화면(src/killer_template.html)을 그대로 쓰고, 루키용으로 바꿀 곳만 고친다 → template.html
 킬러 화면이 바뀌면: 킬러 저장소의 template.html 을 src/killer_template.html 로 복사한 뒤 이 스크립트를 다시 돌리면 된다.
 (고칠 곳을 찾지 못하면 멈춘다 → 그 자리만 손보면 됨)"""
-import os, re, sys
+import os, re, sys, json
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 s = open(os.path.join(ROOT, 'src', 'killer_template.html'), encoding='utf-8').read()
 
@@ -25,13 +25,43 @@ PRE = {'#e50914': '#24a25a', '#141414': '#090400', '#1b1b1b': '#050200', '#18181
 for a, b in PRE.items():
     s = re.sub(re.escape(a) + r'(?![0-9a-fA-F])', b, s)
 s = s.replace('rgba(229,9,20,', 'rgba(36,162,90,')
+
+def pre(hexc):
+    """뒤집힌 화면에서 hexc 로 보이게 하려면 뒤집기 전에 넣을 색 (invert + hue-rotate(180deg) 의 역)"""
+    H = [[-0.574, 1.43, 0.144], [0.426, 0.43, 0.144], [0.426, 1.43, -0.856]]
+    d = (H[0][0]*(H[1][1]*H[2][2]-H[1][2]*H[2][1]) - H[0][1]*(H[1][0]*H[2][2]-H[1][2]*H[2][0]) + H[0][2]*(H[1][0]*H[2][1]-H[1][1]*H[2][0]))
+    inv = [[(H[(j+1)%3][(i+1)%3]*H[(j+2)%3][(i+2)%3]-H[(j+1)%3][(i+2)%3]*H[(j+2)%3][(i+1)%3])/d for j in range(3)] for i in range(3)]
+    f = [int(hexc[k:k+2], 16)/255 for k in (1, 3, 5)]
+    pv = [min(1, max(0, 1 - sum(inv[r][c]*f[c] for c in range(3)))) for r in range(3)]
+    return '#' + ''.join(f'{round(v*255):02x}' for v in pv)
+
+# 단원·과목별 색 (보이는 색 → 뒤집기 전 색)
+UNIT_COL = {'중학 복습': '#f59e0b', '다항식': '#10b981', '복소수·이차방정식': '#8b5cf6', '이차함수': '#f97316', '여러 방정식·부등식': '#06b6d4',
+            '도형의 방정식': '#3b82f6', '집합과 명제': '#ec4899', '함수': '#14b8a6', '경우의 수·확률·수열': '#84cc16', '기타': '#94a3b8',
+            '공통': '#10b981', '확률과 통계': '#f97316', '미적분': '#3b82f6', '기하': '#8b5cf6'}
+
 LIGHT = """<style id="rookieLight">
 html{filter:invert(1) hue-rotate(180deg);background:#090400}
-img,video,iframe,canvas,.sheet,.art .paper,.fsexam,#lb,#gBtn{filter:invert(1) hue-rotate(180deg)}
-.sheet img,.art .paper img,.fsexam img,#lb img{filter:none}
+img,video,iframe,canvas,.sheet,.art .paper,#fullSheet,#lb,#gBtn{filter:invert(1) hue-rotate(180deg)}
+.sheet img,.art .paper img,#fullSheet img,#fullSheet .sheet,#lb img{filter:none}
 .result.no{background:rgba(255,129,129,.16)!important;border-color:#ff8181!important}.st.no{background:#ff8181!important;color:#000!important}   /* 오답은 빨강 유지 */
-.btn:not(.ghost),.hero .go,.cta:not(.ghostc),#auth .abtn:not(.ghost):not(.danger),.stage.on,#fsGrade,#fsDone{color:#000!important}   /* 초록 위 글자는 흰색으로 보이게 */
-</style>"""
+.btn:not(.ghost),.hero .go,.cta:not(.ghostc),#auth .abtn:not(.ghost):not(.danger),.stage.on,#fsGrade,#fsDone{color:#000!important}
+#fullSheet .btn,#fullSheet #fsGrade,#fullSheet #fsDone{color:#fff!important}   /* 초록 위 글자는 흰색으로 보이게 */
+"""+f"""
+/* ── 컬러풀 ── */
+.hero::after{{background:linear-gradient(120deg,{pre('#e3f8ec')}ee,{pre('#e1f0ff')}dd 40%,{pre('#fff3d6')}dd 70%,{pre('#f6e6ff')}ee)!important}}
+.mosaic{{opacity:.9}}
+.hero h1 em{{color:{pre('#16a34a')}}}
+.topbar{{border-bottom:3px solid transparent;border-image:linear-gradient(90deg,{pre('#22c55e')},{pre('#06b6d4')},{pre('#3b82f6')},{pre('#a855f7')},{pre('#f97316')}) 1}}
+#tabs button[data-tab="g1"].on{{background:{pre('#22c55e')}!important;color:#000!important;border-color:{pre('#22c55e')}!important}}
+#tabs button[data-tab="past"].on{{background:{pre('#3b82f6')}!important;color:#000!important;border-color:{pre('#3b82f6')}!important}}
+.stats .tile:nth-child(1){{background:linear-gradient(160deg,{pre('#dcfce7')},{pre('#ffffff')});border-color:{pre('#86efac')};--tc:{pre('#22c55e')}}}
+.stats .tile:nth-child(2){{background:linear-gradient(160deg,{pre('#dbeafe')},{pre('#ffffff')});border-color:{pre('#93c5fd')};--tc:{pre('#3b82f6')}}}
+.stats .tile:nth-child(3){{background:linear-gradient(160deg,{pre('#fef3c7')},{pre('#ffffff')});border-color:{pre('#fcd34d')};--tc:{pre('#f59e0b')}}}
+.ghead::before{{content:"";width:6px;height:1.1em;border-radius:3px;background:linear-gradient(180deg,{pre('#22c55e')},{pre('#3b82f6')})}}
+.card .dbadge{{background:var(--dc)!important;color:#000!important}}
+</style>
+"""
 s = s.replace('<style>/*__KATEX_CSS__*/</style>', '<style>/*__KATEX_CSS__*/</style>\n' + LIGHT, 1)
 
 # ── 관(탭): 고1 기초관 · 기출관 (킬러·논술·일본관은 숨김) ──
@@ -106,6 +136,13 @@ rep("(x.choice?'5지선다':'주관식')+' · '+(LIMIT[x.stars]||8)+'분'+(x.ans
 rep("const LIMIT={5:13,4:10,3:8,2:8};   // 제한시간(분): 킬러 13 · 고난도 10 · 준킬러 8",
     "const LIMIT={3:8,2:6,1:4};   // 제한시간(분): ★★★ 8 · ★★ 6 · ★ 4\nconst RDN={1:'기본',2:'실력',3:'도전'};\nconst UNIT_ORDER=['중학 복습','다항식','복소수·이차방정식','이차함수','여러 방정식·부등식','도형의 방정식','집합과 명제','함수','경우의 수·확률·수열','기타'];")
 
+# 카드·모자이크 색: 난이도 대신 단원·과목 색 (더 알록달록하게)
+rep("const RDN={1:'기본',2:'실력',3:'도전'};", "const RDN={1:'기본',2:'실력',3:'도전'};\nconst UCOL=" + json.dumps({k: pre(v) for k, v in UNIT_COL.items()}, ensure_ascii=False) + ";const UC=x=>UCOL[x.subj]||UCOL[x.part]||'#5a5a5a';")
+rep("const c=el('button','card');const rec=S.jrec[x.num];c.style.setProperty('--dc',DC(x.stars));c.dataset.big=String(x.num0);",
+    "const c=el('button','card');const rec=S.jrec[x.num];c.style.setProperty('--dc',UC(x));c.dataset.big=String(x.num0);")
+rep("artEl(x.text,x.subj,x.art,x.id,DC(x.stars),null,x.qimg&&x.qimg[0])", "artEl(x.text,x.subj,x.art,x.id,UC(x),null,x.qimg&&x.qimg[0])", 2)
+rep("...JLIST.filter((x,i)=>i%3===0).map(x=>({t:x.subj,c:'var(--d'+(x.stars+1)+')',n:x.part==='고1'?'고1':'기출'}))",
+    "...JLIST.filter((x,i)=>i%3===0).map(x=>({t:x.subj,c:UC(x),n:x.part==='고1'?'고1':'기출'}))")
 # 문제 화면
 rep("$('#opId').innerHTML=isP?`#P${JNO(J)} · 평가원 기출 <span class=\"subj\" style=\"--sc:${SC(J.subj)}\">${esc(J.part)}</span>`",
     "$('#opId').innerHTML=isP?`${isG1(J)?'#G':'#P'}${JNO(J)} · ${isG1(J)?'고1 학력평가':'평가원 기출'} <span class=\"subj\" style=\"--sc:${SC(J.subj)}\">${esc(isG1(J)?J.subj:J.part)}</span>`")

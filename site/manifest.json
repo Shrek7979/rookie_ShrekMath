@@ -6,8 +6,8 @@
  "scope": "/",
  "lang": "ko",
  "display": "standalone",
- "background_color": "#141414",
- "theme_color": "#141414",
+ "background_color": "#fdf9f6",
+ "theme_color": "#192c46",
  "categories": [
   "education"
  ],

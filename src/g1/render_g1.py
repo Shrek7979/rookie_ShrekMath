@@ -127,6 +127,10 @@ def crop_items(pdf, first, last, wanted):
                 else:
                     y1 = int(ph * 0.88 * sc)
                 y1 = min(y1, int(ph * 0.9 * sc))   # 쪽 번호 상자 빼기
+                # 마지막 쪽 "※ 확인 사항" 상자 빼기
+                chk = [t[1] for k, t in enumerate(ws) if x0 - 10 <= t[0] < x1 and w[1] < t[1] and t[1] * sc < y1
+                       and t[4] == '확인' and k + 1 < len(ws) and ws[k + 1][4] == '사항']
+                if chk: y1 = min(y1, int((min(chk) - 20) * sc))   # 상자 윗선까지 빼기
                 found[n] = cut_gap(img.crop((int(x0 * sc), y0, int(max(x1, x0 + 200) * sc), y1)))
     return found
 

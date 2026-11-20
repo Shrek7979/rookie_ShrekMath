@@ -34,16 +34,9 @@ def unit(topic):
 
 
 def icon(size, pad=0.0):
-    """초록 둥근 사각형 위 새싹(떡잎 두 장 + 줄기)"""
-    S = 4 * size; im = Image.new('RGBA', (S, S), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
-    p = int(S * pad); d.rounded_rectangle((p, p, S - p, S - p), radius=int(S * .22), fill=(31, 157, 85, 255))
-    cx, k = S / 2, (S - 2 * p) / 100
-    y = lambda v: p + v * k; x = lambda v: p + v * k
-    d.rounded_rectangle((cx - 3.2 * k, y(44), cx + 3.2 * k, y(80)), radius=int(3 * k), fill='#fffaf0')
-    d.ellipse((x(18), y(26), x(52), y(50)), fill='#fffaf0')
-    d.ellipse((x(48), y(18), x(84), y(46)), fill='#ffd36b')
-    d.rounded_rectangle((x(28), y(78), x(72), y(84)), radius=int(3 * k), fill='#f07b22')
-    return im.resize((size, size), Image.LANCZOS)
+    """새싹 아이콘: src/app/icon.svg 를 1024px 로 그려 둔 PNG 를 줄여 쓴다 (pad>0 이면 마스커블용)"""
+    f = 'icon-maskable-1024.png' if pad else 'icon-1024.png'
+    return Image.open(os.path.join(ROOT, 'src', 'app', f)).convert('RGBA').resize((size, size), Image.LANCZOS)
 
 
 def blocks(html):

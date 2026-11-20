@@ -38,7 +38,11 @@ def pre(hexc):
 # 단원·과목별 색 (보이는 색 → 뒤집기 전 색)
 UNIT_COL = {'중학 복습': '#f59e0b', '다항식': '#10b981', '복소수·이차방정식': '#8b5cf6', '이차함수': '#f97316', '여러 방정식·부등식': '#06b6d4',
             '도형의 방정식': '#3b82f6', '집합과 명제': '#ec4899', '함수': '#14b8a6', '경우의 수·확률·수열': '#84cc16', '기타': '#94a3b8',
-            '공통': '#10b981', '확률과 통계': '#f97316', '미적분': '#3b82f6', '기하': '#8b5cf6'}
+            '공통': '#10b981', '확률과 통계': '#f97316', '미적분': '#3b82f6', '기하': '#8b5cf6',
+            # 평가원 기출 단원
+            '지수·로그': '#f59e0b', '삼각함수': '#ec4899', '수열': '#8b5cf6', '함수의 극한': '#06b6d4', '미분': '#3b82f6', '적분': '#10b981',
+            '경우의 수': '#f97316', '확률': '#d946ef', '통계': '#84cc16', '수열의 극한': '#6366f1', '미분법': '#0ea5e9', '적분법': '#14b8a6',
+            '이차곡선': '#a855f7', '평면벡터': '#f43f5e', '공간도형': '#0891b2'}
 
 LIGHT = """<style id="rookieLight">
 html{filter:invert(1) hue-rotate(180deg);background:#090400}
@@ -52,19 +56,25 @@ img,video,iframe,canvas,.sheet,.art .paper,#fullSheet,#lb,#gBtn{filter:invert(1)
 .hero::after{{background:linear-gradient(120deg,{pre('#e3f8ec')}ee,{pre('#e1f0ff')}dd 40%,{pre('#fff3d6')}dd 70%,{pre('#f6e6ff')}ee)!important}}
 .mosaic{{opacity:.9}}
 .hero h1 em{{color:{pre('#16a34a')}}}
-.topbar{{border-bottom:3px solid transparent;border-image:linear-gradient(90deg,{pre('#22c55e')},{pre('#06b6d4')},{pre('#3b82f6')},{pre('#a855f7')},{pre('#f97316')}) 1}}
-#tabs button[data-tab="g1"].on{{background:{pre('#22c55e')}!important;color:#000!important;border-color:{pre('#22c55e')}!important}}
-#tabs button[data-tab="past"].on{{background:{pre('#3b82f6')}!important;color:#000!important;border-color:{pre('#3b82f6')}!important}}
+.topbar{{border-bottom:2px solid transparent;border-image:linear-gradient(90deg,{pre('#22c55e')},{pre('#06b6d4')},{pre('#3b82f6')},{pre('#a855f7')},{pre('#f97316')}) 1}}
+#tabs button{{background:transparent!important;border:0!important;border-radius:0!important;opacity:1!important;color:{pre('#6b7280')}!important;padding:10px 14px!important;font-size:.98rem!important}}
+#tabs button.on{{color:{pre('#111827')}!important;font-weight:700!important}}
+#tabs button[data-tab="g1"].on{{box-shadow:inset 0 -3px 0 {pre('#16a34a')}}}
+#tabs button[data-tab="past"].on{{box-shadow:inset 0 -3px 0 {pre('#2563eb')}}}
+#tabs button .n{{font-weight:500}}
+#tabs button:focus{{outline:none}}#tabs button:focus-visible{{outline:2px solid {pre('#93c5fd')};outline-offset:2px}}
 .stats .tile:nth-child(1){{background:linear-gradient(160deg,{pre('#dcfce7')},{pre('#ffffff')});border-color:{pre('#86efac')};--tc:{pre('#22c55e')}}}
 .stats .tile:nth-child(2){{background:linear-gradient(160deg,{pre('#dbeafe')},{pre('#ffffff')});border-color:{pre('#93c5fd')};--tc:{pre('#3b82f6')}}}
 .stats .tile:nth-child(3){{background:linear-gradient(160deg,{pre('#fef3c7')},{pre('#ffffff')});border-color:{pre('#fcd34d')};--tc:{pre('#f59e0b')}}}
 .ghead::before{{content:"";width:6px;height:1.1em;border-radius:3px;background:linear-gradient(180deg,{pre('#22c55e')},{pre('#3b82f6')})}}
 .card .dbadge{{background:var(--dc)!important;color:#000!important}}
 /* 로고 */
-.logo{{color:{pre('#1f2a1f')}!important;text-shadow:none!important;font-weight:800!important;position:relative;padding-left:44px}}
+.logo{{color:{pre('#1f2937')}!important;text-shadow:none!important;font-weight:800!important;font-size:1.32rem!important;letter-spacing:-.03em!important;position:relative;padding-left:40px}}
 .logo em{{font-style:normal;color:{pre('#16a34a')}}}
-.logo .rkico{{position:absolute;left:0;top:-2px;width:36px;height:36px;border-radius:10px}}
-.logo small{{font-weight:500!important}}
+.logo .rkico{{position:absolute;left:0;top:0;width:31px;height:31px;border-radius:8px}}
+.logo small{{font-weight:500!important;font-size:.52rem!important;letter-spacing:.22em!important;margin-top:4px!important}}
+.logo .meta{{background:transparent!important;border:1px solid {pre('#e5e7eb')}!important;padding:3px 9px!important;font-size:.72rem}}
+.logo .meta b{{font-weight:600!important}}
 /* 카드 미리보기: 문제 첫 줄부터 읽히게 + 형광펜 */
 .snap .paper{{top:34px!important;height:58%!important}}
 .snap .paper img{{width:135%!important;margin:0 0 0 -2px!important}}
@@ -160,7 +170,7 @@ rep("const LIMIT={5:13,4:10,3:8,2:8};   // 제한시간(분): 킬러 13 · 고�
     "const LIMIT={3:8,2:6,1:4};   // 제한시간(분): ★★★ 8 · ★★ 6 · ★ 4\nconst RDN={1:'기본',2:'실력',3:'도전'};\nconst UNIT_ORDER=['중학 복습','다항식','복소수·이차방정식','이차함수','여러 방정식·부등식','도형의 방정식','집합과 명제','함수','경우의 수·확률·수열','기타'];")
 
 # 카드·모자이크 색: 난이도 대신 단원·과목 색 (더 알록달록하게)
-rep("const RDN={1:'기본',2:'실력',3:'도전'};", "const RDN={1:'기본',2:'실력',3:'도전'};\nconst UCOL=" + json.dumps({k: pre(v) for k, v in UNIT_COL.items()}, ensure_ascii=False) + ";const UC=x=>UCOL[x.subj]||UCOL[x.part]||'#5a5a5a';\nconst UCOLR=" + json.dumps(UNIT_COL, ensure_ascii=False) + ";const UCR=x=>UCOLR[x.subj]||UCOLR[x.part]||'#facc15';")
+rep("const RDN={1:'기본',2:'실력',3:'도전'};", "const RDN={1:'기본',2:'실력',3:'도전'};\nconst UCOL=" + json.dumps({k: pre(v) for k, v in UNIT_COL.items()}, ensure_ascii=False) + ";const UC=x=>UCOL[x.unit]||UCOL[x.subj]||UCOL[x.part]||'#5a5a5a';\nconst UCOLR=" + json.dumps(UNIT_COL, ensure_ascii=False) + ";const UCR=x=>UCOLR[x.unit]||UCOLR[x.subj]||UCOLR[x.part]||'#facc15';")
 rep("const c=el('button','card');const rec=S.jrec[x.num];c.style.setProperty('--dc',DC(x.stars));c.dataset.big=String(x.num0);",
     "const c=el('button','card');const rec=S.jrec[x.num];c.style.setProperty('--dc',UC(x));c.style.setProperty('--hl',UCR(x));c.dataset.big=String(x.num0);")
 rep("artEl(x.text,x.subj,x.art,x.id,DC(x.stars),null,x.qimg&&x.qimg[0])", "artEl(x.text,x.subj,x.art,x.id,UC(x),null,x.qimg&&x.qimg[0])", 2)

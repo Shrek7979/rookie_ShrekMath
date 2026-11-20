@@ -77,6 +77,9 @@ def _ink(px, y, xa, xb):
     return any(px[x, y] < 200 for x in range(xa, xb, 2))
 
 
+TEXT = {}   # 마지막 crop_items 호출에서 문항별 글자 (단원 분류용)
+
+
 def _climb(px, top, lim, xa, xb, gap=12):
     """top 줄에서 위로 올라가며 같은 줄에 붙은 글자(분수 분자·벡터 화살표·근호)를 찾는다.
     흰 줄이 gap 픽셀 넘게 이어지면 그 줄은 끝난 것. 반환: 가장 위 글자 줄."""
@@ -132,6 +135,7 @@ def crop_items(pdf, first, last, wanted):
                        and t[4] == '확인' and k + 1 < len(ws) and ws[k + 1][4] == '사항']
                 if chk: y1 = min(y1, int((min(chk) - 20) * sc))   # 상자 윗선까지 빼기
                 found[n] = cut_gap(img.crop((int(x0 * sc), y0, int(max(x1, x0 + 200) * sc), y1)))
+                TEXT[n] = ' '.join(t[4] for t in ws if x0 <= t[0] < x1 and y0 <= t[1] * sc < y1)
     return found
 
 

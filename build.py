@@ -77,6 +77,7 @@ def main():
         sims.update(m.S)
     g1 = json.load(open(os.path.join(G1, 'index.json'), encoding='utf-8'))
     past = json.load(open(os.path.join(PAST, 'index.json'), encoding='utf-8'))
+    PU = json.load(open(os.path.join(PAST, 'units.json'), encoding='utf-8'))   # 평가원 문항 단원(문항을 보고 분류)
     J = []
     for x in g1:   # 고1 기초관: 최신 시험부터
         t = PUA.sub('', x.get('topic', '')).strip(); u = unit(t)
@@ -86,7 +87,7 @@ def main():
     for x in past:
         mon = '수능' if x['month'] == '11월' else x['month'] + ' 모평'
         J.append({'kind': 'past', 'id': x['id'], 'year': x['year'], 'month': x['month'], 'num0': x['num'], 'stars': x['stars'],
-                  'univ': f"{x['year']}학년도 {mon}", 'track': f"{x['part']} {x['num']}번", 'part': x['part'], 'subj': x['part'],
+                  'univ': f"{x['year']}학년도 {mon}", 'track': f"{x['part']} {x['num']}번 · {PU.get(x['id'], '')}", 'unit': PU.get(x['id'], ''), 'part': x['part'], 'subj': x['part'],
                   'text': f"{x['year']}학년도 {mon} {x['part']} {x['num']}번", 'answer': x['answer'], 'choice': x['choice'], 'src': PAST})
     for i, x in enumerate(J, 1):
         im = Image.open(os.path.join(x.pop('src'), 'img', x['id'] + '.webp')).convert('RGB')

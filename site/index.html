@@ -91,7 +91,7 @@ img,video,iframe,canvas,.sheet,.art .paper,#fullSheet,#lb,#gBtn{filter:invert(1)
   --d2:#8a93a6; --d3:#4ea3ff; --d4:#ff9f3a; --d5:#ff4a6e;
   --s1:#2dd4bf; --s2:#a78bfa; --s3:#fb7185; --s4:#fbbf24; --s5:#60a5fa; --s6:#f5c542;
   --k-solve:#24a25a; --k-intro:#5aa9ff; --k-cond:#f5c542; --k-concept:#2dd4bf; --k-step:#a78bfa; --k-trap:#ff9f3a; --k-variant:#49d49a; --k-end:#f472b6;
-  --k-answer:#a6e85c; --k-rubric:#f5c542; --k-sim:#ff8fd8;
+  --k-answer:#a6e85c; --k-expl:#f5a524; --k-rubric:#f5c542; --k-sim:#ff8fd8;
   --disp:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif; --body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --exam:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
   --r:8px; --fs:1; color-scheme:dark;
@@ -671,15 +671,15 @@ details.orig summary{cursor:pointer;color:#8a8577;font-size:.9rem;margin-bottom:
       <button data-tab="past">기출관<span class="n" id="nPast">0</span></button>
       <span hidden><span id="nKiller"></span><span id="nEssay"></span><span id="nJapan"></span></span>
     </nav>
-    <button class="cta" id="proBtn" hidden>🔓<span class="lbl"> 전체 열기</span></button><button class="cta ghostc" id="langBtn" title="View in English (Past Exams)" hidden>EN</button><button class="cta ghostc" id="jpBtn" title="日本語で見る(日本館)" hidden>JP</button><button class="cta ghostc" id="randBtn" title="아직 안 푼 문제 중 하나">🎲<span class="lbl"> 아무거나</span></button><button class="cta" id="exportBtn">🧾<span class="lbl"> 영수증 뽑기</span></button>
+    <button class="cta" id="proBtn" hidden>🔓<span class="lbl"> 전체 열기</span></button><button class="cta ghostc" id="langBtn" title="View in English (Past Exams)" hidden>EN</button><button class="cta ghostc" id="jpBtn" title="日本語で見る(日本館)" hidden>JP</button><button class="cta ghostc" id="randBtn" title="아직 안 푼 문제 중 하나">🎲<span class="lbl"> 랜덤 문제</span></button><button class="cta" id="exportBtn">🧾<span class="lbl"> 학습 기록 내보내기</span></button>
   </div>
   <div class="hero">
     <div class="mosaic" id="mosaic"></div>
     <div class="inner">
     <h1 id="heroTitle">이 몰의 상품은 <em>전부 킬러다</em></h1>
     <p id="heroText">수능 15·20·21·22·29·30번 자리의 고난도 창작 문항과 2026 수능 기출 변형. 문항은 옆에 고정해 두고, 해설은 한 장씩 넘기며 어느 조건이 어느 단계에서 쓰이는지 눈으로 따라갑니다. 먼저 풀고, 채점하고, 그 다음에 분석.</p>
-    <div class="sub" data-en="No refunds — only solutions. Your receipts (records) stay in this browser.">환불은 없다, 풀이만 있다. 영수증(기록)은 내 브라우저에만 남습니다.</div>
-    <button class="go" id="goList" data-enhtml="Enter <span>›</span>">입장하기 <span>›</span></button>
+    <div class="sub" data-en="No refunds — only solutions. Your receipts (records) stay in this browser.">푼 기록은 이 기기(브라우저)에 저장돼요. 로그인하면 다른 기기에서도 이어서 풀 수 있어요.</div>
+    <button class="go" id="goList" data-enhtml="Enter <span>›</span>">문제 풀러 가기 <span>›</span></button>
     <div class="byline"><span>만든이 · <span id="author"></span></span><a id="bloglink" href="#" target="_blank" rel="noopener" hidden></a></div>
     </div>
   </div>
@@ -688,23 +688,23 @@ details.orig summary{cursor:pointer;color:#8a8577;font-size:.9rem;margin-bottom:
   <button id="resume" hidden></button>
   <div class="stats">
     <div class="tile" style="--tc:var(--red)">
-      <div class="lbl">회원 등급</div>
-      <div class="big" id="rankName">손님</div>
+      <div class="lbl">학습 단계 · 채점한 문제 수로 자라요</div>
+      <div class="big" id="rankName">씨앗</div>
       <div class="sub" id="rankSub"></div>
       <div class="bar"><i id="rankBar"></i></div>
     </div>
     <div class="tile" style="--tc:var(--gold)">
-      <div class="lbl">영수증 · 실전 기록 <button class="link" id="nameBtn" style="margin:0 0 0 8px;font-size:.78rem"></button></div>
+      <div class="lbl">학습 기록 <button class="link" id="nameBtn" style="margin:0 0 0 8px;font-size:.78rem"></button></div>
       <div id="nameBox" hidden style="display:flex;gap:6px;margin:6px 0"><input id="nameInp" placeholder="이름 (학번 이름)" style="font:inherit;font-size:1rem;padding:6px 10px;border-radius:6px;border:1px solid #555;background:#111;color:#fff;flex:1;min-width:0"><button class="btn sm" id="nameSave" style="--kc:var(--red)">저장</button></div>
-      <div class="row"><span>오늘 <b id="rToday">0</b>문항</span><span>연속 <b id="rStreak">0</b>일</span><span>복습 필요 <b id="rReview">0</b></span></div>
-      <div class="row"><span>채점 <b id="rSolved">0</b></span><span>정답률 <b id="rAcc">–</b></span><span>평균 <b id="rAvg">–</b></span><span hidden><b id="rEssay">0</b><b id="rEssayAvg">–</b></span></div>
+      <div class="row"><span>오늘 푼 문제 <b id="rToday">0</b></span><span>연속 학습 <b id="rStreak">0</b>일</span><span>다시 풀 문제 <b id="rReview">0</b></span></div>
+      <div class="row"><span>푼 문제 <b id="rSolved">0</b></span><span>정답률 <b id="rAcc">–</b></span><span>평균 시간 <b id="rAvg">–</b></span><span hidden><b id="rEssay">0</b><b id="rEssayAvg">–</b></span></div>
       <div class="sub">채점을 거친 문항만 셉니다. 기록은 이 브라우저에만 저장돼요.</div>
       <textarea class="copybox" id="exportBox" hidden readonly></textarea>
     </div>
     <div class="tile" style="--tc:var(--blue)">
       <div class="lbl">진행 방식</div>
       <div class="flow" id="flowKiller"><span style="--kc:var(--k-solve)">① 실전</span><span style="--kc:var(--k-intro)">② 진단</span><span style="--kc:var(--k-cond)">③ 조건</span><span style="--kc:var(--k-concept)">④ 개념</span><span style="--kc:var(--k-step)">⑤ 풀이</span><span style="--kc:var(--k-trap)">⑥ 함정</span><span style="--kc:var(--k-variant)">⑦ 변형</span><span style="--kc:var(--k-end)">⑧ 정리</span></div>
-      <div class="flow" id="flowPast" hidden><span class="f1">① 실전</span><span class="f2">② 진단</span><span class="f4">③ 유사</span><span class="f5">④ 정리</span></div>
+      <div class="flow" id="flowPast" hidden><span class="f1">① 실전</span><span class="f2">② 진단</span><span class="f3">③ 해설</span><span class="f4">④ 유사</span><span class="f5">⑤ 정리</span></div>
       <div class="flow" id="flowJapan" hidden><span style="--kc:var(--k-solve)">① 실전 · 제한시간</span><span style="--kc:var(--k-intro)">② 진단</span><span style="--kc:var(--k-answer)">③ 해설</span><span style="--kc:var(--k-end)">④ 자기 점검</span></div>
       <div class="flow" id="flowEssay" hidden><span style="--kc:var(--k-solve)">① 실전 · 답안 작성</span><span style="--kc:var(--k-intro)">② 진단</span><span style="--kc:var(--k-answer)">③ 예시답안</span><span style="--kc:var(--k-rubric)">④ 채점기준 · 자기 채점</span><span style="--kc:var(--k-end)">⑤ 정리</span></div>
       <div class="sub" id="flowNote">제한시간: 킬러 13분 · 고난도 10분 · 준킬러 8분. 넘어도 끝까지 풀 수 있어요.</div>
@@ -718,7 +718,7 @@ details.orig summary{cursor:pointer;color:#8a8577;font-size:.9rem;margin-bottom:
       <button class="chip" data-k="hard" data-v="1">어려운 순</button>
       <button class="chip" data-k="full" data-v="1">완전 분석만</button>
       <button class="chip" data-k="wrong" data-v="1">틀린 문항만</button>
-      <button class="chip" data-k="review" data-v="1">복습 필요 (오답·시간초과)</button>
+      <button class="chip" data-k="review" data-v="1">다시 풀 문제 (틀림·시간초과)</button>
       <button class="chip" data-k="todo" data-v="1">안 푼 문항만</button>
     </div>
     <div class="fgrp jump"><span class="fl">번호</span><input type="number" inputmode="numeric" min="1" placeholder="#번호" data-p="q" aria-label="문항 번호로 바로 가기"><button class="chip" data-jump>이동</button></div>
@@ -884,7 +884,7 @@ const SETS={semi:{name:'준킬러 세트',btn:'🎯 준킬러 4제',sub:'15·20�
             kill:{name:'킬러 세트',btn:'💀 킬러 2제',sub:'29·30',types:['29번형','30번형']}};
 const setName=st=>(SETS[st&&st.kind]||{name:'모의 세트'}).name;
 const REVIEW_DAYS=[3,7,14];   // 오답·시간초과 문항 복습 주기(일)
-const RANKS=[[0,'손님'],[3,'단골'],[10,'VIP'],[25,'점원'],[45,'매니저'],[72,'사장']];   // 마지막 기준은 전체 문항 수로 자동 조정
+const RANKS=[[0,'씨앗'],[3,'새싹'],[10,'떡잎'],[25,'줄기'],[45,'꽃'],[72,'열매']];   // 마지막 기준은 전체 문항 수로 자동 조정
 const LIMIT={3:8,2:6,1:4};   // 제한시간(분): ★★★ 8 · ★★ 6 · ★ 4
 const RDN={1:'기본',2:'실력',3:'도전'};
 const UCOL={"중학 복습": "#a85100", "다항식": "#00965e", "복소수·이차방정식": "#a879ff", "이차함수": "#e66003", "여러 방정식·부등식": "#0090ae", "도형의 방정식": "#448bff", "집합과 명제": "#ff65b6", "함수": "#008f7d", "경우의 수·확률·수열": "#246c00", "기타": "#505f74", "공통": "#00965e", "확률과 통계": "#e66003", "미적분": "#448bff", "기하": "#a879ff", "지수·로그": "#a85100", "삼각함수": "#ff65b6", "수열": "#a879ff", "함수의 극한": "#0090ae", "미분": "#448bff", "적분": "#00965e", "경우의 수": "#e66003", "확률": "#f562ff", "통계": "#246c00", "수열의 극한": "#8386ff", "미분법": "#0091d5", "적분법": "#008f7d", "이차곡선": "#c26fff", "평면벡터": "#ff6e8d", "공간도형": "#1ba4c5"};const UC=x=>UCOL[x.unit]||UCOL[x.subj]||UCOL[x.part]||'#5a5a5a';
@@ -892,8 +892,8 @@ const UCOLR={"중학 복습": "#f59e0b", "다항식": "#10b981", "복소수·이
 const UNIT_ORDER=['중학 복습','다항식','복소수·이차방정식','이차함수','여러 방정식·부등식','도형의 방정식','집합과 명제','함수','경우의 수·확률·수열','기타'];
 const STAGE={solve:['실전','시험처럼 먼저 풀기'],intro:['진단','문항 프로필'],cond:['조건','조건을 문장 단위로 쪼개기'],concept:['개념','문항을 떠받치는 원리'],
   step:['풀이','단계별 풀이'],trap:['함정','출제 포인트와 분기점'],variant:['변형','같은 뼈대, 다른 숫자'],end:['정리','오늘의 한 줄'],
-  answer:['예시답안','대학 발표 답안'],rubric:['채점','채점 기준과 자기 채점'],sim:['유사문항','같은 아이디어, 다른 조건']};
-const ORDER=['solve','intro','cond','concept','step','answer','rubric','sim','trap','variant','end'];
+  answer:['예시답안','대학 발표 답안'],rubric:['채점','채점 기준과 자기 채점'],sim:['유사문항','같은 아이디어, 다른 조건'],expl:['해설','풀이 과정']};
+const ORDER=['solve','intro','expl','cond','concept','step','answer','rubric','sim','trap','variant','end'];
 const KEY='rk:v2';
 const $=s=>document.querySelector(s);
 const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
@@ -977,7 +977,7 @@ function renderEnBlocks(root,blocks){
 function renderPastCardEn(p){
   const w=el('div');const rec=S.jrec[J.num];const lim=jlim(J);const auto=J.answer!=null;
   const ansTxt=J.answer==null?'not registered':(J.choice?['①','②','③','④','⑤'][J.answer-1]||J.answer:J.answer);
-  if(p.k==='solve'){w.append(head('solve','STEP 0'));const b=el('div','body');
+  if(p.k==='solve'){w.append(head('solve',''));const b=el('div','body');
     if(rec){b.append(el('div','result '+(rec.r==='no'?'no':'ok'),`<div class="big">${{ok:auto?'Correct!':'Solved',part:'Partly correct',no:auto?'Not quite':'Incorrect'}[rec.r]||'Done'}</div><div>${auto&&rec.ans!=null?`Your answer <b class="num">${esc(rec.ans)}</b> · Answer <b class="num">${esc(J.answer)}</b> · `:''}Time <b class="num">${mmss(rec.secs||0)}</b>${rec.over?' <span class="dbadge" style="--dc:#ff9f3a">over time limit</span>':''}</div>`));
       const row=el('div','btnrow primary');const g=el('button','btn','Profile →');g.onclick=()=>go(1);const re=el('button','btn ghost','Try again');re.onclick=()=>{delete S.jrec[J.num];save();unlocked=false;openJapan(J.num,0)};row.append(g,re);b.append(row);w.append(b);return w}
     b.append(el('h2',null,'No hints — just like the real exam'));
@@ -1071,7 +1071,7 @@ function home(){
   if(EN()&&!past&&!window.__enNote){window.__enNote=1;toast('English is available in Past Exams for now (기출관만 영어 지원)')}
   // 통계
   const g=graded(),ok=g.filter(r=>r.ok).length;const [r,nx]=rankOf(g.length);
-  $('#rankName').textContent=r[1];$('#rankSub').textContent=nx?`${nx[1]}까지 ${nx[0]-g.length}문항`:'이 몰의 상품을 전부 털었어요';
+  $('#rankName').textContent=r[1];$('#rankSub').textContent=nx?`‘${nx[1]}’까지 ${nx[0]-g.length}문제 더`:'모든 문제를 풀었어요!';
   $('#rankBar').style.width=(nx?((g.length-r[0])/(nx[0]-r[0])*100):100)+'%';
   $('#rSolved').textContent=g.length;$('#rAcc').textContent=g.length?Math.round(ok/g.length*100)+'%':'–';
   $('#rAvg').textContent=g.length?mmss(Math.round(g.reduce((a,b)=>a+b.secs,0)/g.length)):'–';
@@ -1268,8 +1268,8 @@ function homePast(){
   for(const x of L){
     const g=pName(x);if(g!==last){last=g;track=newRow(g,L.filter(y=>pName(y)===g).length)}
     const c=el('button','card');const rec=S.jrec[x.num];c.style.setProperty('--dc',UC(x));c.style.setProperty('--hl',UCR(x));c.dataset.big=String(x.num0);
-    c.innerHTML=`<div class="top"><span><span class="num">${isG1(x)?'#G':'#P'}${JNO(x)}</span> · ${isG1(x)?x.month:(x.month==='11월'?'수능':x.month)}${x.en?' <b class="enb">EN</b>':''}</span><span class="subj" style="--sc:${SC(x.subj)}">${esc(EN()?(PART_EN[x.part]||x.part):x.part)}</span></div>
-      <div class="topic">${esc(x.track)+' · '+x.year+(isG1(x)?'년':'학년도')}</div>
+    c.innerHTML=`<div class="top"><span><span class="num">${x.year}${isG1(x)?'년':'학년도'} ${isG1(x)?x.month:(x.month==='11월'?'수능':x.month+' 모평')}</span>${x.en?' <b class="enb">EN</b>':''}</span><span class="subj" style="--sc:${SC(x.subj)}">${esc(EN()?(PART_EN[x.part]||x.part):x.part)}</span></div>
+      <div class="topic">${esc(x.track)}</div>
       <div class="meta"><span><span class="stars">${'★'.repeat(x.stars)}${'☆'.repeat(3-x.stars)}</span><span class="dbadge">${RDN[x.stars]}</span></span><span><span class="tag">${EN()?(x.choice?'Multiple choice':'Short answer')+' · '+(LIMIT[x.stars]||8)+' min'+(x.answer==null?' · no key':''):(x.choice?'5지선다':'단답형')+' · '+(LIMIT[x.stars]||8)+'분'+(x.sim?' · 🌱유사':'')}</span></span></div>`;
     c.insertBefore(artEl(x.text,x.subj,x.art,x.id,UC(x),null,x.qimg&&x.qimg[0]),c.querySelector('.topic'));tagPay(c,x);
     if(rec) c.append(el('span','st '+(rec.r==='ok'?'ok':rec.r==='no'?'no':'skip'),EN()?(rec.r==='ok'?'Correct':rec.r==='no'?'Wrong':rec.r==='part'?'Partial':'Viewed'):rec.r==='ok'?'정답':rec.r==='no'?'오답':rec.r==='part'?'부분':'열람'));
@@ -1330,7 +1330,7 @@ $('#exportBtn').onclick=async()=>{
   for(const [n,r] of Object.entries(S.jrec)){const x=JLIST.find(y=>y.num==n)||{};rows.push([x.kind==='past'?'기출':'일본',n,x.id||'',(x.univ||'')+' '+(x.track||''),{ok:'맞음',part:'부분',no:'틀림'}[r.r]||'열람만',r.ans??'',x.answer??'','','',r.secs??'',r.date||''])}
   for(const [n,r] of Object.entries(S.erec)){const x=ELIST.find(y=>y.num==n)||{};rows.push(['논술',n,x.id||'',(x.univ||'')+' '+(x.title||''),r.total?'채점':'열람만','','',r.score??'',r.total??'',r.secs??'',r.date||''])}
   const txt=rows.map(r=>r.join('\t')).join('\n');const box=$('#exportBox');box.hidden=false;box.value=txt;
-  try{await navigator.clipboard.writeText(txt);toast('영수증을 복사했어요 (엑셀·시트에 붙여넣기)')}catch(e){box.select();toast('아래 상자의 내용을 복사하세요')}
+  try{await navigator.clipboard.writeText(txt);toast('학습 기록을 복사했어요 (엑셀·시트에 붙여넣기)')}catch(e){box.select();toast('아래 상자의 내용을 복사하세요')}
 };
 
 /* ───────── 문항 열기 (킬러) ───────── */
@@ -1371,6 +1371,7 @@ function buildPages(){
     E.subs.forEach((s,i)=>pages.push({k:'rubric',i,n:E.subs.length}));
   }else{
     J.simg.forEach((s,i)=>pages.push({k:'answer',i,n:J.simg.length}));
+    if(J.expl)pages.push({k:'expl'});
     if(J.sim)pages.push({k:'sim'});
   }
   pages.push({k:'end'});
@@ -1417,7 +1418,7 @@ function currentUses(){const p=pages[cur];if(!p)return[];if(p.k==='step')return 
 
 function renderCard(p){
   const w=el('div');
-  if(p.k==='solve'){w.append(head('solve','STEP 0'));w.append(solveBody());highlight([]);return w}
+  if(p.k==='solve'){w.append(head('solve',''));w.append(solveBody());highlight([]);return w}
   if(p.k==='intro'){w.append(head('intro'));const b=el('div','body');
     b.append(el('h2',null,esc(D.topic)));
     b.append(el('dl','kv',`<dt>출처</dt><dd>${esc(D.source)}</dd><dt>자리</dt><dd>${D.type} · ${esc(D.typeDesc)}</dd><dt>과목</dt><dd>${D.subject}</dd><dt>난이도</dt><dd><span class="stars" style="--dc:${DC(D.stars)}">${'★'.repeat(D.stars)}</span> ${DNAME[D.stars]||''} · 제한 ${LIMIT[D.stars]||10}분</dd>${D.rate?`<dt>정답률</dt><dd>${esc(D.rate)}</dd>`:''}${D.wrong?`<dt>많이 고른 오답</dt><dd>${md(D.wrong)}</dd>`:''}<dt>분석 범위</dt><dd>조건 ${D.conds.length}개 · 풀이 ${D.steps.length}단계${D.traps.length?' · 함정 '+D.traps.length:''}${D.variants.length?' · 변형 '+D.variants.length:''}</dd>`));
@@ -1530,7 +1531,7 @@ function renderEssaySheet(){
 }
 function renderEssayCard(p){
   const w=el('div');const rec=S.erec[E.num];
-  if(p.k==='solve'){w.append(head('solve','STEP 0'));const b=el('div','body');
+  if(p.k==='solve'){w.append(head('solve',''));const b=el('div','body');
     if(rec){b.append(el('div','result ok',`<div class="big">${rec.total?`자기 채점 ${rec.score} / ${rec.total}점`:'답안 작성 완료'}</div><div>걸린 시간 <b class="num">${mmss(rec.secs||0)}</b></div>`));
       const row=el('div','btnrow primary');const g=el('button','btn','예시답안 보기 →');g.onclick=()=>go(1);const re=el('button','btn ghost','다시 풀기');re.onclick=()=>{delete S.erec[E.num];save();unlocked=false;openEssay(E.num,0)};row.append(g,re);b.append(row);w.append(b);return w}
     b.append(el('h2',null,'종이에 답안을 쓰세요'));
@@ -1582,7 +1583,7 @@ async function openJapan(n,c){
   $('#home').hidden=true;$('#op').hidden=false;window.scrollTo(0,0);
   const rec=S.jrec[n];unlocked=!!rec;
   const isP=J.kind==='past';
-  $('#opId').innerHTML=isP?`${isG1(J)?'#G':'#P'}${JNO(J)} · ${isG1(J)?'고1 학력평가':'평가원 기출'} <span class="subj" style="--sc:${SC(J.subj)}">${esc(isG1(J)?J.subj:J.part)}</span>`:`#J${JNO(J)} · ${J.year} · ${J.num0}${tj('번','番')} <span class="subj" style="--sc:${SC(J.subj==='미적분'?'미적분Ⅱ':J.subj)}">${esc(jS(J))}</span>`;
+  $('#opId').innerHTML=isP?`${isG1(J)?'고1 학력평가':'평가원 기출'} <span class="subj" style="--sc:${SC(J.subj)}">${esc(isG1(J)?J.subj:J.part)}</span>`:`#J${JNO(J)} · ${J.year} · ${J.num0}${tj('번','番')} <span class="subj" style="--sc:${SC(J.subj==='미적분'?'미적분Ⅱ':J.subj)}">${esc(jS(J))}</span>`;
   $('#opTitle').textContent=isP?J.univ+' · '+J.track:jU(J)+' · '+jT(J);$('#opStars').innerHTML=`<span class="diff" style="--dc:${DC(J.stars)}">${'★'.repeat(J.stars)} ${tj('제한','制限')} ${jlim(J)}${tj('분','分')}</span>`;
   $('#sheetLbl').textContent=tj('문제','問題');$('#numBtn').hidden=true;
   const root=$('#examText');root.innerHTML='';J.qimg.forEach(p=>{const im=el('img','pg');im.src=jimg(p);im.alt='문제';root.append(im)});
@@ -1606,7 +1607,7 @@ const jlim=j=>j.kind==='past'?(LIMIT[j.stars]||8):(JLIMIT[j.stars]||25);
 function renderJapanCard(p){
   if(LP())return renderPastCardEn(p);
   const w=el('div');const rec=S.jrec[J.num];const lim=jlim(J);const isP=J.kind==='past';const auto=isP&&J.answer!=null;
-  if(p.k==='solve'){w.append(head('solve','STEP 0'));const b=el('div','body');
+  if(p.k==='solve'){w.append(head('solve',''));const b=el('div','body');
     if(rec){b.append(el('div','result '+(rec.r==='no'?'no':'ok'),`<div class="big">${{ok:auto?'정답입니다':tj('맞았어요','正解'),part:tj('부분적으로 맞았어요','部分的に正解'),no:auto?'오답입니다':tj('틀렸어요','不正解')}[rec.r]||tj('풀이 완료','解答完了')}</div><div>${auto&&rec.ans!=null?`내 답 <b class="num">${esc(cN(rec.ans))}</b> · 정답 ${rec.r==='no'?`<button class="reveal" data-a="${esc(cN(J.answer))}" onclick="this.outerHTML='<b class=&quot;num&quot;>'+this.dataset.a+'</b>'">눌러서 보기</button>`:`<b class="num">${esc(cN(J.answer))}</b>`} · `:''}${tj('걸린 시간','所要時間')} <b class="num">${mmss(rec.secs||0)}</b>${rec.over?` <span class="dbadge" style="--dc:#ff9f3a">${tj('제한시간 초과','制限時間超過')}</span>`:''}</div>`));
       const row=el('div','btnrow primary');const g=el('button','btn',isP?'진단 →':tj('해설 보기 →','解説を見る →'));g.onclick=()=>go(1);const re=el('button','btn ghost',tj('다시 풀기','もう一度解く'));re.onclick=()=>{delete S.jrec[J.num];save();unlocked=false;openJapan(J.num,0)};row.append(g,re);b.append(row);w.append(b);return w}
     b.append(el('h2',null,isP?'해설 없이, 시험처럼':tj('종이에 풀고, 끝나면 완료','紙に解いて、終わったら完了')));
@@ -1625,7 +1626,7 @@ function renderJapanCard(p){
     w.append(b);return w}
   if(p.k==='intro'&&isP){w.append(head('intro'));const b=el('div','body');b.append(el('h2',null,`${esc(J.univ)} · ${esc(J.track)}`));
     b.append(el('dl','kv',`<dt>출처</dt><dd>${isG1(J)?`시·도교육청 · ${J.year}년 ${J.month} 고1 전국연합학력평가`:`한국교육과정평가원 · ${J.year}학년도 ${J.month==='11월'?'대학수학능력시험':'대학수학능력시험 '+J.month+' 모의평가'} (홀수형)`}</dd><dt>${isG1(J)?'단원':'과목'}</dt><dd>${esc(isG1(J)?J.subj:J.part)}${J.topic?' · '+esc(J.topic):''}</dd><dt>형식</dt><dd>${J.choice?'5지선다형':'단답형'}</dd><dt>난이도</dt><dd><span class="stars" style="--dc:${DC(J.stars)}">${'★'.repeat(J.stars)}</span> ${RDN[J.stars]} · 제한 ${lim}분</dd><dt>정답</dt><dd class="num">${J.answer==null?'미등록 (스스로 점검)':(J.choice?['①','②','③','④','⑤'][J.answer-1]||J.answer:J.answer)}</dd>${S.jrec[J.num]&&S.jrec[J.num].ans!=null?`<dt>내 답</dt><dd class="num">${esc(cN(S.jrec[J.num].ans))} · ${S.jrec[J.num].r==='ok'?'<b style="color:var(--ok,#1f9d55)">정답</b>':'<b style="color:#ff8181">오답</b>'}${S.jrec[J.num].secs?' · '+mmss(S.jrec[J.num].secs):''}</dd>`:''}`));
-    b.append(el('p','note',(isG1(J)?'학력평가 기출은 해설을 싣지 않습니다. EBSi(ebsi.co.kr) 해설이나 선생님의 풀이로 확인하세요.':'평가원 기출은 해설을 싣지 않습니다. EBSi(ebsi.co.kr) 기출문제 해설이나 선생님의 풀이로 확인하세요.')+(J.sim?' 이 문항은 다음 단계에 유사문항(쌍둥이 문제)이 있어요.':'')));
+    b.append(el('p','note',(J.expl?'다음 단계에서 해설을 보고, ':'해설은 준비 중입니다. ')+(J.sim?'유사문항(쌍둥이 문제)으로 같은 개념을 한 번 더 확인하세요.':'선생님 풀이나 EBSi(ebsi.co.kr) 해설로 확인하세요.')));
     const row=el('div','btnrow');const kb=el('button','btn ghost',`킬러관의 ${J.num0}번형 보기`);kb.onclick=()=>{S.tab='killer';filt.type=`${J.num0}번형`;save();location.hash='';};if(LIST.some(x=>x.type===`${J.num0}번형`))row.append(kb);b.append(row);w.append(b);return w}
   if(p.k==='intro'&&LJ()){w.append(head('intro'));const b=el('div','body');b.append(el('h2',null,esc(jU(J))));
     const first=J.ja?(J.ja.find(x=>x.p)||{}).p||'':'';
@@ -1636,6 +1637,7 @@ function renderJapanCard(p){
     b.append(el('p','note','난이도는 한국 고등학생 기준의 편집 추정입니다. 소문항이 여러 개면 가장 어려운 소문항 기준.'));w.append(b);return w}
   if(p.k==='answer'){w.append(head('answer',`해설 ${p.i+1}/${p.n}`));const b=el('div','body');b.style.maxWidth='none';if(LJ()&&p.i===0)b.append(el('p','note','※ 解説は韓国語版です。'));
     const im=el('img','pg');im.src=jimg(J.simg[p.i]);im.alt='해설';b.append(im);w.append(b);return w}
+  if(p.k==='expl'){w.append(head('expl'));const b=el('div','body expl');b.append(el('p','lead',`정답 <b class="num">${esc(cN(J.answer))}</b>`));const q=el('div');renderEnBlocks(q,J.expl);b.append(q);b.append(el('p','note','※ 해설은 ShrekMath가 작성했습니다. 다른 방법으로 풀었다면 두 방법을 비교해 보세요.'));w.append(b);return w}
   if(p.k==='sim'){w.append(head('sim'));const b=el('div','body');const s=J.sim;let ja=JA();
     const ja2=!s.ko;if(ja2)ja=true;else ja=false;if(!ja2&&s.ja)b.append(langSeg(jaRefresh));
     b.append(el('p','lead',ja?'原題と同じ考え方で、条件を変えた問題です。紙に解いてから答えを確かめましょう。':'원문제와 같은 아이디어로 조건을 바꾼 문제입니다. 풀고 나서 답을 골라(입력해) 채점하면 풀이가 열립니다.'));

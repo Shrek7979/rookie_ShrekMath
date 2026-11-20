@@ -177,7 +177,7 @@ rep("$('#flowNote').textContent=past?'제한시간: 22·30번 13분 · 13·15·2
 rep("  else if(past)$('#footPast').innerHTML=window.__footPastKo||$('#footPast').innerHTML;",
     "  else if(past)$('#footPast').innerHTML=g1?'문항: 시·도교육청 2012~2020년 고1 전국연합학력평가 수학 영역 (문제지 이미지 그대로, 공식 정답표로 자동 채점). 예전 교육과정 문항이라 지금 교과서와 단원 이름이 다를 수 있어요. 유사문항은 ShrekMath가 새로 썼습니다.<br>기록은 이 브라우저에만 저장됩니다.':'문항: 한국교육과정평가원 2022~2026학년도 6월·9월 모의평가와 대학수학능력시험 수학 영역 (홀수형, 문제지 이미지 그대로, 평가원 정답표로 자동 채점). 해설은 EBSi 등에서 확인하세요.<br>더 어려운 문제는 <a href=\"https://killershrekmath.vercel.app\" target=\"_blank\" rel=\"noopener\">킬러들의 수학몰</a>에서.';")
 rep('<div class="flow" id="flowPast" hidden><span style="--kc:var(--k-solve)">① 실전 · 제한시간</span><span style="--kc:var(--k-intro)">② 채점 · 진단</span><span style="--kc:var(--k-end)">③ 정리</span></div>',
-    '<div class="flow" id="flowPast" hidden><span class="f1">① 실전</span><span class="f2">② 진단</span><span class="f4">③ 유사</span><span class="f5">④ 정리</span></div>')
+    '<div class="flow" id="flowPast" hidden><span class="f1">① 실전</span><span class="f2">② 진단</span><span class="f3">③ 해설</span><span class="f4">④ 유사</span><span class="f5">⑤ 정리</span></div>')
 # 통계 타일: 킬러·논술 대신 채점 기준
 rep('<span>킬러 <b id="rSolved">0</b></span>', '<span>채점 <b id="rSolved">0</b></span>')
 rep('<span>논술 <b id="rEssay">0</b></span><span>논술 평균 <b id="rEssayAvg">–</b></span>', '<span hidden><b id="rEssay">0</b><b id="rEssayAvg">–</b></span>')
@@ -226,9 +226,39 @@ rep("const nx=JLIST.find(x=>x.num>J.num&&(x.kind==='past')===isP);", "const nx=J
 rep("    b.append(el('dl','kv',`<dt>출처</dt><dd>한국교육과정평가원 · ${J.year}학년도 ${J.month==='11월'?'대학수학능력시험':'대학수학능력시험 '+J.month+' 모의평가'} (홀수형)</dd><dt>과목</dt><dd>${esc(J.part)}</dd><dt>형식</dt><dd>${J.choice?'5지선다형':'단답형'} · 4점</dd><dt>난이도</dt><dd><span class=\"stars\" style=\"--dc:${DC(J.stars)}\">${'★'.repeat(J.stars)}</span> ${J.stars>=5?'킬러':J.stars>=4?'고난도':'준킬러'} · 제한 ${lim}분</dd>",
     "    b.append(el('dl','kv',`<dt>출처</dt><dd>${isG1(J)?`시·도교육청 · ${J.year}년 ${J.month} 고1 전국연합학력평가`:`한국교육과정평가원 · ${J.year}학년도 ${J.month==='11월'?'대학수학능력시험':'대학수학능력시험 '+J.month+' 모의평가'} (홀수형)`}</dd><dt>${isG1(J)?'단원':'과목'}</dt><dd>${esc(isG1(J)?J.subj:J.part)}${J.topic?' · '+esc(J.topic):''}</dd><dt>형식</dt><dd>${J.choice?'5지선다형':'단답형'}</dd><dt>난이도</dt><dd><span class=\"stars\" style=\"--dc:${DC(J.stars)}\">${'★'.repeat(J.stars)}</span> ${RDN[J.stars]} · 제한 ${lim}분</dd>")
 rep("    b.append(el('p','note','평가원 기출은 해설을 싣지 않습니다. EBSi(ebsi.co.kr) 기출문제 해설이나 교사의 풀이로 확인하세요. 같은 번호 자리의 창작 문항은 킬러관에 있습니다.'));",
-    "    b.append(el('p','note',(isG1(J)?'학력평가 기출은 해설을 싣지 않습니다. EBSi(ebsi.co.kr) 해설이나 선생님의 풀이로 확인하세요.':'평가원 기출은 해설을 싣지 않습니다. EBSi(ebsi.co.kr) 기출문제 해설이나 선생님의 풀이로 확인하세요.')+(J.sim?' 이 문항은 다음 단계에 유사문항(쌍둥이 문제)이 있어요.':'')));")
+    "    b.append(el('p','note',(J.expl?'다음 단계에서 해설을 보고, ':'해설은 준비 중입니다. ')+(J.sim?'유사문항(쌍둥이 문제)으로 같은 개념을 한 번 더 확인하세요.':'선생님 풀이나 EBSi(ebsi.co.kr) 해설로 확인하세요.')));")
 # 유사문항: 한국어만 있으면 언어 버튼 숨김
 rep("const ja2=!s.ko;if(ja2)ja=true;if(!ja2)b.append(langSeg(jaRefresh));", "const ja2=!s.ko;if(ja2)ja=true;else ja=false;if(!ja2&&s.ja)b.append(langSeg(jaRefresh));")
+
+# ── 쉬운 말로 (루키): 쇼핑몰 표현 → 학습 표현, 내부 관리 번호 숨기고 시험·문항 번호 보이기 ──
+rep("const RANKS=[[0,'손님'],[3,'단골'],[10,'VIP'],[25,'점원'],[45,'매니저'],[72,'사장']];", "const RANKS=[[0,'씨앗'],[3,'새싹'],[10,'떡잎'],[25,'줄기'],[45,'꽃'],[72,'열매']];")
+rep('<div class="big" id="rankName">손님</div>', '<div class="big" id="rankName">씨앗</div>')
+rep('<div class="lbl">회원 등급</div>', '<div class="lbl">학습 단계 · 채점한 문제 수로 자라요</div>')
+rep("rankSub').textContent=nx?`${nx[1]}까지 ${nx[0]-g.length}문항`:'이 몰의 상품을 전부 털었어요';", "rankSub').textContent=nx?`‘${nx[1]}’까지 ${nx[0]-g.length}문제 더`:'모든 문제를 풀었어요!';")
+rep('<span class="lbl"> 아무거나</span>', '<span class="lbl"> 랜덤 문제</span>')
+rep('<span class="lbl"> 영수증 뽑기</span>', '<span class="lbl"> 학습 기록 내보내기</span>')
+rep("toast('영수증을 복사했어요 (엑셀·시트에 붙여넣기)')", "toast('학습 기록을 복사했어요 (엑셀·시트에 붙여넣기)')")
+rep('>환불은 없다, 풀이만 있다. 영수증(기록)은 내 브라우저에만 남습니다.</div>', '>푼 기록은 이 기기(브라우저)에 저장돼요. 로그인하면 다른 기기에서도 이어서 풀 수 있어요.</div>')
+rep('>입장하기 <span>›</span></button>', '>문제 풀러 가기 <span>›</span></button>')
+rep('<div class="lbl">영수증 · 실전 기록 ', '<div class="lbl">학습 기록 ')
+rep('<span>오늘 <b id="rToday">0</b>문항</span><span>연속 <b id="rStreak">0</b>일</span><span>복습 필요 <b id="rReview">0</b></span>',
+    '<span>오늘 푼 문제 <b id="rToday">0</b></span><span>연속 학습 <b id="rStreak">0</b>일</span><span>다시 풀 문제 <b id="rReview">0</b></span>')
+rep('<span>채점 <b id="rSolved">0</b></span><span>정답률 <b id="rAcc">–</b></span><span>평균 <b id="rAvg">–</b></span>',
+    '<span>푼 문제 <b id="rSolved">0</b></span><span>정답률 <b id="rAcc">–</b></span><span>평균 시간 <b id="rAvg">–</b></span>')
+rep(">복습 필요 (오답·시간초과)</button>", ">다시 풀 문제 (틀림·시간초과)</button>")
+# 내부 관리 번호(#G284 등) 대신 시험·문항 번호
+rep("c.innerHTML=`<div class=\"top\"><span><span class=\"num\">${isG1(x)?'#G':'#P'}${JNO(x)}</span> · ${isG1(x)?x.month:(x.month==='11월'?'수능':x.month)}",
+    "c.innerHTML=`<div class=\"top\"><span><span class=\"num\">${x.year}${isG1(x)?'년':'학년도'} ${isG1(x)?x.month:(x.month==='11월'?'수능':x.month+' 모평')}</span>")
+rep("<div class=\"topic\">${esc(x.track)+' · '+x.year+(isG1(x)?'년':'학년도')}</div>", "<div class=\"topic\">${esc(x.track)}</div>")
+rep("$('#opId').innerHTML=isP?`${isG1(J)?'#G':'#P'}${JNO(J)} · ${isG1(J)?'고1 학력평가':'평가원 기출'}", "$('#opId').innerHTML=isP?`${isG1(J)?'고1 학력평가':'평가원 기출'}")
+rep("head('solve','STEP 0')", "head('solve','')", 4)
+
+# ── 원문항 해설 단계 (진단 → 해설 → 유사 → 정리) ──
+rep("sim:['유사문항','같은 아이디어, 다른 조건']};", "sim:['유사문항','같은 아이디어, 다른 조건'],expl:['해설','풀이 과정']};")
+rep("const ORDER=['solve','intro',", "const ORDER=['solve','intro','expl',")
+rep("--k-answer:#a6e85c;", "--k-answer:#a6e85c; --k-expl:#f5a524;")
+rep("    if(J.sim)pages.push({k:'sim'});\n  }", "    if(J.expl)pages.push({k:'expl'});\n    if(J.sim)pages.push({k:'sim'});\n  }")
+rep("  if(p.k==='sim'){w.append(head('sim'));", "  if(p.k==='expl'){w.append(head('expl'));const b=el('div','body expl');b.append(el('p','lead',`정답 <b class=\"num\">${esc(cN(J.answer))}</b>`));const q=el('div');renderEnBlocks(q,J.expl);b.append(q);b.append(el('p','note','※ 해설은 ShrekMath가 작성했습니다. 다른 방법으로 풀었다면 두 방법을 비교해 보세요.'));w.append(b);return w}\n  if(p.k==='sim'){w.append(head('sim'));")
 
 open(os.path.join(ROOT, 'template.html'), 'w', encoding='utf-8').write(s)
 print('template.html 생성 (킬러 화면 + 루키 수정)')

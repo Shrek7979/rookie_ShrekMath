@@ -105,6 +105,14 @@ def main():
         J.append({'kind': 'past', 'id': x['id'], 'year': x['year'], 'month': x['month'], 'num0': x['num'], 'stars': x['stars'],
                   'univ': x['univ'], 'track': f"{x['part']} {x['num']}번 · {u}", 'unit': u, 'part': x['part'], 'subj': x['part'],
                   'text': f"{x['univ']} {x['num']}번", 'answer': x['answer'], 'choice': x['choice'], 'src': SD})
+    # 고3 교육청 학력평가 선택과목(미적분·확률과 통계) 24~27번 (2021~2025): src/g3s
+    G3S = os.path.join(ROOT, 'src', 'g3s')
+    for x in json.load(open(os.path.join(G3S, 'index.json'), encoding='utf-8')):
+        if x['id'] not in expls: continue
+        u = G3U.get(x['id'], '')
+        J.append({'kind': 'past', 'id': x['id'], 'year': x['year'], 'month': x['month'], 'num0': x['num'], 'stars': {24: 1, 25: 2, 26: 2, 27: 3}[x['num']],
+                  'univ': f"{x['year']}년 {x['month']} 고3 학력평가", 'track': f"{x['part']} {x['num']}번 · {u}", 'unit': u, 'part': x['part'], 'subj': x['part'],
+                  'text': f"{x['year']}년 {x['month']} 고3 학력평가 {x['part']} {x['num']}번", 'answer': x['answer'], 'choice': x['choice'], 'src': G3S})
     for i, x in enumerate(J, 1):
         im = Image.open(os.path.join(x.pop('src'), 'img', x['id'] + '.webp')).convert('RGB')
         g = im.convert('L').point(lambda v: 255 if v < 200 else 0); bb = g.getbbox()

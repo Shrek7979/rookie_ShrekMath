@@ -94,7 +94,7 @@ def main():
     for x in json.load(open(os.path.join(G3, 'index.json'), encoding='utf-8')):
         if x['id'] not in expls: continue   # 해설을 다 쓴 문항만 올린다
         u = G3U.get(x['id'], '')
-        J.append({'kind': 'past', 'id': x['id'], 'year': x['year'], 'month': x['month'], 'num0': x['num'], 'stars': 1 if x['num'] <= 5 else 2,
+        J.append({'kind': 'past', 'id': x['id'], 'year': x['year'], 'month': x['month'], 'num0': x['num'], 'stars': 1 if x['num'] <= 5 else (3 if x['num'] >= 9 and x['num'] <= 15 else 2),
                   'univ': f"{x['year']}년 {x['month']} 고3 학력평가", 'track': f"공통 {x['num']}번 · {u}", 'unit': u, 'part': '공통', 'subj': '공통',
                   'text': f"{x['year']}년 {x['month']} 고3 학력평가 {x['num']}번", 'answer': x['answer'], 'choice': x['choice'], 'src': G3})
     for i, x in enumerate(J, 1):

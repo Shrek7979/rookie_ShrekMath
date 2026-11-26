@@ -97,6 +97,14 @@ def main():
         J.append({'kind': 'past', 'id': x['id'], 'year': x['year'], 'month': x['month'], 'num0': x['num'], 'stars': 1 if x['num'] <= 5 else (3 if x['num'] >= 9 and x['num'] <= 15 else 2),
                   'univ': f"{x['year']}년 {x['month']} 고3 학력평가", 'track': f"공통 {x['num']}번 · {u}", 'unit': u, 'part': '공통', 'subj': '공통',
                   'text': f"{x['year']}년 {x['month']} 고3 학력평가 {x['num']}번", 'answer': x['answer'], 'choice': x['choice'], 'src': G3})
+    # 2023 수능대비 자기주도학습자료에서 앱에 없던 문항: src/sd — 단원은 해설 파일의 U
+    SD = os.path.join(ROOT, 'src', 'sd')
+    for x in json.load(open(os.path.join(SD, 'index.json'), encoding='utf-8')):
+        if x['id'] not in expls: continue
+        u = G3U.get(x['id'], '')
+        J.append({'kind': 'past', 'id': x['id'], 'year': x['year'], 'month': x['month'], 'num0': x['num'], 'stars': x['stars'],
+                  'univ': x['univ'], 'track': f"{x['part']} {x['num']}번 · {u}", 'unit': u, 'part': x['part'], 'subj': x['part'],
+                  'text': f"{x['univ']} {x['num']}번", 'answer': x['answer'], 'choice': x['choice'], 'src': SD})
     for i, x in enumerate(J, 1):
         im = Image.open(os.path.join(x.pop('src'), 'img', x['id'] + '.webp')).convert('RGB')
         g = im.convert('L').point(lambda v: 255 if v < 200 else 0); bb = g.getbbox()

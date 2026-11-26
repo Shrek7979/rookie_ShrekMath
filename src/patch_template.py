@@ -355,5 +355,12 @@ const PAD=(()=>{const cv=$('#padCv'),ctx=cv.getContext('2d');let strokes=[],cur=
   return{open(){const k=location.hash.split('-')[0];if(k!==key){key=k;strokes=[];penSeen=false}let off='';try{off=localStorage.getItem('rk:padoff')||''}catch(_){}$('#fullSheet').classList.toggle('padoff',!!off);$('#padHide').textContent=off?'✏️ 연습장 펴기':'▾';requestAnimationFrame(fit)}}})();
 </script>""", 1)
 
+# 첫 화면(인트로) 기본 문구: 킬러 문구 대신 루키 첫 관(고1 기초관) 문구 — 스크립트가 돌기 전·코드 입력 화면에서도 루키 문구가 보이게 (2026-11-26)
+rep('<h1 id="heroTitle">이 몰의 상품은 <em>전부 킬러다</em></h1>', '<h1 id="heroTitle">고1 기초관: <em>한 문제씩</em> 기본기 쌓기</h1>')
+rep(":'이 몰의 상품은 <em>전부 킬러다</em>';", ":'루키들의 수학몰: <em>기본기부터</em> 한 문제씩';")
+rep('수능 15·20·21·22·29·30번 자리의 고난도 창작 문항과 2026 수능 기출 변형. 문항은 옆에 고정해 두고, 해설은 한 장씩 넘기며 어느 조건이 어느 단계에서 쓰이는지 눈으로 따라갑니다. 먼저 풀고, 채점하고, 그 다음에 분석.', '2012~2020년 고1 전국연합학력평가에서 2점·3점 위주로 고른 문항입니다. 문제지 이미지 그대로 시험처럼 풀고, 공식 정답으로 바로 채점합니다. 유사문항(쌍둥이 문제)으로 같은 개념을 한 번 더 확인하세요.', 2)
+rep('id="flowNote">제한시간: 킬러 13분 · 고난도 10분 · 준킬러 8분. 넘어도 끝까지 풀 수 있어요.</div>', 'id="flowNote">제한시간: ★ 4분 · ★★ 6분 · ★★★ 8분. 넘어도 끝까지 풀 수 있어요. 문제지 그대로, 공식 정답표로 자동 채점.</div>')
+rep('data-en="No refunds — only solutions. Your receipts (records) stay in this browser."', 'data-en="Your records are saved in this browser. Log in to continue on other devices."')
+
 open(os.path.join(ROOT, 'template.html'), 'w', encoding='utf-8').write(s)
 print('template.html 생성 (킬러 화면 + 루키 수정)')
